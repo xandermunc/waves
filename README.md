@@ -2,4 +2,4 @@
 
 This repository is a hub for all my thesis planning, exploration, and process on all things waves. 
 
-$$y(x,t)=A*\sin(k*x-\omega*t+\phi)$$
+$y(x,t) = A \sin(kx - \omega t + \phi)$
