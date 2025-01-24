@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.0/math.min.js"></script>
+    <title>Graph Beta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .grid {
+            stroke: lightgray;
+            stroke-opacity: 0.7;
+            shape-rendering: crispEdges;
+        }
+
+        .axis line,
+        .axis path {
+            stroke: black;
+        }
+
+        .highlight {
+            stroke: gray;
+            stroke-width: 2;
+        }
+
+        .function-line {
+            stroke-width: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="600" height="600"></svg>
+    <div>
+        <label for="bounds-input"></label>
+        <input id="bounds-input" type="text" placeholder="Bounds" />
+    </div>
+    <div>
+        <label for="variable-input"></label>
+        <input id="variable-input" type="text" placeholder="Variables" />
+    </div>
+    <div>
+        <label for="function-input"></label>
+        <input id="function-input" type="text" placeholder="Functions" />
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -31,9 +31,9 @@ Other vocab
 
 ### The nature of light 
 
-Light is an *electromagnetic* wave 
-Light can also behave as a particle (*photon*)
-We perceive the *visible spectrum* of light
+- Light is an *electromagnetic* wave 
+- Light can also behave as a particle (*photon*)
+- We perceive the *visible spectrum* of light
 
 ### Light wave properties 
 
