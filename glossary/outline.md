@@ -1,13 +1,4 @@
-# Glossary 
-
-> #### Title ideas
-> 
-> Glossary of Waves \
-> Glossary of a Wave \
-> The Glossary of Light and Sound \
-> The Glossary of Waves \
-> The Fundamentals of Waves \
-> The Fundamentals of Light and Sound
+# The Glossary of Light and Sound
 
 ## Overview 
 
