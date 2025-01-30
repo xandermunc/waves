@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3.js Dot Grid</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        svg {
+            display: block;
+        }
+
+        body {
+            background-color: #e1e1e1;
+        }
+
+        #variable-input,
+        #function-input {
+            position: absolute;
+            display: block;
+            margin: 10px 0;
+            padding: 5px;
+            width: 200px;
+            font-size: 16px;
+        }
+
+        #variable-input {
+            top: 100px;
+            left: 20px;
+        }
+
+        #function-input {
+            top: 140px;
+            left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="variable-input"></label>
+        <input id="variable-input" type="text" placeholder="Variables" />
+    </div>
+    <div>
+        <label for="function-input"></label>
+        <input id="function-input" type="text" placeholder="Functions" />
+    </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        const gridSize = 100; 
+        const dotRadius = 1; 
+        const dotSpacing = 20; 
+
+        const svg = d3.select('body')
+            .append('svg');
+
+        function updateSVG() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            svg.attr('width', width)
+                .attr('height', height);
+
+            svg.selectAll('*').remove();
+
+            svg.append('line')
+                .attr('x1', width / 2)
+                .attr('y1', 0)
+                .attr('x2', width / 2)
+                .attr('y2', height)
+                .attr('stroke', 'black')
+                .attr('stroke-width', 2);
+
+            svg.append('line') 
+                .attr('x1', 0)
+                .attr('y1', height / 2)
+                .attr('x2', width)
+                .attr('y2', height / 2)
+                .attr('stroke', 'black')
+                .attr('stroke-width', 2);
+
+            svg.selectAll('circle')
+                .data(d3.range(gridSize * gridSize))
+                .enter()
+                .append('circle')
+                .attr('cx', (d) => (d % gridSize) * (dotRadius * 2 + dotSpacing) + dotRadius - (gridSize / 2) * (dotRadius * 2 + dotSpacing) + width / 2)
+                .attr('cy', (d) => Math.floor(d / gridSize) * (dotRadius * 2 + dotSpacing) + dotRadius - (gridSize / 2) * (dotRadius * 2 + dotSpacing) + height / 2)
+                .attr('r', dotRadius)
+                .attr('fill', '#1e1e1e'); 
+        }
+
+        updateSVG();
+
+        window.addEventListener('resize', updateSVG);
+    </script>
+</body>
+
+</html>
