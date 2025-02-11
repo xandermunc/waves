@@ -1,0 +1,11 @@
+Root 1:1
+Octave 2:1
+
+Major third 5:4
+Minor third 6:5
+
+Perfect fifth 3:2
+Perfect fourth 4:3
+
+Major second 9:8
+Major ninth 8:5
