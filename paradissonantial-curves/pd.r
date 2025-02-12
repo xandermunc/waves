@@ -1,3 +1,5 @@
+
+# pdf graph
 pdf("1-10-6.pdf") 
 t <- seq(0, 2 * pi, length.out = 1000)
 phi <- 0
@@ -30,34 +32,20 @@ animation <- image_animate(image_join(frames), fps = 25)
 image_write(animation, "phi_animation.gif")
 file.remove(paste0("frame_", seq_along(phi_values), ".png"))
 
+# obj
 install.packages("rgl", type = "source")
 
 library(rgl)
-delta <- pi / 2
-t <- seq(0, 4 * pi, length.out = 1000)
-x <- sin(t) + sin(10 * t)
-z <- cos(t) + cos(10 * t)
-y <- 2 * cos(6 * t)
+# delta <- pi / 2
+t <- seq(0, 40 * pi, length.out = 1000)
+x <- sin(t) + sin(3/2 * t)
+z <- cos(t) + cos(3/2 * t)
+y <- 2 * cos(t)
 rgl.clear()
 open3d()
 tube <- cylinder3d(cbind(x, y, z), radius = 0.05, sides = 100)
 shade3d(tube, col = "blue")
 writeOBJ("curve.obj")
-
-library(rgl)
-delta <- pi / 2
-t <- seq(0, 4 * pi, length.out = 1000)
-x <- sin(t) + sin(9 * t)
-z <- cos(t) + cos(9 * t)
-y <- 2 * cos(6 * t)
-rgl.clear()
-open3d()
-tube <- cylinder3d(cbind(x, y, z), radius = 0.05, sides = 100)
-shade3d(tube, col = "blue")
-writeOBJ("curve.obj")
-
-
-
 
 library(magick)
 A_values <- seq(3/2, 1, length.out = 20)
