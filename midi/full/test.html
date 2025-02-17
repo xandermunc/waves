@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #111;
+        }
+
+        #svgCanvas {
+            filter: drop-shadow(0 0 75px rgba(0, 0, 255, 0.8));
+        }
+
+        input[type="range"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 200px;
+            background: white;
+            height: 4px;
+            border-radius: 2px;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <svg id="svgCanvas" width="500" height="500"></svg>
+    <input type="range" id="velocitySlider" min="0.001" max="0.01" step="0.001" value="0.01">
+    <div id="keyboard"></div>
+    <button id="startButton">Start Audio</button>
+    <script src="para2.js"></script>
+    <!-- <script src="audio.js"></script> -->
+    <!-- <script src="midi.js"></script> -->
+    <script src="keyboard.js"></script>
+</body>
+
+</html>

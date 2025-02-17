@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard 2</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh;
+            margin: 0; 
+            background-color: #f0f0f0; 
+        }
+
+        canvas {
+            border: 1px solid #ccc; 
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        let keys = [];
+        let activeNotes = new Set();
+
+        let keyWidth = 40;
+        let keyHeight = 150;
+        let spacing = keyWidth / 2;
+        let octaves = 4;
+        let notesToRemoveFromStart = 5;
+        let notesToRemoveFromEnd = 11;
+
+        function setup() {
+            createCanvas(1000, 200);
+            for (let i = notesToRemoveFromStart; i < (octaves * 12) - notesToRemoveFromEnd; i++) {
+                let y = 50;
+                let x = (i % 12) * spacing + Math.floor(i / 12) * 7 * keyWidth;
+                let w = keyWidth;
+                let h = keyHeight;
+                if ([1, 3, 6, 8, 10].includes(i % 12)) {
+                    w = keyWidth / 3 * 2;
+                    x = keyWidth / 3 * 2 + (i % 12 - 1) * spacing + Math.floor(i / 12) * 7 * keyWidth;
+                    h = keyHeight / 5 * 3;
+                }
+                if ((i % 12) > 4 || (i % 12) === 11) {
+                    x += spacing;
+                }
+                keys.push(new Key(x, y, w, h, i));
+            }
+            setupMIDI();
+        }
+
+        function draw() {
+            background(255);
+            for (let key of keys) {
+                if (![1, 3, 6, 8, 10].includes(key.note % 12)) {
+                    key.show();
+                }
+            }
+            for (let key of keys) {
+                if ([1, 3, 6, 8, 10].includes(key.note % 12)) {
+                    key.show();
+                }
+            }
+        }
+
+        class Key {
+            constructor(x, y, w, h, note) {
+                this.x = x;
+                this.y = y;
+                this.w = w;
+                this.h = h;
+                this.note = note;
+            }
+
+            show() {
+                if (activeNotes.has(this.note)) {
+                    fill(255, 0, 0);
+                } else if ([1, 3, 6, 8, 10].includes(this.note % 12)) {
+                    fill(0);
+                } else {
+                    fill(255);
+                }
+                rect(this.x, this.y, this.w, this.h);
+            }
+        }
+
+        function setupMIDI() {
+            if (navigator.requestMIDIAccess) {
+                navigator.requestMIDIAccess().then(onMIDISuccess, onMIDIFailure);
+            } else {
+                console.error("Web MIDI API not supported in this browser.");
+            }
+        }
+
+        function onMIDISuccess(midiAccess) {
+            for (let input of midiAccess.inputs.values()) {
+                input.onmidimessage = getMIDIMessage;
+            }
+        }
+
+        function onMIDIFailure() {
+            console.error("Could not access your MIDI devices.");
+        }
+
+        function getMIDIMessage(message) {
+            const [command, note, velocity] = message.data;
+            const adjustedNote = note - 48;
+            if (command === 147 && velocity > 0) {
+                activeNotes.add(adjustedNote);
+            } else if (command === 131 || (command === 147 && velocity === 0)) {
+                activeNotes.delete(adjustedNote);
+            }
+
+            console.log(`Active Notes: ${Array.from(activeNotes)}`);
+        }
+
+
+    </script>
+</body>
+
+</html>
