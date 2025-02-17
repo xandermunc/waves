@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noise</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+</head>
+
+<body>
+    <script>
+        var inc = 0.1;
+        var scl = 10;
+        var cols, rows;
+        var zoff = 0;
+
+        function setup() {
+            createCanvas(400, 400);
+            cols = floor(width / scl);
+            rows = floor(height / scl);
+        }
+
+        function draw() {
+            var yoff = 0;
+            for (var y = 0; y < rows; y++) {
+                var xoff = 0;
+                for (var x = 0; x < cols; x++) {
+                    var n = noise(xoff, yoff, zoff) * 255;
+                    xoff += inc;
+
+                    fill(n);
+                    noStroke();
+                    rect(x * scl, y * scl, scl, scl);
+                }
+                yoff += inc;
+            }
+            zoff += 0.01;
+        }
+    </script>
+</body>
+
+</html>
