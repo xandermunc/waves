@@ -63,16 +63,17 @@
             const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
             let d = "";
             if (activeNotes.size === 0) return;
-            for (let i = 0; i <= steps; i++) {
+            for (let i = 0; i <= steps; i++) { // this is what draws the points and connects them with straight lines. maybe updating this will fix the detail issue
                 const t = tMin + (tMax - tMin) * (i / steps);
                 const x = funcX(t) * scaleX + translateX;
                 const y = funcY(t) * scaleY * -1 + translateY;
                 if (i === 0) {
-                    d += `M ${x} ${y}`;
+                    d += `M ${x} ${y}`; // move to 
                 } else {
-                    d += ` L ${x} ${y}`;
+                    d += ` L ${x} ${y}`; // line to 
                 }
             }
+
             path.setAttribute("d", d);
             path.setAttribute("stroke", "#e1e1e1");
             path.setAttribute("stroke-width", "2");
@@ -118,7 +119,6 @@
 
         function getNoteFromMIDINumber(noteNumber) {
             const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-            // const notes = ['F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E'];
             return notes[noteNumber % 12];
         }
 
@@ -148,40 +148,6 @@
             } else if ((command >= 128 && command <= 143) || (command >= 144 && command <= 159 && velocity === 0)) {
                 activeNotes.delete(noteNumber);
             }
-
-            const svgCanvas = document.getElementById("svgCanvas");
-            svgCanvas.innerHTML = '';
-
-            const intervals = Array.from(activeNotes).map(noteNumber => {
-                const note = getNoteFromMIDINumber(noteNumber);
-                const interval = getJustIntonationInterval(note);
-                const octave = getOctaveFromMIDINumber(noteNumber);
-                if (octave > 4) {
-                    return interval * 2;
-                } else if (octave < 4) {
-                    return interval / 2;
-                } else {
-                    return interval;
-                }
-            });
-
-            const bIntervals = Array.from(activeNotes).map(noteNumber => {
-                const note = getNoteFromMIDINumber(noteNumber);
-                const octave = getOctaveFromMIDINumber(noteNumber);
-                let bInterval = getBIntervals(note);
-                if (octave < 4) {
-                    bInterval *= 2;
-                }
-                return bInterval;
-            });
-            const bInterval = bIntervals.length > 0 ? lcmOfArray(bIntervals) : 1;
-            const B = activeNotes.size;
-
-            drawParametricCurve(svgCanvas,
-                t => intervals.reduce((sum, interval) => sum + Math.sin(interval * t + phi), 0),
-                t => B * Math.cos(t),
-                0, 2 * bInterval * Math.PI, 1000,
-                200 / B, 200 / B, 250, 250);
         }
 
         function animate() {
@@ -221,10 +187,11 @@
             const B = activeNotes.size;
 
             drawParametricCurve(svgCanvas,
-                t => intervals.reduce((sum, interval) => sum + Math.sin(interval * t + phi), 0),
-                t => B * Math.cos(t),
-                0, 2 * bInterval * Math.PI, 1000,
-                200 / B, 200 / B, 250, 250);
+                t => intervals.reduce((sum, interval) => sum + Math.sin(interval * t + phi), 0), // x
+                // t => intervals.reduce((sum, interval) => sum + Math.cos(interval * t + phi), 0), // comment out y (the line below) and uncomment this to see top view
+                t => B * Math.cos(t), // y
+                0, 2 * bInterval * Math.PI, 1000, // bInterval is the LCM of the denominators of each JI interval 
+                200 / B, 200 / B, 250, 250); // removing B changes the scale based on the number of notes (this didn't work on zoom for some reason)
 
             requestAnimationFrame(animate);
         }
