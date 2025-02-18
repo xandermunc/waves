@@ -9,20 +9,30 @@
     <style>
         body {
             display: flex;
-            justify-content: center; 
-            align-items: center; 
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             height: 100vh;
-            margin: 0; 
-            background-color: #f0f0f0; 
-        }
-
-        canvas {
-            border: 1px solid #ccc; 
+            margin: 0;
+            background-color: #e1e1e1;
         }
     </style>
 </head>
 
 <body>
+    <select id="chordTone">
+        <option value="one">one</option>
+        <option value="three">three</option>
+        <option value="five">five</option>
+        <option value="seven">seven</option>
+    </select>
+    <select id="direction">
+        <option value="up">Up</option>
+        <option value="down">Down</option>
+    </select>
+    <div id="keyboard"></div>
+    <button id="startButton">Start Audio</button>
+    <button id="playButton">Play Sequence</button>
     <script>
         let keys = [];
         let activeNotes = new Set();
@@ -30,14 +40,15 @@
         let keyWidth = 40;
         let keyHeight = 150;
         let spacing = keyWidth / 2;
-        let octaves = 4;
-        let notesToRemoveFromStart = 5;
-        let notesToRemoveFromEnd = 11;
+        let octaves = 3;
+        let notesToRemoveFromStart = 0;
+        let notesToRemoveFromEnd = 0;
 
         function setup() {
-            createCanvas(1000, 200);
+            const canvas = createCanvas(octaves * spacing * 14, keyHeight);
+            canvas.parent('keyboard');
             for (let i = notesToRemoveFromStart; i < (octaves * 12) - notesToRemoveFromEnd; i++) {
-                let y = 50;
+                let y = 0;
                 let x = (i % 12) * spacing + Math.floor(i / 12) * 7 * keyWidth;
                 let w = keyWidth;
                 let h = keyHeight;
@@ -78,13 +89,16 @@
             }
 
             show() {
+                const isBlackKey = [1, 3, 6, 8, 10].includes(this.note % 12);
+
                 if (activeNotes.has(this.note)) {
-                    fill(255, 0, 0);
-                } else if ([1, 3, 6, 8, 10].includes(this.note % 12)) {
-                    fill(0);
+                    fill('#09f');
                 } else {
-                    fill(255);
+                    fill(isBlackKey ? '#333' : '#fff');
                 }
+
+                stroke('#e1e1e1');
+                strokeWeight(4);
                 rect(this.x, this.y, this.w, this.h);
             }
         }
@@ -118,8 +132,47 @@
 
             console.log(`Active Notes: ${Array.from(activeNotes)}`);
         }
-        
+
+        function playNotes() {
+            let noteMap = {
+                "c1": 12, "c#1": 13, "d1": 14, "d#1": 15, "e1": 16, "f1": 17,
+                "f#1": 18, "g1": 19, "g#1": 20, "a1": 21, "a#1": 22, "b1": 23,
+                "c2": 24, "c#2": 25, "d2": 26, "d#2": 27, "e2": 28, "f2": 29,
+                "f#2": 30, "g2": 31, "g#2": 32, "a2": 33, "a#2": 34, "b2": 35,
+                "c3": 36
+            };
+
+            let sequence = ["d1", "f1", "g1", "a#1", "d2"].map(note => noteMap[note]);
+            let index = 0;
+
+            function playNext() {
+                if (index < sequence.length) {
+                    const currentNote = sequence[index];
+                    activeNotes.add(currentNote);
+                    playSineWave(currentNote + 48);
+
+                    const baseDelay = 250; 
+                    const swingAmount = 0.6 * baseDelay;
+                    const delay = (index % 2 === 0) ? baseDelay + swingAmount: baseDelay;
+
+                    setTimeout(() => {
+                        activeNotes.delete(currentNote);
+                        stopSineWave(currentNote + 48);
+                        index++;
+                        playNext();
+                    }, delay);
+                }
+            }
+
+            playNext();
+        }
+
+        document.getElementById('playButton').addEventListener('click', () => {
+            playNotes();
+        });
+
     </script>
+    <script src="audio.js"></script>
 </body>
 
 </html>
