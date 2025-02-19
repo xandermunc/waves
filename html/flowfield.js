@@ -1,41 +1,38 @@
+let flowFieldSketch = function(p) {
+    let inc = 0.1;
+    let scl = 50;
+    let cols, rows;
+    let zoff = 0;
 
-var inc = 0.1;
-var scl = 50;
-var cols, rows;
+    p.setup = function() {
+        const canvas = p.createCanvas(550, 300);
+        canvas.parent('flowfield');
+        cols = p.floor(p.width / scl);
+        rows = p.floor(p.height / scl);
+    };
 
-var zoff = 0;
+    p.draw = function() {
+        p.translate(50, -1);
+        p.clear();
+        let yoff = 0;
+        for (let y = 0; y < rows; y++) {
+            let xoff = 0;
+            for (let x = 0; x < cols; x++) {
+                let angle = p.noise(xoff, yoff, zoff) * p.TWO_PI;
+                let v = p5.Vector.fromAngle(angle);
+                xoff += inc;
+                p.stroke(255);
 
-var fr;
-
-function setup() {
-    const canvas = createCanvas(windowWidth/2, windowWidth/2);
-    canvas.parent('flowfield');
-    cols = floor(width / scl);
-    rows = floor(height / scl);
-    fr = createP('');
-}
-
-function draw() {
-    background(23);
-    var yoff = 0;
-    for (var y = 0; y < rows; y++) {
-        var xoff = 0;
-        for (var x = 0; x < cols; x++) {
-            var index = (x + y * width) * 4;
-            var angle = noise(xoff, yoff, zoff) * TWO_PI;
-            var v = p5.Vector.fromAngle(angle);
-            xoff += inc;
-            stroke(0);
-
-            push();
-            translate(x * scl, y * scl);
-            rotate(v.heading());
-            line(0, 0, scl, 0);
-            pop();
+                p.push();
+                p.translate(x * scl, y * scl);
+                p.rotate(v.heading());
+                p.line(0, 0, scl, 0);
+                p.pop();
+            }
+            yoff += inc;
+            zoff += 0.0005;
         }
-        yoff += inc;
-        zoff += 0.0005;
-    }
+    };
+};
 
-    fr.html(floor(frameRate()));
-}
+new p5(flowFieldSketch);
