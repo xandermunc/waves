@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <title>Grid</title>
+    <style>
+        :root {
+            --header-height: 90px;
+            --border-width: 1.5px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            cursor: default;
+            transition: 0.1s ease all;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100vw;
+            background: white;
+            display: grid;
+            grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+            z-index: 10;
+        }
+
+        .header-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: var(--header-height);
+            border: var(--border-width) black solid;
+            border-top: none;
+            border-left: none;
+            text-align: center;
+        }
+
+        .header-item:not(:first-child) {
+            border-left: none;
+        }
+
+        .header-item:last-child {
+            border-right: none;
+        }
+
+        body {
+            overflow-x: hidden;
+            padding-top: var(--header-height);
+            background: linear-gradient(to bottom, #09f, #fcf);
+            font-size: 1em;
+            font-weight: 100;
+        }
+
+        h1 {
+            font-weight: 500;
+            font-size: 1.5em;
+        }
+
+        h2 {
+            font-weight: 500;
+            font-size: 1.2em;
+        }
+
+        p {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 300;
+            font-size: 1em;
+        }
+
+        p.hoverable:hover {
+            color: #09f;
+        }
+
+        p.hoverable-white:hover {
+            color: #fff;
+        }
+
+        p.hoverable-underline {
+            position: relative;
+            display: inline-block;
+        }
+
+        p.hoverable-underline::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: var(--border-width);
+            background-color: #000;
+            opacity: 0;
+            transform: scaleX(0);
+            transition: all 0.1s ease;
+        }
+
+        .underline-parent:hover p.hoverable-underline::after {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        body::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        body::-webkit-scrollbar-track {
+            background: transparent;
+            height: 200vh;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: #000;
+        }
+
+        section.white {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100vh;
+            width: 100vw;
+            height: 100vh;
+            background-color: white;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            width: 100vw;
+            background-color: white;
+        }
+
+        .three-column {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .grid-item {
+            height: var(--header-height);
+            border: var(--border-width) black solid;
+            border-left: none;
+            text-align: center;
+            line-height: var(--header-height);
+            font-size: 1em;
+            font-weight: 100;
+        }
+
+        .vertical-grid {
+            margin-top: var(--header-height);
+            margin-bottom: var(--header-height);
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            width: 25vw;
+            background-color: white;
+        }
+
+        .vertical-grid-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 50px;
+            padding-right: 50px;
+            height: var(--header-height);
+            border: var(--border-width) black solid;
+            border-left: none;
+            border-right: none;
+            border-bottom: none;
+            text-align: center;
+            line-height: var(--header-height);
+            font-size: 1em;
+            font-weight: 100;
+        }
+
+        .vertical-grid-item:last-child {
+            border-bottom: var(--border-width) black solid;
+        }
+
+        .vertical-grid-item:hover .circle {
+            background-color: #09f;
+            transition: 0.1s ease all;
+        }
+
+        .svg {
+            position: absolute;
+        }
+
+        .circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+        }
+
+        .centered {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hoverable-item:hover {
+            background-color: #09f;
+        }
+
+        .hoverable-item-pink:hover {
+            background-color: #fcf;
+        }
+
+        .hoverable-item-orange:hover {
+            background-color: #f90;
+        }
+
+        .pill-button {
+            height: var(--header-height);
+            width: 25vw;
+            /* var this */
+            border: var(--border-width) black solid;
+            margin-bottom: var(--header-height);
+            border-radius: 100px;
+            /* not precise */
+            font-size: 1em;
+            font-weight: 100;
+        }
+
+        .pill-button:hover {
+            color: white;
+            background-color: #f9f;
+            border: none;
+        }
+
+        .hover-fixed.active {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-item">
+            <h1>BIG ONE</h1>
+        </div>
+        <div class="header-item underline-parent">
+            <p class="hoverable-underline">ONE</p>
+        </div>
+        <div class="header-item underline-parent">
+            <p class="hoverable-underline">TWO</p>
+        </div>
+        <div class="header-item underline-parent">
+            <p class="hoverable-underline">THREE</p>
+        </div>
+        <div class="header-item underline-parent">
+            <p class="hoverable-underline">FOUR</p>
+        </div>
+        <div class="header-item underline-parent">
+            <p class="hoverable-underline">FIVE</p>
+        </div>
+    </header>
+
+    <section class="white">
+        <div class="grid hover-fixed">
+            <div class="grid-item">
+                <p class="hoverable">ONE</p>
+            </div>
+            <div class="grid-item">
+                <p class="hoverable">TWO</p>
+            </div>
+        </div>
+
+        <div class="vertical-grid">
+            <div class="vertical-grid-item">
+                <p>ONE</p>
+                <div class="centered">
+                    <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40"
+                        fill="none">
+                        <path
+                            d="M12.415 18.9946C11.8628 18.9946 11.415 19.4423 11.415 19.9946C11.415 20.5469 11.8628 20.9946 12.415 20.9946L12.415 18.9946ZM28.7364 20.7017C29.1269 20.3112 29.1269 19.678 28.7364 19.2875L22.3724 12.9236C21.9819 12.533 21.3488 12.533 20.9582 12.9236C20.5677 13.3141 20.5677 13.9472 20.9582 14.3378L26.6151 19.9946L20.9582 25.6515C20.5677 26.042 20.5677 26.6752 20.9582 27.0657C21.3488 27.4562 21.9819 27.4562 22.3724 27.0657L28.7364 20.7017ZM12.415 20.9946L28.0293 20.9946L28.0293 18.9946L12.415 18.9946L12.415 20.9946Z"
+                            fill="black" />
+                    </svg>
+                    <div class="circle"></div>
+                </div>
+            </div>
+            <div class="vertical-grid-item">
+                <p>TWO</p>
+                <div class="centered">
+                    <svg class="svg" xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40"
+                        fill="none">
+                        <path
+                            d="M12.415 18.9946C11.8628 18.9946 11.415 19.4423 11.415 19.9946C11.415 20.5469 11.8628 20.9946 12.415 20.9946L12.415 18.9946ZM28.7364 20.7017C29.1269 20.3112 29.1269 19.678 28.7364 19.2875L22.3724 12.9236C21.9819 12.533 21.3488 12.533 20.9582 12.9236C20.5677 13.3141 20.5677 13.9472 20.9582 14.3378L26.6151 19.9946L20.9582 25.6515C20.5677 26.042 20.5677 26.6752 20.9582 27.0657C21.3488 27.4562 21.9819 27.4562 22.3724 27.0657L28.7364 20.7017ZM12.415 20.9946L28.0293 20.9946L28.0293 18.9946L12.415 18.9946L12.415 20.9946Z"
+                            fill="black" />
+                    </svg>
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pill-button centered">
+            <h2>TESTING</h2>
+        </div>
+
+        <div class="grid three-column">
+            <div class="grid-item hoverable-item">
+                <p class="hoverable-white">ONE</p>
+            </div>
+            <div class="grid-item hoverable-item">
+                <p class="hoverable-white">TWO</p>
+            </div>
+            <div class="grid-item hoverable-item-orange">
+                <p class="hoverable-white">THREE</p>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const hoverFixed = document.querySelector('.hover-fixed');
+            const scrollY = window.scrollY;
+
+            if (scrollY > header.offsetTop + 500) {
+                header.classList.add('active');
+            } else {
+                header.classList.remove('active');
+            }
+        });
+
+    </script>
+</body>
+
+</html>
