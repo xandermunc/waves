@@ -104,6 +104,11 @@ strong.red {
     color: #f00;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .huge-text {
     font-size: 5em;
     font-weight: 600;

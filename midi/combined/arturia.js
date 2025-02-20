@@ -87,9 +87,9 @@ function onMIDIFailure() {
 function getMIDIMessage(message) {
     const [command, note, velocity] = message.data;
     const adjustedNote = note - 48;
-    if (command === 144 && velocity > 0) {
+    if (command === 147 && velocity > 0) {
         activeNotesArturia.add(adjustedNote);
-    } else if (command === 128 || (command === 144 && velocity === 0)) {
+    } else if (command === 131 || (command === 147 && velocity === 0)) {
         activeNotesArturia.delete(adjustedNote);
     }
 

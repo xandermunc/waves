@@ -46,9 +46,9 @@ function onMIDIFailure() {
 
 function handleMIDIMessage(event) {
     const [status, note, velocity] = event.data;
-    if (status === 144 && velocity > 0) { 
+    if (status === 147 && velocity > 0) { 
         playSineWave(note);
-    } else if (status === 128 || (status === 144 && velocity === 0)) { 
+    } else if (status === 131 || (status === 147 && velocity === 0)) { 
         stopSineWave(note);
     }
 }
