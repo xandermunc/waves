@@ -202,7 +202,7 @@ section.white {
 
 .image:hover {
     transform: scale(0.99);
-    border-radius: 13px;
+    border-radius: 15px;
 }
 
 /* GRID */
@@ -379,58 +379,6 @@ section.white {
         z-index: 3;
     }
 }
-
-.orbit-center {
-    position: absolute;
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    width: 25px;
-    height: 25px;
-    background-color: #f00;
-    border-radius: 50%;
-    transform: translate(-50%, -50%); /* Center the orbit center */
-}
-
-.orbit-small {
-    position: absolute;
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    width: 15px; 
-    height: 15px; 
-    background-color: #09f;
-    border-radius: 50%;
-    animation: orbit-small 2s linear infinite;
-}
-
-@keyframes orbit-small {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg) translateX(40px) translateY(20px); 
-        z-index: 3;
-    }
-
-    25% {
-        transform: translate(-50%, -50%) rotate(90deg) translateX(40px) translateY(0px); 
-        z-index: 1;
-    }
-
-    50% {
-        transform: translate(-50%, -50%) rotate(180deg) translateX(40px) translateY(-20px); 
-        z-index: 1;
-    }
-
-    75% {
-        transform: translate(-50%, -50%) rotate(270deg) translateX(40px) translateY(0px); 
-        z-index: 1;
-    }
-
-    100% {
-        transform: translate(-50%, -50%) rotate(360deg) translateX(40px) translateY(20px);
-        z-index: 3;
-    }
-}
-
-
-
 
 /* BLUR */
 

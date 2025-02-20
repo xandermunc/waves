@@ -3,9 +3,9 @@
 pdf("1-10-6.pdf") 
 t <- seq(0, 2 * pi, length.out = 1000)
 phi <- 0
+A <- 1
 x <- sin(t + phi) + sin(A * t + phi)
 y <- 2 * cos(t)
-A <- 1
 plot(x, y,
   type = "l", bty = "n", col = "#09f", lwd = 2, xlab = "x", ylab = "y",
   main = "1:10:6", xlim = c(-2, 2), ylim = c(-2, 2), asp = 1
