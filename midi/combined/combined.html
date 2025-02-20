@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parametric Curves</title>
+    <link rel="stylesheet" href="../../html/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="10" fill="%2303f"/></svg>') 10 10, none;
         }
 
         body {
@@ -19,14 +22,46 @@
             justify-content: center;
             height: 100vh;
             background-color: #111;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="10" fill="%23f90"/></svg>') 10 10, none;
+            overflow: hidden;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 100vw;
+        }
+
+        .grid-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - (var(--header-height) * 3));
+            background-color: #111;
+            border: var(--border-width) solid white;
+            border-left: none;
+            border-top: none;
+            border-bottom: none;
+        }
+
+        .keyboard-div {
+            display: grid;
+            height: calc(var(--header-height) * 2);
+            background-color: red;
+            grid-template-columns: 1fr 2fr;
+            width: 100vw;
+        }
+
+        .grid-item:last-child {
+            border-right: none;
         }
 
         #svgCanvas2 {
-            filter: drop-shadow(0 0 75px rgba(0, 0, 255, 0.8));
+            filter: drop-shadow(0 0 75px #00f);
         }
 
         #svgCanvas {
-            filter: drop-shadow(0 0 75px rgba(0, 0, 255, 0.8));
+            filter: drop-shadow(0 0 75px #00f);
         }
 
         input[type="range"] {
@@ -47,18 +82,104 @@
             background: white;
             border-radius: 50%;
         }
+
+        #startButton {
+            color: white;
+            background-color: #111;
+            border-radius: 20px;
+            width: 100px;
+            height: 50px;
+            border: var(--border-width) solid white;
+        }
+
+        #startButton:hover {
+            scale: 0.9;
+            border-radius: 30px;
+            color: #111;
+        }
+
+        .black {
+            background-color: #111;
+            color: white;
+            border: var(--border-width) white solid;
+        }
+
+        .no-left-border {
+            border-left: none;
+        }
+
+        .double-header-height {
+            height: calc(var(--header-height) * 2);
+        }
+
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #box-generator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .wave-box {
+            margin: 10px;
+            width: 300px;
+            height: 50px;
+            background-color: #111;
+            border: var(--border-width) white solid;
+        }
     </style>
 </head>
 
 <body>
-    <svg id="svgCanvas" width="500" height="500"></svg>
-    <svg id="svgCanvas2" width="500" height="500"></svg>
-    <button id="startButton">Start Audio</button>
-    <input type="range" id="velocitySlider" min="0.001" max="0.01" step="0.001" value="0.01">
+    <header>
+        <div class="header-item black no-left-border">
+            <h1>BIG ONE</h1>
+        </div>
+        <div class="header-item underline-parent black">
+            <p class="hoverable-underline white">ONE</p>
+        </div>
+        <div class="header-item underline-parent black">
+            <p class="hoverable-underline white">TWO</p>
+        </div>
+        <div class="header-item underline-parent black">
+            <p class="hoverable-underline white">THREE</p>
+        </div>
+        <div class="header-item underline-parent black">
+            <p class="hoverable-underline white">FOUR</p>
+        </div>
+        <div class="header-item underline-parent black">
+            <p class="hoverable-underline white">FIVE</p>
+        </div>
+    </header>
 
-    <script src="paraside.js"></script>
-    <script src="paratop.js"></script>
-    <script src="midi.js"></script>
+    <div class="grid">
+        <div class="grid-item">
+            <div id="box-generator"></div>
+        </div>
+        <div class="grid-item">
+            <svg id="svgCanvas" width="400" height="400"></svg>
+        </div>
+        <div class="grid-item">
+            <svg id="svgCanvas2" width="400" height="400"></svg>
+        </div>
+    </div>
+    <div class="keyboard-div">
+        <div class="header-item double-header-height black no-left-border">
+            <canvas id="superposition" width="300" height="400"></canvas>
+        </div>
+        <div class="header-item double-header-height black flex-row">
+            <button id="startButton">Start Audio</button>
+            <div id="arturia"></div>
+        </div>
+    </div>
+    <script src="arturia.js"></script>
+    <script src="parafull.js"></script>
     <script src="audio.js"></script>
 </body>
 

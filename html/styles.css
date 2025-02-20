@@ -15,10 +15,14 @@
 body {
     overflow-x: hidden;
     padding-top: var(--header-height);
-    background: linear-gradient(to bottom, #09f, #fcf, #f90);
+    background: white;
     font-size: 1em;
     font-weight: 100;
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="10" fill="%239f0"/></svg>') 10 10, none;
+}
+
+.gradient {
+    background: linear-gradient(to bottom, #09f, #fcf, #f90);
 }
 
 header,
@@ -144,6 +148,19 @@ p.hoverable-underline::after {
     width: 100%;
     height: var(--border-width);
     background-color: #000;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: all 0.1s ease;
+}
+
+p.hoverable-underline.white::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: var(--border-width);
+    background-color: #fff;
     opacity: 0;
     transform: scaleX(0);
     transition: all 0.1s ease;

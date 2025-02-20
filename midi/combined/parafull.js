@@ -1,11 +1,30 @@
 const activeNotes = new Set();
 let phi = 0;
 let velocity = 0.01;
-document.getElementById("velocitySlider").addEventListener("input", event => {
-    velocity = parseFloat(event.target.value);
-});
 
 function drawParametricCurve(svg, funcX, funcY, tMin, tMax, steps, scaleX, scaleY, translateX, translateY) {
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    let d = "";
+    if (activeNotes.size === 0) return;
+    for (let i = 0; i <= steps; i++) { 
+        const t = tMin + (tMax - tMin) * (i / steps);
+        const x = funcX(t) * scaleX + translateX;
+        const y = funcY(t) * scaleY * -1 + translateY;
+        if (i === 0) {
+            d += `M ${x} ${y}`; 
+        } else {
+            d += ` L ${x} ${y}`; 
+        }
+    }
+
+    path.setAttribute("d", d);
+    path.setAttribute("stroke", "#e1e1e1");
+    path.setAttribute("stroke-width", "2");
+    path.setAttribute("fill", "none");
+    svg.appendChild(path);
+}
+
+function drawParametricCurveTop(svg, funcX, funcY, tMin, tMax, steps, scaleX, scaleY, translateX, translateY) {
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     let d = "";
     if (activeNotes.size === 0) return;
@@ -84,6 +103,51 @@ function animate() {
         phi -= 2 * Math.PI;
     }
 
+    const svgCanvas = document.getElementById("svgCanvas");
+    svgCanvas.innerHTML = '';
+
+    const intervals = Array.from(activeNotes).map(noteNumber => {
+        const note = getNoteFromMIDINumber(noteNumber);
+        const interval = getJustIntonationInterval(note);
+        const octave = getOctaveFromMIDINumber(noteNumber);
+        if (octave > 4) {
+            return interval * Math.pow(2, octave - 4);
+        } else if (octave < 4) {
+            return interval / Math.pow(2, 4 - octave);
+        } else {
+            return interval;
+        }
+    });
+
+    const bIntervals = Array.from(activeNotes).map(noteNumber => {
+        const note = getNoteFromMIDINumber(noteNumber);
+        const octave = getOctaveFromMIDINumber(noteNumber);
+        let bInterval = getBIntervals(note);
+        if (octave > 4) {
+            bInterval *= Math.pow(2, octave - 4);
+        } else if (octave < 4) {
+            bInterval *= Math.pow(2, 4 - octave);
+        }
+        return bInterval;
+    });
+    const bInterval = bIntervals.length > 0 ? lcmOfArray(bIntervals) : 1;
+    const B = activeNotes.size;
+
+    drawParametricCurve(svgCanvas,
+        t => intervals.reduce((sum, interval) => sum + Math.sin(interval * t + phi), 0), 
+        t => B * Math.cos(t), 
+        0, 2 * bInterval * Math.PI, 1000, 
+        200 / B, 200 / B, 200, 200);
+
+    requestAnimationFrame(animate);
+}
+
+function animateTop() {
+    phi += velocity;
+    if (phi > 2 * Math.PI) {
+        phi -= 2 * Math.PI;
+    }
+
     const svgCanvas = document.getElementById("svgCanvas2");
     svgCanvas.innerHTML = '';
 
@@ -118,9 +182,9 @@ function animate() {
         t => intervals.reduce((sum, interval) => sum + Math.sin(interval * t), 0),
         t => intervals.reduce((sum, interval) => sum + Math.cos(interval * t), 0),
         0, 2 * bInterval * Math.PI, 5000,
-        200 / B, 200 / B, 250, 250);
+        200 / B, 200 / B, 200, 200);
 
-    requestAnimationFrame(animate);
+    requestAnimationFrame(animateTop);
 }
 
 if (navigator.requestMIDIAccess) {
@@ -134,3 +198,4 @@ if (navigator.requestMIDIAccess) {
 }
 
 requestAnimationFrame(animate);
+requestAnimationFrame(animateTop);
