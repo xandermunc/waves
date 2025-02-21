@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <title>Light Pollution - Xander Munc</title>
+    <style>
+        :root {
+            --blue: #007bff;
+            --light-blue: #69b2ff;
+            --red: #dc3545;
+            --green: #28a745;
+            --yellow: #fd7e14;
+            --orange: #fd7e14;
+            --purple: #6f42c1;
+            --pink: #e83e8c;
+            --teal: #20c997;
+            --cyan: #17a2b8;
+            --white: #fff;
+            --gray-light: #f8f9fa;
+            --gray: #6c757d;
+            --gray-dark: #343a40;
+            --gray-darker: #1e2023;
+            --black: #000;
+            --margin: 200px;
+            --margin-small: 20px;
+            --header-height: 90px;
+            --border-width: 1.5px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: default;
+        }
+
+        html,
+        body {
+            overscroll-behavior: none;
+            /* overflow-x: hidden; */
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.4;
+            font-size: 1.2rem;
+            background-color: var(--gray);
+            margin: var(--margin);
+            margin-top: calc(var(--margin) / 2);
+        }
+
+        h1 {
+            color: var(--gray-light);
+            font-size: 10rem;
+            margin-bottom: 20px;
+            margin-top: 150px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        h1 span {
+            display: inline-block;
+            transition: transform 0.1s ease-out;
+            margin-right: -28px;
+        }
+
+        .h1-spacer {
+            margin-right: 20px;
+        }
+
+        h2 {
+            color: var(--gray-light);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: var(--gray-light);
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: var(--blue);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--orange);
+        }
+
+        .grid {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .grid-two {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .grid-item {
+            background-color: var(--gray);
+            border: 1px solid var(--gray-light);
+            border-right: none;
+            height: var(--margin);
+            flex: 1;
+        }
+
+        .grid-item:last-child {
+            border-right: 1px solid var(--gray-light);
+        }
+
+        #stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 200vh;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(6, 4, 34, 0.5));
+            z-index: -1;
+        }
+
+        .gradient-2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(50, 24, 8, 0.5));
+            z-index: -1;
+        }
+
+        .gradient-3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 200vh;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+            z-index: -3;
+        }
+
+        .night {
+            position: absolute;
+            width: 100vw;
+            height: 500vh;
+            left: 0;
+            z-index: -3;
+            /* width: 100vw; */
+            background: linear-gradient(0deg,  rgba(6, 4, 34, 0.5), rgba(0, 0, 0, 0));
+        }
+
+        .night-2 {
+            position: absolute;
+            left: 0;
+            width: 100vw;
+            height: 500vh;
+            background: linear-gradient(0deg, rgba(6, 11, 23, 0.5), rgba(0, 0, 0, 0));
+            z-index: -1;
+        }
+
+        .spacer {
+            height: 100vh;
+        }
+
+        .small-spacer {
+            height: var(--margin);
+        }
+
+        i.orange {
+            color: var(--orange);
+        }
+
+        i.blue {
+            color: var(--blue);
+        }
+
+        .right {
+            float: right;
+        }
+
+        #buildings {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            height: 300px;
+            margin-top: -40px;
+            margin-right: 100px;
+        }
+
+        .building-glow {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            bottom: 0;
+            background-color: var(--yellow);
+            opacity: 1;
+            filter: blur(100px);
+            z-index: -2;
+        }
+
+        .building-glow-cover {
+            position: absolute;
+            width: 300%;
+            height: 100%;
+            bottom: -292px;
+            left: -200px;
+            background-color: var(--gray);
+            opacity: 1;
+            z-index: -1;
+        }
+
+        .one {
+            background-color: var(--gray);
+            opacity: 0;
+        }
+
+        .two {
+            background-color: var(--gray);
+            opacity: 0.1;
+            backdrop-filter: blur(10px);
+        }
+
+        .three {
+            background-color: var(--gray);
+            opacity: 0.2;
+            backdrop-filter: blur(20px);
+        }
+
+        .four {
+            background-color: var(--gray);
+            opacity: 0.3;
+            backdrop-filter: blur(20px);
+        }
+
+        .five {
+            background-color: var(--gray);
+            opacity: 0.4;
+            backdrop-filter: blur(20px);
+        }
+
+        .six {
+            background-color: var(--gray);
+            opacity: 0.5;
+            backdrop-filter: blur(20px);
+        }
+
+        .seven {
+            background-color: var(--gray);
+            opacity: 0.6;
+            backdrop-filter: blur(20px);
+        }
+
+        .eight {
+            background-color: var(--gray);
+            opacity: 0.7;
+            backdrop-filter: blur(20px);
+        }
+
+        .nine {
+            background-color: var(--gray);
+            opacity: 0.8;
+            backdrop-filter: blur(20px);
+        }
+
+        #stars2 {
+            position: absolute;
+            z-index: 0;
+        }
+
+        .lpi-text {
+            color: #f8f9fa;
+            margin-top: -30px;
+            margin-left: 10px;
+            z-index: 10;
+        }
+
+        .pie-chart {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #svg {
+            margin-top: 550px;
+            scale: 0.5;
+            transform-origin: 50%;
+            transform: rotate(60deg);
+        }
+
+        .eighty-one {
+            position: absolute;
+            margin-bottom: -1050px;
+            margin-left: -700px;
+        }
+
+        .nineteen {
+            position: absolute;
+            margin-bottom: 000px;
+            margin-left: 700px;
+        }
+
+        ol {
+            color: var(--gray-light)
+        }
+
+        .margin {
+            margin-left: calc(var(--margin) * 1.5);
+            margin-right: calc(var(--margin) * 1.5);
+        }
+
+        .centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vertical-grid {
+            margin-top: var(--header-height);
+            margin-bottom: var(--header-height);
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            width: 25vw;
+        }
+
+        .vertical-grid-item {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 50px;
+            padding-right: 50px;
+            height: var(--header-height);
+            border: var(--border-width) var(--gray-light) solid;
+            border-left: none;
+            border-right: none;
+            border-bottom: none;
+            line-height: var(--header-height);
+        }
+
+        .vertical-grid-item:last-child {
+            border-bottom: var(--border-width) var(--gray-light) solid;
+        }
+
+        .vertical-grid-item:hover .circle {
+            background-color: #09f;
+            transition: 0.1s ease all;
+        }
+
+        .svg-icon {
+            position: absolute;
+            width: 41px;
+            height: 40px;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 40"><path d="M12.415 18.9946C11.8628 18.9946 11.415 19.4423 11.415 19.9946C11.415 20.5469 11.8628 20.9946 12.415 20.9946L12.415 18.9946ZM28.7364 20.7017C29.1269 20.3112 29.1269 19.678 28.7364 19.2875L22.3724 12.9236C21.9819 12.533 21.3488 12.533 20.9582 12.9236C20.5677 13.3141 20.5677 13.9472 20.9582 14.3378L26.6151 19.9946L20.9582 25.6515C20.5677 26.042 20.5677 26.6752 20.9582 27.0657C21.3488 27.4562 21.9819 27.4562 22.3724 27.0657L28.7364 20.7017ZM12.415 20.9946L28.0293 20.9946L28.0293 18.9946L12.415 18.9946L12.415 20.9946Z" fill="white"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+        }
+
+        .grid-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--margin)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="gradient"></div>
+    <div class="gradient-2"></div>
+    <div class="gradient-3"></div>
+    <div id="stars"></div>
+    <h1>
+        <span>L</span>
+        <span>i</span>
+        <span>g</span>
+        <span>h</span>
+        <span>t</span>
+        <span class="h1-spacer"> </span>
+        <span>P</span>
+        <span>o</span>
+        <span>l</span>
+        <span>l</span>
+        <span>u</span>
+        <span>t</span>
+        <span>i</span>
+        <span>o</span>
+        <span>n</span>
+    </h1>
+    <div class="spacer"></div>
+    <h2>What is Light Pollution?</h2>
+    <p>Light pollution is <i class="orange">excessive or misdirected artificial light</i> that brightens the night sky
+        and disrupts
+        the natural darkness. It is primarily caused by streetlights, billboards, commercial properties, and residential
+        lighting, which can scatter light into the atmosphere. This phenomenon not only obscures our view of celestial
+        bodies and the natural state of the night sky but can also affects human health, wildlife behavior, and
+        ecosystems. <a href="https://darksky.org/resources/what-is-light-pollution/">(1)</a><br><br>
+
+        Light pollution can also disrupt circadian rhythms, leading to sleep disorders and other health
+        issues. For wildlife, it can interfere with migration patterns, breeding cycles, and predation. As
+        urban areas expand, the impact of light pollution continues to grow, prompting the need for effective solutions
+        to restore natural nightscapes and promote responsible lighting practices. <a
+            href="https://www.nature.com/articles/srep13557?">(2)</a>
+    </p>
+    <div class="right" id="buildings">
+        <div class="building-glow-cover"></div>
+        <div class="building-glow"></div>
+    </div>
+    <div class="small-spacer">
+    </div>
+    <h2>What Causes Light Pollution?</h2>
+    <p>Light pollution comes from a variety of sources, but can be found at its <i class="orange">strongest in areas
+            with densely
+            populated
+            artificial lighting such as urban and suburban areas</i>. Streetlights, billboards, commercial properties,
+        and
+        residential lighting contribute to the excessive
+        brightness that overwhelms the natural darkness of the night sky.<br><br>
+        There are several types of light pollution<a
+            href="https://www.unicaf.org/the-impact-of-light-pollution-on-wildlife-and-human-health/">(3)</a>,
+        including skyglow, which refers to the brightening of the night sky over populated areas; glare, which is
+        excessive brightness that causes visual discomfort; light trespass, where unwanted light spills into unwanted
+        areas; and clutter, which refers to excessive groupings of lights that create confusion. Understanding these
+        causes is essential for developing effective strategies to reduce light pollution and restore the natural
+        nighttime environment.</p>
+    <div class="small-spacer"></div>
+    <h2>The LPI Index</h2>
+    <p>
+        The Light Pollution Index (LPI) is a metric used to assess the brightness of the night sky at a specific
+        location, indicating the extent of artificial light pollution. <i class="orange">A higher LPI value signifies
+            greater light
+            pollution</i>, which can obscure astronomical observations and negatively impact ecosystems and human
+        health. <a href="https://skyglowproject.com/#light-pollution">(4)</a>
+    </p>
+    <div class="grid">
+        <div id="stars2"></div>
+        <div class="grid-item one"></div>
+        <div class="grid-item two"></div>
+        <div class="grid-item three"></div>
+        <div class="grid-item four"></div>
+        <div class="grid-item five"></div>
+        <div class="grid-item six"></div>
+        <div class="grid-item seven"></div>
+        <div class="grid-item eight"></div>
+        <div class="grid-item nine"></div>
+    </div>
+    <div class="grid-two">
+        <p class="lpi-text">LPI: 1</p>
+        <p class="lpi-text">LPI: 2</p>
+        <p class="lpi-text">LPI: 3</p>
+        <p class="lpi-text">LPI: 4</p>
+        <p class="lpi-text">LPI: 5</p>
+        <p class="lpi-text">LPI: 6</p>
+        <p class="lpi-text">LPI: 7</p>
+        <p class="lpi-text">LPI: 8</p>
+        <p class="lpi-text">LPI: 9</p>
+    </div>
+    <div class="small-spacer"></div>
+    <div class="pie-chart" style="height: 200px;">
+        <p class="nineteen">Only <i class="blue">nineteen</i> percent of Earth's population<br> lives under natural
+            night skies</p>
+        <p class="eighty-one">While <i class="orange">eighty one</i> percent live<br> under light polluted skies</p>
+        <!-- <svg id="svg" xmlns="http://www.w3.org/2000/svg" width="1197" height="1034" viewBox="0 0 1197 1034"
+            fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M601 834C425.925 834 284 692.075 284 517C284 341.925 425.925 200 601 200V0C315.468 0 84 231.469 84 517C84 802.531 315.468 1034 601 1034C886.531 1034 1118 802.531 1118 517C1118 449.957 1105.19 385.663 1081.79 326.608L895.853 400.29C910.114 436.277 918 475.596 918 517C918 692.075 776.074 834 601 834Z"
+                fill="#A360BF" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M601 834C425.925 834 284 692.075 284 517C284 341.925 425.925 200 601 200V0C315.468 0 84 231.469 84 517C84 802.531 315.468 1034 601 1034C886.531 1034 1118 802.531 1118 517C1118 449.957 1105.19 385.663 1081.79 326.608L895.853 400.29C910.114 436.277 918 475.596 918 517C918 692.075 776.074 834 601 834Z"
+                fill="#05C7F2" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M601 834C425.925 834 284 692.075 284 517C284 341.925 425.925 200 601 200V0C315.468 0 84 231.469 84 517C84 802.531 315.468 1034 601 1034C886.531 1034 1118 802.531 1118 517C1118 449.957 1105.19 385.663 1081.79 326.608L895.853 400.29C910.114 436.277 918 475.596 918 517C918 692.075 776.074 834 601 834Z"
+                fill="#F2E205" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M601 834C425.925 834 284 692.075 284 517C284 341.925 425.925 200 601 200V0C315.468 0 84 231.469 84 517C84 802.531 315.468 1034 601 1034C886.531 1034 1118 802.531 1118 517C1118 449.957 1105.19 385.663 1081.79 326.608L895.853 400.29C910.114 436.277 918 475.596 918 517C918 692.075 776.074 834 601 834Z"
+                fill="#007BFF" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M601 834C425.925 834 284 692.075 284 517C284 341.925 425.925 200 601 200V0C315.468 0 84 231.469 84 517C84 802.531 315.468 1034 601 1034C886.531 1034 1118 802.531 1118 517C1118 449.957 1105.19 385.663 1081.79 326.608L895.853 400.29C910.114 436.277 918 475.596 918 517C918 692.075 776.074 834 601 834Z"
+                fill="#FD7E14" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M601 834C425.925 834 284 692.075 284 517C284 341.925 425.925 200 601 200V0C315.468 0 84 231.469 84 517C84 802.531 315.468 1034 601 1034C886.531 1034 1118 802.531 1118 517C1118 449.957 1105.19 385.663 1081.79 326.608L895.853 400.29C910.114 436.277 918 475.596 918 517C918 692.075 776.074 834 601 834Z"
+                fill="#A360BF" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M601 200C734.696 200 849.296 282.802 895.852 400.289L1081.79 326.61C1006.04 135.464 819.462 0 601 0V200Z"
+                fill="#05C7F2" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M601 834C425.925 834 284 692.075 284 517C284 341.925 425.925 200 601 200V0C315.468 0 84 231.469 84 517C84 802.531 315.468 1034 601 1034C886.531 1034 1118 802.531 1118 517C1118 449.957 1105.19 385.663 1081.79 326.608L895.853 400.29C910.114 436.277 918 475.596 918 517C918 692.075 776.074 834 601 834Z"
+                fill="#F2E205" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M601 200C734.696 200 849.296 282.802 895.852 400.289L1081.79 326.61C1006.04 135.464 819.462 0 601 0V200Z"
+                fill="#007BFF" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M601 834C425.925 834 284 692.075 284 517C284 341.925 425.925 200 601 200V0C315.468 0 84 231.469 84 517C84 802.531 315.468 1034 601 1034C886.531 1034 1118 802.531 1118 517C1118 449.957 1105.19 385.663 1081.79 326.608L895.853 400.29C910.114 436.277 918 475.596 918 517C918 692.075 776.074 834 601 834Z"
+                fill="#FD7E14" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M1196.66 52.9586L907.041 276.183L901.547 269.055L1191.16 45.8302L1196.66 52.9586Z" fill="#007BFF" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M253.543 738.841L6.02385 918.01L0.746582 910.72L248.266 731.55L253.543 738.841Z" fill="#FD7E14" />
+        </svg> -->
+        <svg id="svg" xmlns="http://www.w3.org/2000/svg" width="1035" height="1035" viewBox="0 0 1035 1035" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M517.721 834.62C342.646 834.62 200.721 692.695 200.721 517.62C200.721 342.546 342.646 200.62 517.721 200.62V0.620117C232.189 0.620117 0.720947 232.089 0.720947 517.62C0.720947 803.152 232.189 1034.62 517.721 1034.62C803.252 1034.62 1034.72 803.152 1034.72 517.62C1034.72 450.577 1021.91 386.283 998.506 327.228L812.574 400.91C826.835 436.897 834.721 476.216 834.721 517.62C834.721 692.695 692.795 834.62 517.721 834.62Z"
+                fill="#A360BF" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M517.721 834.62C342.646 834.62 200.721 692.695 200.721 517.62C200.721 342.546 342.646 200.62 517.721 200.62V0.620117C232.189 0.620117 0.720947 232.089 0.720947 517.62C0.720947 803.152 232.189 1034.62 517.721 1034.62C803.252 1034.62 1034.72 803.152 1034.72 517.62C1034.72 450.577 1021.91 386.283 998.506 327.228L812.574 400.91C826.835 436.897 834.721 476.216 834.721 517.62C834.721 692.695 692.795 834.62 517.721 834.62Z"
+                fill="#05C7F2" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M517.721 834.62C342.646 834.62 200.721 692.695 200.721 517.62C200.721 342.546 342.646 200.62 517.721 200.62V0.620117C232.189 0.620117 0.720947 232.089 0.720947 517.62C0.720947 803.152 232.189 1034.62 517.721 1034.62C803.252 1034.62 1034.72 803.152 1034.72 517.62C1034.72 450.577 1021.91 386.283 998.506 327.228L812.574 400.91C826.835 436.897 834.721 476.216 834.721 517.62C834.721 692.695 692.795 834.62 517.721 834.62Z"
+                fill="#F2E205" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M517.721 834.62C342.646 834.62 200.721 692.695 200.721 517.62C200.721 342.546 342.646 200.62 517.721 200.62V0.620117C232.189 0.620117 0.720947 232.089 0.720947 517.62C0.720947 803.152 232.189 1034.62 517.721 1034.62C803.252 1034.62 1034.72 803.152 1034.72 517.62C1034.72 450.577 1021.91 386.283 998.506 327.228L812.574 400.91C826.835 436.897 834.721 476.216 834.721 517.62C834.721 692.695 692.795 834.62 517.721 834.62Z"
+                fill="#007BFF" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M517.721 834.62C342.646 834.62 200.721 692.695 200.721 517.62C200.721 342.546 342.646 200.62 517.721 200.62V0.620117C232.189 0.620117 0.720947 232.089 0.720947 517.62C0.720947 803.152 232.189 1034.62 517.721 1034.62C803.252 1034.62 1034.72 803.152 1034.72 517.62C1034.72 450.577 1021.91 386.283 998.506 327.228L812.574 400.91C826.835 436.897 834.721 476.216 834.721 517.62C834.721 692.695 692.795 834.62 517.721 834.62Z"
+                fill="#FD7E14" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M517.721 834.62C342.646 834.62 200.721 692.695 200.721 517.62C200.721 342.546 342.646 200.62 517.721 200.62V0.620117C232.189 0.620117 0.720947 232.089 0.720947 517.62C0.720947 803.152 232.189 1034.62 517.721 1034.62C803.252 1034.62 1034.72 803.152 1034.72 517.62C1034.72 450.577 1021.91 386.283 998.506 327.228L812.574 400.91C826.835 436.897 834.721 476.216 834.721 517.62C834.721 692.695 692.795 834.62 517.721 834.62Z"
+                fill="#A360BF" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M517.721 200.62C651.417 200.62 766.017 283.423 812.573 400.909L998.507 327.23C922.763 136.085 736.183 0.620117 517.721 0.620117V200.62Z"
+                fill="#05C7F2" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M517.721 834.62C342.646 834.62 200.721 692.695 200.721 517.62C200.721 342.546 342.646 200.62 517.721 200.62V0.620117C232.189 0.620117 0.720947 232.089 0.720947 517.62C0.720947 803.152 232.189 1034.62 517.721 1034.62C803.252 1034.62 1034.72 803.152 1034.72 517.62C1034.72 450.577 1021.91 386.283 998.506 327.228L812.574 400.91C826.835 436.897 834.721 476.216 834.721 517.62C834.721 692.695 692.795 834.62 517.721 834.62Z"
+                fill="#F2E205" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M517.721 200.62C651.417 200.62 766.017 283.423 812.573 400.909L998.507 327.23C922.763 136.085 736.183 0.620117 517.721 0.620117V200.62Z"
+                fill="#007BFF" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M517.721 834.62C342.646 834.62 200.721 692.695 200.721 517.62C200.721 342.546 342.646 200.62 517.721 200.62V0.620117C232.189 0.620117 0.720947 232.089 0.720947 517.62C0.720947 803.152 232.189 1034.62 517.721 1034.62C803.252 1034.62 1034.72 803.152 1034.72 517.62C1034.72 450.577 1021.91 386.283 998.506 327.228L812.574 400.91C826.835 436.897 834.721 476.216 834.721 517.62C834.721 692.695 692.795 834.62 517.721 834.62Z"
+                fill="#FD7E14" />
+        </svg>
+    </div>
+    <section>
+        <div class="night-2"></div>
+        <div class="night"></div>
+        <div class="spacer"></div>
+        <h2>Effects on Human Health</h2>
+        <p>Light pollution poses significant risks to human health, primarily through its disruption of natural sleep
+            patterns. <i class="orange">Exposure to artificial light at night can interfere with the body’s circadian
+                rhythms, leading to
+                difficulties in falling asleep and maintaining restful sleep.</i> Research indicates that individuals
+            living
+            in
+            brightly lit urban areas are more prone to sleep disorders, anxiety, and depression. Chronic
+            exposure to artificial light is associated with a higher risk of obesity, metabolic issues, and even certain
+            types of cancer. Recognizing the health implications of light pollution is crucial for advocating for
+            changes in
+            lighting practices and promoting healthier living environments.<a
+                href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2627884/?">(5)</a></p>
+        <div class="small-spacer"></div>
+        <h2>Impact on Wildlife and Ecosystems</h2>
+        <p>The effects of light pollution extend beyond human health, significantly impacting wildlife and natural
+            ecosystems. Many species rely on natural light cues for critical behaviors, such as migration, reproduction,
+            and
+            feeding. For example, sea turtle hatchlings instinctively move toward the ocean, following the natural light
+            horizon. However, bright beachfront lighting can lead them away from safety. Nocturnal insects, such as
+            moths,
+            are also drawn to artificial lights, disrupting their feeding and mating patterns. <i class="orange">These
+                disruptions can have
+                cascading effects throughout ecosystems, threatening biodiversity and the balance of natural
+                habitats.</i>
+            Protecting wildlife from the harmful effects of light pollution is essential for preserving ecological
+            integrity.<a href="https://globe-net.com/the-harmful-effects-of-light-pollution-on-insects/?">(6)</a></p>
+        <div class="small-spacer"></div>
+        <h2>Solutions and Mitigation Strategies</h2>
+        <p><i class="orange">Combating light pollution requires a combination of technological innovations, community
+                engagement, and policy
+                changes.</i> One effective solution is the use of shielded lighting fixtures that direct light downward
+            rather than
+            upward, reducing skyglow and minimizing glare. Additionally, adopting smart lighting technologies, such as
+            motion sensors and dimmers, can significantly decrease energy consumption and light pollution. Community
+            awareness campaigns play a vital role in educating the public about the importance of responsible lighting
+            practices. Initiatives like "dark sky" programs encourage towns and cities to adopt measures that minimize
+            light
+            pollution, making it easier for residents to enjoy the beauty of the night sky while protecting the
+            environment.<br><br>
+        </p>
+        <ol>
+            <li><strong>Use Energy-Efficient Lighting</strong>: Replace incandescent bulbs with warm-colored LEDs or
+                compact
+                fluorescent
+                lights to reduce energy consumption and minimize blue light emissions.</li><br>
+            <li><strong>Install Shielded Outdoor Lighting</strong>: Use fixtures that direct light downward to prevent
+                glare
+                and light
+                trespass, thereby reducing sky glow.</li><br>
+            <li><strong>Utilize Motion Sensors and Timers</strong>: Implement dimmers, motion sensors, and timers to
+                ensure
+                outdoor lighting
+                is only active when necessary, conserving energy and limiting light pollution.</li><br>
+            <li><strong>Close Curtains and Blinds at Night</strong>: Prevent indoor lighting from spilling outside by
+                closing window
+                coverings after dark, reducing light pollution and enhancing privacy. </li><br>
+            <li><strong>Participate in Light Pollution Monitoring</strong>: Engage in citizen science projects like
+                Globe at
+                Night to report
+                light pollution levels, aiding in global efforts to map and address the issue. </li><br>
+            <li><strong>Advocate for Dark Sky Initiatives</strong>: Support local and national policies aimed at
+                reducing
+                light pollution,
+                such as promoting the creation of dark sky reserves and implementing responsible outdoor lighting
+                regulations. </li>
+        </ol>
+        <div class="small-spacer"></div>
+        <p class="margin">Even just closing your curtains and blinds at night can reduce light trespass <i
+                class="orange">by
+                up to 50%</i>, contributing to a darker night sky and promoting healthier wildlife behaviors and
+            improved
+            sleep patterns for your community.<a
+                href="https://www.buglife.org.uk/campaigns/light-pollution/curtains-for-light-pollution/?">(7)</a></p>
+        <div class="small-spacer"></div>
+        <div class="centered">
+            <h2>Sources</h2>
+            <div class="grid-grid">
+                <div class="vertical-grid">
+                    <a class="vertical-grid-item" href="https://darksky.org/resources/what-is-light-pollution/">
+                        <p>1</p>
+                        <p>DarkSky</p>
+                        <div class="centered">
+                            <div class="svg-icon"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </a>
+                    <a class="vertical-grid-item" href="https://www.nature.com/articles/srep13557?">
+                        <p>2</p>
+                        <p>Nature</p>
+                        <div class="centered">
+                            <div class="svg-icon"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </a>
+                    <a class="vertical-grid-item"
+                        href="https://www.unicaf.org/the-impact-of-light-pollution-on-wildlife-and-human-health/">
+                        <p>3</p>
+                        <p>UNICAF</p>
+                        <div class="centered">
+                            <div class="svg-icon"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </a>
+                    <a class="vertical-grid-item" href="https://skyglowproject.com/#light-pollution">
+                        <p>4</p>
+                        <p>SkyGlow Project</p>
+                        <div class="centered">
+                            <div class="svg-icon"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="vertical-grid">
+                    <a class="vertical-grid-item" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2627884/?">
+                        <p>5</p>
+                        <p>NLM</p>
+                        <div class="centered">
+                            <div class="svg-icon"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </a>
+                    <a class="vertical-grid-item"
+                        href="https://globe-net.com/the-harmful-effects-of-light-pollution-on-insects/?">
+                        <p>6</p>
+                        <p>Globe</p>
+                        <div class="centered">
+                            <div class="svg-icon"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </a>
+                    <a class="vertical-grid-item"
+                        href="https://www.buglife.org.uk/campaigns/light-pollution/curtains-for-light-pollution/?">
+                        <p>7</p>
+                        <p>Bug Life</p>
+                        <div class="centered">
+                            <div class="svg-icon"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+    </section>
+    <!-- <div class="small-spacer"></div> -->
+    <!-- <p class="margin">Xander Munc</p> -->
+    <script src="stars-bottom.js"></script>
+    <script src="webpage.js"></script>
+    <script src="lpi.js"></script>
+    <script src="buildings.js"></script>
+    <script>
+        let spans = [];
+        let noiseOffsets = [];
+        const scrollLimit = window.innerHeight / 4;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            spans = document.querySelectorAll("h1 span");
+            spans.forEach((span, index) => {
+                noiseOffsets[index] = Math.random() * 100;
+            });
+        });
+
+        document.addEventListener("scroll", function () {
+            let scrollY = window.scrollY;
+            if (scrollY > scrollLimit) {
+                scrollY = scrollLimit;
+            }
+            let colorValue = map(scrollY, 0, scrollLimit, 255, 0);
+            spans.forEach((span, index) => {
+                let speed = map(noise(noiseOffsets[index]), 0, 1, 0.5, 1.5);
+                noiseOffsets[index] += 0.01;
+                span.style.transform = `translateY(${scrollY * speed}px)`;
+                span.style.color = `rgb(${colorValue}, ${colorValue}, ${colorValue})`;
+                span.style.opacity = colorValue > 0 ? 1 : 0.5;
+            });
+        });
+
+        function map(value, start1, stop1, start2, stop2) {
+            return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
+        }
+
+        window.addEventListener('scroll', function () {
+            const svg = document.getElementById('svg');
+            const scrollPosition = window.pageYOffset;
+            const rotationDegree = scrollPosition / 8;
+            svg.style.transform = `rotate(${rotationDegree}deg)`;
+        });
+
+    </script>
+</body>
+
+</html>
+
+<!-- https://education.nationalgeographic.org/resource/light-pollution/? -->

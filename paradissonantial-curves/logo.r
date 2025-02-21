@@ -5,7 +5,7 @@ a <- 1.5
 w <- 40
 x <- seq(-2, 2, length.out = 1000)
 y <- a * sin((3/5) * pi * x + phi)
-y2 <- a * sin((3/5) * pi * x + phi2) #2/5 3/5 4/5
+y2 <- a * sin((4/5) * pi * x + phi2) #2/5 3/5 4/5
 y_offset <- 4
 y_bottom <- min(y2)
 y_top <- max(y + y_offset)
