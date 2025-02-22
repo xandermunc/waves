@@ -10,8 +10,8 @@ let makeBuildings = function (p) {
     let totalWidth = 0;
 
     p.setup = function () {
-        let canvas = p.createCanvas(300, 300);
-        canvas.parent('buildings');
+        let cnv3 = p.createCanvas(300, 300);
+        cnv3.parent('buildings');
         p.noLoop();
         yOffset = p.height - 10;
 
