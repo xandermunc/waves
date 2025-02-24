@@ -12,7 +12,19 @@
         * {
             margin: 0;
             overscroll-behavior: none;
-            background-color: #1e1e1e;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 100;
+            letter-spacing: 0.7px;
+            background-color: #e1e1e1;
+            cursor: default;
+            color: #e1e1e1;
         }
 
         input[type="range"] {
@@ -21,26 +33,253 @@
             width: 200px;
             background: white;
             height: 3px;
-            border-radius: 1px;
+            border-radius: 5px;
             cursor: pointer;
-            margin-top: 12px;
+            margin-top: 10px;
         }
 
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 15px;
-            height: 15px;
+            width: 20px;
+            height: 20px;
             background: white;
             border-radius: 50%;
+        }
+
+        .checkbox-item {
+            margin-top: 20px;
+            display: flex;
+            /* justify-content: space-between; */
+            align-items: center;
+            width: 100%;
+            height: 20px;
+            text-align: end;
+            color: white;
+        }
+
+        p {
+            pointer-events: none;
+        }
+
+        .checkbox-item:hover input[type="checkbox"] {
+            scale: 0.8;
+            transform-origin: center;
+        }
+
+        input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: 0.1s ease all;
+        }
+
+        label {
+            color: white;
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+        }
+
+        #vertical {
+            background: white;
+        }
+
+        #vertical:checked {
+            background: #f90;
+        }
+
+        #horizontal {
+            background: white;
+        }
+
+        #horizontal:checked {
+            background: #09f;
+        }
+
+        #value {
+            background: white;
+        }
+
+        #value:checked {
+            background: #666; 
+            /* 888 */
+        }
+
+        #red-checkbox {
+            background: white;
+        }
+
+        #red-checkbox:checked {
+            background: #f00; 
+        }
+
+        #green-checkbox {
+            background: white;
+        }
+
+        #green-checkbox:checked {
+            background: #090; 
+        }
+
+        #blue-checkbox {
+            background: white;
+        }
+
+        #blue-checkbox:checked {
+            background: #09f; 
+        }
+
+        .menu {
+            position: absolute;
+            z-index: 10;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #1e1e1e;
+            padding: 25px;
+            border-radius: 10px;
+            /* box-shadow: 10px 10px 10px #fff; */
+        }
+
+        .redraw-frame,
+        .export-frame {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 40px;
+            margin-top: 20px;
+            background-color: transparent;
+            /* color: white; */
+            color: black;
+        }
+
+        /* .export-frame {
+            color: black;
+            background-color: #e1e1e1;
+            border-radius: 5px;
+        } */
+
+        #redraw-button,
+        #export-button {
+            all: unset;
+            /* border: 1px solid white; */
+            background-color: #e1e1e1;
+            border-radius: 5px;
+            width: 100%;
+            height: 100%;
+            transition: 0.1s ease all;
+        }
+
+        /* #export-button {
+            border: none;
+        } */
+
+        .redraw-frame:hover #redraw-button,
+        .export-frame:hover #export-button {
+            scale: 0.9;
+            border-radius: 10px;
+        }
+
+        .absolute {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .button-frame {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .space-between {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .margin-top {
+            margin-top: 20px;
         }
     </style>
 </head>
 
 <body>
-    <div id="canvas"></div>
-    <div id="slider-container">
-        <input type="range" id="detail-slider" min="0.01" max="1" step="0.01" value="0.1">
+    <div class="menu">
+        <div class="space-between">
+            <p>Noise Detail</p>
+            <p id="noise-detail-number">#</p>
+        </div>
+        <input type="range" id="detail-slider" min="0" max="1.5" step="0.01" value="0.1">
+        <div class="space-between margin-top">
+            <p>Grid Amount</p>
+            <p id="grid-amount-number">#</p>
+        </div>
+        <input type="range" id="grid-amount-slider" min="1" max="10" step="1" value="6">
+
+        <div class="checkbox-item">
+            <label><input type="checkbox" id="vertical" unchecked></label>
+            <p>Vertical Waves</p>
+        </div>
+        <div class="checkbox-item">
+            <label><input type="checkbox" id="horizontal" checked> Horizontal Waves</label>
+        </div>
+        <div class="checkbox-item">
+            <label><input type="checkbox" id="value" unchecked> Values</label>
+        </div>
+
+        <div class="space-between margin-top">
+            <p>Red Noise Detail</p>
+            <p id="red-number">#</p>
+        </div>
+        <input type="range" id="red-slider" min="0" max="1.5" step="0.01" value="0">
+        <div class="space-between margin-top">
+            <p>Green Noise Detail</p>
+            <p id="green-number">#</p>
+        </div>
+        <input type="range" id="green-slider" min="0" max="1.5" step="0.01" value="0">
+        <div class="space-between margin-top">
+            <p>Blue Noise Detail</p>
+            <p id="blue-number">#</p>
+        </div>
+        <input type="range" id="blue-slider" min="0" max="1.5" step="0.01" value="0">
+
+        <!-- BOTTOM -->
+        <div class="checkbox-item">
+            <label><input type="checkbox" id="red-checkbox" checked> Red Waves</label>
+        </div>
+        <div class="checkbox-item">
+            <label><input type="checkbox" id="green-checkbox" checked> Blue Waves</label>
+        </div>
+        <div class="checkbox-item">
+            <label><input type="checkbox" id="blue-checkbox" checked> Green Waves</label>
+        </div>
+
+        <div class="button-frame">
+            <div class="export-frame">
+                <p class="absolute">Export</p>
+                <button id="export-button"></button>
+            </div>
+            <div class="redraw-frame">
+                <p class="absolute">Redraw</p>
+                <button id="redraw-button"></button>
+            </div>
+        </div>
+
     </div>
+    <div id="canvas"></div>
 </body>
 
 </html>
