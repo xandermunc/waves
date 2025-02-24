@@ -1,10 +1,46 @@
-<title>index</title>
-<style>
-    * {
-        margin: 0;
-        overscroll-behavior: none;
-    }
-</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-<script src="https://unpkg.com/p5.js-svg@1.5.1"></script>
-<script src="main.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://unpkg.com/p5.js-svg@1.5.1"></script>
+    <script src="3.js"></script>
+    <style>
+        * {
+            margin: 0;
+            overscroll-behavior: none;
+            background-color: #1e1e1e;
+        }
+
+        input[type="range"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 200px;
+            background: white;
+            height: 3px;
+            border-radius: 1px;
+            cursor: pointer;
+            margin-top: 12px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvas"></div>
+    <div id="slider-container">
+        <input type="range" id="detail-slider" min="0.01" max="1" step="0.01" value="0.1">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red and Blue Dot Detection</title>
+</head>
+<body>
+  <video id="video" width="640" height="480" autoplay></video>
+  <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+  <button id="capture">Capture Frame</button>
+  <p id="output"></p>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const output = document.getElementById('output');
+    const captureButton = document.getElementById('capture');
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch(err => console.error("Error accessing webcam: ", err));
+
+    function findColor(imageData, targetColor, tolerance = 50) {
+      const { data, width } = imageData;
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i], g = data[i + 1], b = data[i + 2];
+        if (Math.abs(r - targetColor.r) <= tolerance &&
+            Math.abs(g - targetColor.g) <= tolerance &&
+            Math.abs(b - targetColor.b) <= tolerance) {
+          const index = i / 4;
+          return { x: index % width, y: Math.floor(index / width) };
+        }
+      }
+      return null; 
+    }
+
+    captureButton.addEventListener('click', () => {
+      const context = canvas.getContext('2d');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
+      const redDot = findColor(imageData, { r: 255, g: 0, b: 0 });
+      const blueDot = findColor(imageData, { r: 0, g: 0, b: 255 });
+
+      if (redDot && blueDot) {
+        const relativeX = blueDot.x - redDot.x;
+        const relativeY = blueDot.y - redDot.y;
+
+        output.textContent = `: (${relativeX}, ${relativeY})`;
+      } else {
+        output.textContent = "Err";
+      }
+    });
+  </script>
+</body>
+</html>
