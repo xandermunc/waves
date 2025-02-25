@@ -3,12 +3,12 @@ let scl = 50;
 var rectSizeConst = 75
 var rectSize = rectSizeConst;
 var gridSize = 6;
-var gridAmount = 1;
+var step = 1;
 var offset = 1;
 let cols, rows;
 let detailSlider;
 let gridSizeSlider;
-let gridAmountSlider;
+let stepSlider;
 let offsetSlider;
 let canvas;
 let calculatedCenter;
@@ -30,7 +30,7 @@ function updateBackgroundAlpha(gridSize) {
     let menuHex = document.querySelector('.menu-hex');
     let menuText = document.querySelector('.menu-text');
     if (gridSize >= 12 && gridSize <= 20) {
-        let alpha = 1 - (gridSize - 12) * 0.1; 
+        let alpha = 1 - (gridSize - 12) * 0.1;
         menuControls.style.backgroundColor = `rgba(30, 30, 30, ${alpha})`;
         menuHex.style.backgroundColor = `rgba(30, 30, 30, ${alpha})`;
         menuText.style.backgroundColor = `rgba(30, 30, 30, ${alpha})`;
@@ -45,14 +45,14 @@ function setup() {
     noiseDetailNumber = document.getElementById('noise-detail-number');
     gridSizeSlider = document.getElementById('grid-size-slider');
     gridSizeNumber = document.getElementById('grid-size-number');
-    gridAmountSlider = document.getElementById('grid-amount-slider');
-    gridAmountNumber = document.getElementById('grid-amount-number');
+    stepSlider = document.getElementById('step-slider');
+    stepNumber = document.getElementById('step-number');
     offsetSlider = document.getElementById('offset-slider');
     offsetNumber = document.getElementById('offset-number');
 
     noiseDetailNumber.textContent = parseFloat(detailSlider.value).toFixed(2);
     gridSizeNumber.textContent = gridSizeSlider.value;
-    gridAmountNumber.textContent = gridAmountSlider.value;
+    stepNumber.textContent = stepSlider.value;
     offsetNumber.textContent = offsetSlider.value;
 
     detailSlider.addEventListener('input', function () {
@@ -66,11 +66,11 @@ function setup() {
         updateCanvasSize();
     });
 
-    gridAmountSlider.addEventListener('input', function () {
-        gridAmount = parseInt(gridAmountSlider.value);
-        gridAmountNumber.textContent = gridAmount;
+    stepSlider.addEventListener('input', function () {
+        step = parseInt(stepSlider.value);
+        stepNumber.textContent = step;
         updateCanvasSize();
-        rectSize = rectSizeConst / gridAmount;
+        rectSize = rectSizeConst / step;
     });
 
     offsetSlider.addEventListener('input', function () {
@@ -128,8 +128,8 @@ function draw() {
     background(255);
     inc = parseFloat(detailSlider.value);
 
-    for (let g = 0; g < gridAmount; g++) {
-        for (let h = 0; h < gridAmount; h++) {
+    for (let g = 0; g < step; g++) {
+        for (let h = 0; h < step; h++) {
             let yoff = h * offset;
             for (let y = 0; y < gridSize; y++) {
                 let xoff = g * offset;
@@ -156,8 +156,8 @@ function draw() {
     if (document.getElementById('horizontal').checked) {
         stroke(0);
         noFill();
-        for (let g = 0; g < gridAmount; g++) {
-            for (let h = 0; h < gridAmount; h++) {
+        for (let g = 0; g < step; g++) {
+            for (let h = 0; h < step; h++) {
                 let yoff = h * offset;
                 for (let y = 0; y < gridSize; y++) {
                     let xoff = g * offset;
@@ -250,8 +250,8 @@ function draw() {
     if (document.getElementById('vertical').checked) {
         stroke(0);
         noFill();
-        for (let g = 0; g < gridAmount; g++) {
-            for (let h = 0; h < gridAmount; h++) {
+        for (let g = 0; g < step; g++) {
+            for (let h = 0; h < step; h++) {
                 let xoff = g * offset;
                 for (let x = 0; x < gridSize; x++) { // vertical
                     let yoff = h * offset;
