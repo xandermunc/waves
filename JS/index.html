@@ -23,6 +23,7 @@
             font-weight: 100;
             letter-spacing: 0.7px;
             background-color: #e1e1e1;
+            /* background-color: #1e1e1e; */
             cursor: default;
             color: #e1e1e1;
         }
@@ -143,7 +144,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #1e1e1e;
+            background-color: rgba(30, 30, 30, 1);
+            backdrop-filter: blur(10px);
             padding: 25px;
             border-radius: 10px;
             width: 200px;
@@ -154,15 +156,69 @@
             z-index: 10;
             top: 50%;
             right: 10%;
-            /* transform: translateY(-50%); */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #1e1e1e;
+            background-color: rgba(30, 30, 30, 1);
+            backdrop-filter: blur(10px);
             padding: 25px;
             border-radius: 10px;
             width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .menu-text {
+            position: absolute;
+            z-index: 0;
+            top: 50%;
+            right: -370px;
+            transform: translateY(-50%);
+            background-color: rgba(30, 30, 30, 1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            padding-right: 70px;
+            border-radius: 10px 0 0 10px; 
+            width: 300px;
+            /* color: #1e1e1e; */
+            transition: 0.5s ease all;
+        }
+
+        .menu-text:hover {
+            position: absolute;
+            z-index: 0;
+            top: 50%;
+            right: 0px;
+            transform: translateY(-50%);
+            background-color: #1e1e1e;
+            padding: 25px;
+            padding-right: 70px;
+            border-radius: 10px 0 0 10px; 
+            width: 300px;
+            /* color: #1e1e1e; */
+        }
+
+        .menu-text:hover .menu-tag{
+            right: 200px;
+        }
+
+        .menu-tag {
+            position: absolute;
+            z-index: 1;
+            top: 40%;
+            right: 0;
+            transform: translateY(-26%);
+            background-color: red;
+            width: 50px;
+            height: 80px;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+        }
+
+        h1 {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 10px;
         }
 
         .redraw-frame,
@@ -224,11 +280,10 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: red;
+            background-color: #e1e1e1;
         }
 
         .hex-frame {
-            /* width: 80px; */
             display: flex;
             justify-content: end;
         }
@@ -240,9 +295,16 @@
         <div class="space-between">
             <div id="hex-dot"></div>
             <div class="hex-frame">
-                <p id="hex">test</p>
+                <p id="hex">#000000</p>
             </div>
         </div>
+    </div>
+
+    <div class="menu-text">
+        <h1>Perlin Noise</h1>
+        <p>Perlin noise is a gradient noise function used in computer graphics to generate smooth, continuous textures
+            and patterns. A noise function is a wave altered by various parameters. These waves carry information that
+            can be translated into data, such as color or scale. It can be thought of as "smooth randomness".</p>
     </div>
 
     <div class="menu-controls">
@@ -251,11 +313,24 @@
             <p id="noise-detail-number">#</p>
         </div>
         <input type="range" id="detail-slider" min="0" max="1.5" step="0.01" value="0.1">
+
+        <div class="space-between margin-top">
+            <p>Grid Size</p>
+            <p id="grid-size-number">#</p>
+        </div>
+        <input type="range" id="grid-size-slider" min="1" max="20" step="1" value="6">
+
         <div class="space-between margin-top">
             <p>Grid Amount</p>
             <p id="grid-amount-number">#</p>
         </div>
-        <input type="range" id="grid-amount-slider" min="1" max="10" step="1" value="6">
+        <input type="range" id="grid-amount-slider" min="1" max="10" step="1" value="1">
+
+        <div class="space-between margin-top">
+            <p>Offset</p>
+            <p id="offset-number">#</p>
+        </div>
+        <input type="range" id="offset-slider" min="0" max="10" step="0.1" value="1">
 
         <div class="checkbox-item">
             <label><input type="checkbox" id="vertical" unchecked></label>
