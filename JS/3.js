@@ -84,6 +84,7 @@ function setup() {
 function updateCanvasSize() {
     canvas = createCanvas((rectSize * gridAmount), (rectSize * gridAmount));
     canvas.parent('canvas');
+    canvas.mouseMoved(() => getHexColor(mouseX, mouseY));
     cols = floor(width / scl);
     rows = floor(height / scl);
     calculatedCenter = `calc(50vh - ${(rectSize * gridAmount) / 2}px)`;
@@ -387,3 +388,27 @@ function draw() {
     //     }
     // }
 }
+
+function getHexColor(x, y) {
+    let col = get(x, y); 
+    let red = col[0];
+    let green = col[1];
+    let blue = col[2];
+
+    let hexColor = `#${red.toString(16).padStart(2, '0')}${green.toString(16).padStart(2, '0')}${blue.toString(16).padStart(2, '0')}`;
+    
+    document.getElementById('hex').textContent = hexColor; 
+    document.getElementById('hex-dot').style.backgroundColor = hexColor; 
+}
+
+
+function setTargetDivPosition() {
+    const menuControls = document.querySelector('.menu-controls');
+    const targetDiv = document.querySelector('.menu-hex');
+    const menuTop = menuControls.getBoundingClientRect().top + window.scrollY;
+    targetDiv.style.position = 'absolute'; 
+    targetDiv.style.top = `${menuTop}px`; 
+}
+
+window.addEventListener('load', setTargetDivPosition);
+window.addEventListener('resize', setTargetDivPosition); 

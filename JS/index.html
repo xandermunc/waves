@@ -105,7 +105,7 @@
         }
 
         #value:checked {
-            background: #666; 
+            background: #666;
             /* 888 */
         }
 
@@ -114,7 +114,7 @@
         }
 
         #red-checkbox:checked {
-            background: #f00; 
+            background: #f00;
         }
 
         #green-checkbox {
@@ -122,7 +122,7 @@
         }
 
         #green-checkbox:checked {
-            background: #090; 
+            background: #090;
         }
 
         #blue-checkbox {
@@ -130,10 +130,10 @@
         }
 
         #blue-checkbox:checked {
-            background: #09f; 
+            background: #09f;
         }
 
-        .menu {
+        .menu-controls {
             position: absolute;
             z-index: 10;
             top: 50%;
@@ -146,7 +146,23 @@
             background-color: #1e1e1e;
             padding: 25px;
             border-radius: 10px;
-            /* box-shadow: 10px 10px 10px #fff; */
+            width: 200px;
+        }
+
+        .menu-hex {
+            position: absolute;
+            z-index: 10;
+            top: 50%;
+            right: 10%;
+            /* transform: translateY(-50%); */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #1e1e1e;
+            padding: 25px;
+            border-radius: 10px;
+            width: 200px;
         }
 
         .redraw-frame,
@@ -162,12 +178,6 @@
             color: black;
         }
 
-        /* .export-frame {
-            color: black;
-            background-color: #e1e1e1;
-            border-radius: 5px;
-        } */
-
         #redraw-button,
         #export-button {
             all: unset;
@@ -178,10 +188,6 @@
             height: 100%;
             transition: 0.1s ease all;
         }
-
-        /* #export-button {
-            border: none;
-        } */
 
         .redraw-frame:hover #redraw-button,
         .export-frame:hover #export-button {
@@ -213,11 +219,33 @@
         .margin-top {
             margin-top: 20px;
         }
+
+        #hex-dot {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: red;
+        }
+
+        .hex-frame {
+            /* width: 80px; */
+            display: flex;
+            justify-content: end;
+        }
     </style>
 </head>
 
 <body>
-    <div class="menu">
+    <div class="menu-hex">
+        <div class="space-between">
+            <div id="hex-dot"></div>
+            <div class="hex-frame">
+                <p id="hex">test</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-controls">
         <div class="space-between">
             <p>Noise Detail</p>
             <p id="noise-detail-number">#</p>
@@ -261,10 +289,10 @@
             <label><input type="checkbox" id="red-checkbox" checked> Red Waves</label>
         </div>
         <div class="checkbox-item">
-            <label><input type="checkbox" id="green-checkbox" checked> Blue Waves</label>
+            <label><input type="checkbox" id="green-checkbox" checked> Green Waves</label>
         </div>
         <div class="checkbox-item">
-            <label><input type="checkbox" id="blue-checkbox" checked> Green Waves</label>
+            <label><input type="checkbox" id="blue-checkbox" checked> Blue Waves</label>
         </div>
 
         <div class="button-frame">
@@ -277,8 +305,8 @@
                 <button id="redraw-button"></button>
             </div>
         </div>
-
     </div>
+
     <div id="canvas"></div>
 </body>
 
