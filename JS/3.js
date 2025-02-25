@@ -54,24 +54,30 @@ function setup() {
     redNumber = document.getElementById('red-number');
     redNumber.textContent = parseFloat(redSlider.value).toFixed(2);
     redSlider.addEventListener('input', function () {
-        redSliderValue = parseFloat(redSlider.value);
-        redNumber.textContent = redSliderValue.toFixed(2);
+        if (document.getElementById('red-checkbox').checked) {
+            redSliderValue = parseFloat(redSlider.value);
+            redNumber.textContent = redSliderValue.toFixed(2);
+        }
     });
 
     greenSlider = document.getElementById('green-slider');
     greenNumber = document.getElementById('green-number');
     greenNumber.textContent = parseFloat(greenSlider.value).toFixed(2);
     greenSlider.addEventListener('input', function () {
-        greenSliderValue = parseFloat(greenSlider.value);
-        greenNumber.textContent = greenSliderValue.toFixed(2);
+        if (document.getElementById('green-checkbox').checked) {
+            greenSliderValue = parseFloat(greenSlider.value);
+            greenNumber.textContent = greenSliderValue.toFixed(2);
+        }
     });
 
     blueSlider = document.getElementById('blue-slider');
     blueNumber = document.getElementById('blue-number');
-    blueNumber.textContent = parseFloat(greenSlider.value).toFixed(2);
+    blueNumber.textContent = parseFloat(blueSlider.value).toFixed(2);
     blueSlider.addEventListener('input', function () {
-        blueSliderValue = parseFloat(blueSlider.value);
-        blueNumber.textContent = blueSliderValue.toFixed(2);
+        if (document.getElementById('blue-checkbox').checked) {
+            blueSliderValue = parseFloat(blueSlider.value);
+            blueNumber.textContent = blueSliderValue.toFixed(2);
+        }
     });
 }
 
@@ -89,7 +95,7 @@ function draw() {
     background(255);
     inc = parseFloat(detailSlider.value);
 
-    let yoff = 0;
+    let yoff = 0; // grid 
     for (let y = 0; y < gridAmount; y++) {
         let xoff = 0;
         for (let x = 0; x < gridAmount; x++) {
@@ -132,7 +138,9 @@ function draw() {
                 let circleYBlue = y * (rectSize) + (rectSize) - (blueNoiseValue / 255) * (rectSize);
 
                 if (document.getElementById('red-checkbox').checked) {
-                    beginShape(); // red noise wave
+                    redSliderValue = parseFloat(redSlider.value);
+                    redNumber.textContent = parseFloat(redSlider.value).toFixed(2);
+                    beginShape();
                     for (let i = 0; i <= rectSize; i++) {
                         redNoiseValue = noise(xoffRed + redSliderValue, yoff + redSliderValue) * 255;
                         noFill();
@@ -142,10 +150,15 @@ function draw() {
                     endShape();
                     fill('#f30');
                     ellipse(circleX, circleYRed, (rectSize) / 10, (rectSize) / 10);
+                } else {
+                    redSliderValue = 0;
+                    redNumber.textContent = parseFloat(0).toFixed(2);
                 }
 
                 if (document.getElementById('green-checkbox').checked) {
-                    beginShape(); // green noise wave
+                    greenSliderValue = parseFloat(greenSlider.value);
+                    greenNumber.textContent = parseFloat(greenSlider.value).toFixed(2);
+                    beginShape();
                     for (let i = 0; i <= rectSize; i++) {
                         greenNoiseValue = noise(xoffGreen + greenSliderValue, yoff + greenSliderValue) * 255;
                         noFill();
@@ -155,10 +168,15 @@ function draw() {
                     endShape();
                     fill('#090');
                     ellipse(circleX, circleYGreen, (rectSize) / 10, (rectSize) / 10);
+                } else {
+                    greenSliderValue = 0;
+                    greenNumber.textContent = parseFloat(0).toFixed(2);
                 }
 
                 if (document.getElementById('blue-checkbox').checked) {
-                    beginShape(); // blue noise wave
+                    blueSliderValue = parseFloat(blueSlider.value);
+                    blueNumber.textContent = parseFloat(blueSlider.value).toFixed(2);
+                    beginShape();
                     for (let i = 0; i <= rectSize; i++) {
                         blueNoiseValue = noise(xoffBlue + blueSliderValue, yoff + blueSliderValue) * 255;
                         noFill();
@@ -168,6 +186,9 @@ function draw() {
                     endShape();
                     fill('#09f');
                     ellipse(circleX, circleYBlue, (rectSize) / 10, (rectSize) / 10);
+                } else {
+                    blueSliderValue = 0;
+                    blueNumber.textContent = parseFloat(0).toFixed(2);
                 }
 
                 beginShape(); // intensity noise wave
@@ -185,18 +206,173 @@ function draw() {
         }
     }
 
-    // if (document.getElementById('horizontal').checked) {
+    if (document.getElementById('vertical').checked) {
+        stroke(0);
+        noFill();
+        xoff = 0;
+        for (let x = 0; x < gridAmount; x++) { // vertical
+            let yoff = 0;
+            let yoffRed = yoff;
+            let yoffGreen = yoff;
+            let yoffBlue = yoff;
+            for (let y = 0; y < gridAmount; y++) {
+                let noiseValue = noise(xoff, yoff) * 255;
+                // let midNoiseValue = noise(xoff, yoff + (inc / 2)) * 255;
+                let redNoiseValue = noise(xoff + redSliderValue, yoff + redSliderValue) * 255;
+                let greenNoiseValue = noise(xoff + greenSliderValue, yoff + greenSliderValue) * 255;
+                let blueNoiseValue = noise(xoff + blueSliderValue, yoff + blueSliderValue) * 255;
+                let circleX = x * (rectSize) + (rectSize) - (noiseValue / 255) * (rectSize);
+                let circleY = y * (rectSize);
+                let circleXRed = x * (rectSize) + (rectSize) - (redNoiseValue / 255) * (rectSize);
+                let circleXGreen = x * (rectSize) + (rectSize) - (greenNoiseValue / 255) * (rectSize);
+                let circleXBlue = x * (rectSize) + (rectSize) - (blueNoiseValue / 255) * (rectSize);
+
+                if (document.getElementById('red-checkbox').checked) {
+                    redSliderValue = parseFloat(redSlider.value);
+                    redNumber.textContent = parseFloat(redSlider.value).toFixed(2);
+                    beginShape();
+                    for (let i = 0; i <= rectSize; i++) {
+                        redNoiseValue = noise(xoff + redSliderValue, yoffRed + redSliderValue) * 255;
+                        noFill();
+                        vertex(x * rectSize + (rectSize - (redNoiseValue / 255) * rectSize), y * rectSize + i);
+                        yoffRed += inc / rectSize;
+                    }
+                    endShape();
+                    fill('#f30');
+                    ellipse(circleXRed, circleY, (rectSize) / 10, (rectSize) / 10);
+                } else {
+                    redSliderValue = 0;
+                    redNumber.textContent = parseFloat(0).toFixed(2);
+                }
+
+                if (document.getElementById('green-checkbox').checked) {
+                    greenSliderValue = parseFloat(greenSlider.value);
+                    greenNumber.textContent = parseFloat(greenSlider.value).toFixed(2);
+                    beginShape();
+                    for (let i = 0; i <= rectSize; i++) {
+                        greenNoiseValue = noise(xoff + greenSliderValue, yoffGreen + greenSliderValue) * 255;
+                        noFill();
+                        vertex(x * rectSize + (rectSize - (greenNoiseValue / 255) * rectSize), y * rectSize + i);
+                        yoffGreen += inc / rectSize;
+                    }
+                    endShape();
+                    fill('#090');
+                    ellipse(circleXGreen, circleY, (rectSize) / 10, (rectSize) / 10);
+                } else {
+                    greenSliderValue = 0;
+                    greenNumber.textContent = parseFloat(0).toFixed(2);
+                }
+
+                if (document.getElementById('blue-checkbox').checked) {
+                    blueSliderValue = parseFloat(blueSlider.value);
+                    blueNumber.textContent = parseFloat(blueSlider.value).toFixed(2);
+                    beginShape();
+                    for (let i = 0; i <= rectSize; i++) {
+                        blueNoiseValue = noise(xoff + blueSliderValue, yoffBlue + blueSliderValue) * 255;
+                        noFill();
+                        vertex(x * rectSize + (rectSize - (blueNoiseValue / 255) * rectSize), y * rectSize + i);
+                        yoffBlue += inc / rectSize;
+                    }
+                    endShape();
+                    fill('#09f');
+                    ellipse(circleXBlue, circleY, (rectSize) / 10, (rectSize) / 10);
+                } else {
+                    blueSliderValue = 0;
+                    blueNumber.textContent = parseFloat(0).toFixed(2);
+                }
+
+                beginShape();
+                for (let i = 0; i <= rectSize; i++) {
+                    noiseValue = noise(xoff, yoff) * 255;
+                    noFill();
+                    vertex(x * rectSize + (rectSize - (noiseValue / 255) * rectSize), y * rectSize + i);
+                    yoff += inc / (rectSize);
+                }
+                endShape();
+
+                fill('#e1e1e1');
+                ellipse(circleX, circleY, (rectSize) / 10, (rectSize) / 10);
+            }
+            xoff += inc;
+        }
+    }
+
+    // if (document.getElementById('vertical').checked) {
     //     stroke(0);
     //     noFill();
     //     yoff = 0;
-    //     for (let y = 0; y < gridAmount; y++) {
+    //     for (let x = 0; x < gridAmount; y++) { // horizontal
     //         let xoff = 0;
-    //         for (let x = 0; x < gridAmount; x++) {
+    //         let xoffRed = xoff;
+    //         let xoffGreen = xoff;
+    //         let xoffBlue = xoff;
+    //         for (let y = 0; y < gridAmount; x++) {
     //             let noiseValue = noise(xoff, yoff) * 255;
     //             // let midNoiseValue = noise(xoff + (inc / 2), yoff) * 255;
-    //             let circleX = x * (rectSize);
-    //             let circleY = y * (rectSize) + (rectSize) - (noiseValue / 255) * (rectSize);
-    //             beginShape();
+    //             let redNoiseValue = noise(xoff + redSliderValue, yoff + redSliderValue) * 255;
+    //             let greenNoiseValue = noise(xoff + greenSliderValue, yoff + greenSliderValue) * 255;
+    //             let blueNoiseValue = noise(xoff + blueSliderValue, yoff + blueSliderValue) * 255;
+    //             let circleX = x * (rectSize) + (rectSize) - (noiseValue / 255) * (rectSize);
+    //             let circleY = y * (rectSize);
+    //             let circleXRed = y * (rectSize) + (rectSize) - (redNoiseValue / 255) * (rectSize);
+    //             let circleXGreen = y * (rectSize) + (rectSize) - (greenNoiseValue / 255) * (rectSize);
+    //             let circleXBlue = y * (rectSize) + (rectSize) - (blueNoiseValue / 255) * (rectSize);
+
+    //             if (document.getElementById('red-checkbox').checked) {
+    //                 redSliderValue = parseFloat(redSlider.value);
+    //                 redNumber.textContent = parseFloat(redSlider.value).toFixed(2);
+    //                 beginShape();
+    //                 for (let i = 0; i <= rectSize; i++) {
+    //                     redNoiseValue = noise(xoffRed + redSliderValue, yoff + redSliderValue) * 255;
+    //                     noFill();
+    //                     vertex(x * rectSize + i, y * rectSize + (rectSize - (redNoiseValue / 255) * rectSize));
+    //                     xoffRed += inc / rectSize;
+    //                 }
+    //                 endShape();
+    //                 fill('#f30');
+    //                 ellipse(circleXRed, circleY, (rectSize) / 10, (rectSize) / 10);
+    //             } else {
+    //                 redSliderValue = 0;
+    //                 redNumber.textContent = parseFloat(0).toFixed(2);
+    //             }
+
+    //             if (document.getElementById('green-checkbox').checked) {
+    //                 greenSliderValue = parseFloat(greenSlider.value);
+    //                 greenNumber.textContent = parseFloat(greenSlider.value).toFixed(2);
+    //                 beginShape(); 
+    //                 for (let i = 0; i <= rectSize; i++) {
+    //                     greenNoiseValue = noise(xoffGreen + greenSliderValue, yoff + greenSliderValue) * 255;
+    //                     noFill();
+    //                     vertex(x * rectSize + i, y * rectSize + (rectSize - (greenNoiseValue / 255) * rectSize));
+    //                     xoffGreen += inc / rectSize;
+    //                 }
+    //                 endShape();
+    //                 fill('#090');
+    //                 ellipse(circleXGreen, circleY, (rectSize) / 10, (rectSize) / 10);
+    //             } else {
+    //                 greenSliderValue = 0;
+    //                 greenNumber.textContent = parseFloat(0).toFixed(2);
+    //             }
+
+    //             if (document.getElementById('blue-checkbox').checked) {
+    //                 blueSliderValue = parseFloat(blueSlider.value);
+    //                 blueNumber.textContent = parseFloat(blueSlider.value).toFixed(2);
+    //                 beginShape(); 
+    //                 for (let i = 0; i <= rectSize; i++) {
+    //                     blueNoiseValue = noise(xoffBlue + blueSliderValue, yoff + blueSliderValue) * 255;
+    //                     noFill();
+    //                     vertex(x * rectSize + i, y * rectSize + (rectSize - (blueNoiseValue / 255) * rectSize));
+    //                     xoffBlue += inc / rectSize;
+    //                 }
+    //                 endShape();
+    //                 fill('#09f');
+    //                 ellipse(circleXBlue, circleY, (rectSize) / 10, (rectSize) / 10);
+    //             } else {
+    //                 blueSliderValue = 0;
+    //                 blueNumber.textContent = parseFloat(0).toFixed(2);
+    //             }
+
+    //             beginShape(); // intensity noise wave
     //             for (let i = 0; i <= rectSize; i++) {
     //                 noiseValue = noise(xoff, yoff) * 255;
     //                 noFill();
@@ -210,32 +386,4 @@ function draw() {
     //         yoff += inc;
     //     }
     // }
-
-    if (document.getElementById('vertical').checked) {
-        stroke(0);
-        noFill();
-        xoff = 0;
-        for (let x = 0; x < gridAmount; x++) { // vertical
-            let yoff = 0;
-            for (let y = 0; y < gridAmount; y++) {
-                let noiseValue = noise(xoff, yoff) * 255;
-                let midNoiseValue = noise(xoff, yoff + (inc / 2)) * 255;
-                let circleX = x * (rectSize) + (rectSize) - (noiseValue / 255) * (rectSize);
-                let circleY = y * (rectSize);
-
-                beginShape();
-                for (let i = 0; i <= rectSize; i++) {
-                    let noiseValue = noise(xoff, yoff) * 255;
-                    noFill();
-                    vertex(x * (rectSize) + (rectSize) - (noiseValue / 255) * (rectSize), y * (rectSize) + i);
-                    yoff += inc / (rectSize);
-                }
-                endShape();
-
-                fill('#f90');
-                ellipse(circleX, circleY, (rectSize) / 10, (rectSize) / 10);
-            }
-            xoff += inc;
-        }
-    }
 }
