@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/p5.js-svg@1.5.1"></script>
+    <title>Math</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overscroll-behavior: none;
+        }
+
+        body {
+            background-color: #111;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        p {
+            color: white;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        #canvas {
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <p>
+        $$
+        \begin{align}
+        &\left( \sum_{n=1}^{N} A \sin(i_n \theta+\phi), B \cos(i_v \theta) \right) \theta \in [0, \lambda] \\[10pt]
+        &B = AN \\[10pt]
+        &i_n = \frac{a_n}{b_n} \\[10pt]
+        &L_b = \text{LCM}\{ b_n \} \\[10pt]
+        &\lambda = 2L_b\pi \\[10pt]
+        &f=\frac{\text{Hz}}{i_v} \\[10pt]
+        &\text{tone}_n = i_n f
+        \end{align}
+        $$
+    </p> -->
+    <p>
+        $$ \left( \sum_{n=1}^{N} A \sin(i_n \theta+\phi), B \cos(i_v \theta) \right) \theta \in [0, \lambda] $$
+    </p>
+    <div id="canvas"></div>
+    <script>
+        let drawHydrogen = function (p) {
+            p.setup = function () {
+                const canvas = p.createCanvas(200, 200, p.SVG);
+                canvas.parent('canvas');
+
+                let centerX = p.width / 2;
+                let centerY = p.height / 2;
+                let radius = 90;
+
+                p.noFill();
+                p.stroke(255);
+                p.strokeWeight(1.5);
+                p.ellipse(centerX, centerY, radius * 2, radius * 2);
+
+                p.fill('#09f');
+                p.noStroke();
+                p.ellipse(centerX, centerY, 50, 50);
+
+                let angle = p.PI / 4;
+                let x = centerX + p.cos(angle) * radius;
+                let y = centerY + p.sin(angle) * radius;
+
+                p.fill('#f90');
+                p.ellipse(x, y, 25, 25);
+            };
+        };
+
+        new p5(drawHydrogen);
+    </script>
+</body>
+
+</html>
