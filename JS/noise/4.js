@@ -15,6 +15,15 @@ let calculatedCenter;
 let redSliderValue = 0;
 let greenSliderValue = 0;
 let blueSliderValue = 0;
+let rectChecked = true;
+let ellipseChecked = false;
+let triangleChecked = false;
+let textChecked = false;
+let triangleRotateInput = 0;
+let triangleRotateCheckboxChanges = 0;
+let textInputString = [];
+let textNoiseValue;
+let noiseValue;
 
 function newSeed() {
     noiseSeed(millis());
@@ -37,6 +46,77 @@ function updateBackgroundAlpha(gridSize) {
     }
 }
 
+function checkTypeCheckboxes() {
+    if (triangleRotateCheckboxChanges === 0) {
+        document.getElementById('triangle-rotate-checkbox').addEventListener('change', function () {
+            triangleRotateInput = 1;
+            triangleRotateCheckboxChanges = 1;
+        });
+    } else if (triangleRotateCheckboxChanges === 1) {
+        document.getElementById('triangle-rotate-checkbox').addEventListener('change', function () {
+            triangleRotateInput = 2;
+            triangleRotateCheckboxChanges = 2;
+        });
+    } else if (triangleRotateCheckboxChanges === 2) {
+        document.getElementById('triangle-rotate-checkbox').addEventListener('change', function () {
+            triangleRotateInput = 3;
+            triangleRotateCheckboxChanges = 3;
+        });
+    } else if (triangleRotateCheckboxChanges === 3) {
+        document.getElementById('triangle-rotate-checkbox').addEventListener('change', function () {
+            triangleRotateInput = 0;
+            triangleRotateCheckboxChanges = 0;
+        });
+    }
+
+    document.getElementById('rect-checkbox').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('ellipse-checkbox').checked = false;
+            document.getElementById('triangle-checkbox').checked = false;
+            document.getElementById('text-checkbox').checked = false;
+            rectChecked = true;
+            ellipseChecked = false;
+            triangleChecked = false;
+            textChecked = false;
+        }
+    });
+
+    document.getElementById('ellipse-checkbox').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('rect-checkbox').checked = false;
+            document.getElementById('triangle-checkbox').checked = false;
+            document.getElementById('text-checkbox').checked = false;
+            ellipseChecked = true;
+            rectChecked = false;
+            triangleChecked = false;
+            textChecked = false;
+        }
+    });
+
+    document.getElementById('triangle-checkbox').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('rect-checkbox').checked = false;
+            document.getElementById('ellipse-checkbox').checked = false;
+            document.getElementById('text-checkbox').checked = false;
+            triangleChecked = true;
+            rectChecked = false;
+            ellipseChecked = false;
+            textChecked = false;
+        }
+    });
+
+    document.getElementById('text-checkbox').addEventListener('change', function () {
+        if (this.checked) {
+            document.getElementById('rect-checkbox').checked = false;
+            document.getElementById('ellipse-checkbox').checked = false;
+            document.getElementById('triangle-checkbox').checked = false;
+            textChecked = true;
+            triangleChecked = false;
+            rectChecked = false;
+            ellipseChecked = false;
+        }
+    });
+}
 
 function setup() {
     updateCanvasSize();
@@ -125,6 +205,7 @@ function updateCanvasSize() {
 
 function draw() {
     checkCheckBoxes();
+    checkTypeCheckboxes();
     background('#e1e1e1');
     inc = parseFloat(detailSlider.value);
 
@@ -134,17 +215,40 @@ function draw() {
             for (let y = 0; y < gridSize; y++) {
                 let xoff = g * offset;
                 for (let x = 0; x < gridSize; x++) {
+                    const inputField = document.querySelector('.text-input');
+                    const textInputString = inputField.value.replace(/\s+/g, '').split('');
                     let noiseValue = noise(xoff, yoff) * 255;
+                    textNoiseValue = floor(map(noiseValue, 0, 255, 0, textInputString.length));
+                    console.log(textNoiseValue);
                     let redNoiseValue = noise(xoff + redSliderValue, yoff + redSliderValue) * 255;
                     let greenNoiseValue = noise(xoff + greenSliderValue, yoff + greenSliderValue) * 255;
                     let blueNoiseValue = noise(xoff + blueSliderValue, yoff + blueSliderValue) * 255;
                     fill(redNoiseValue, greenNoiseValue, blueNoiseValue);
                     noStroke();
-                    if (document.getElementById('rect-checkbox').checked) {
+                    if (rectChecked) {
                         rect((g * gridSize + x) * rectSize, (h * gridSize + y) * rectSize, rectSize, rectSize);
-                    } else if (document.getElementById('ellipse-checkbox').checked) {
+                    } else if (ellipseChecked) {
                         ellipse((g * gridSize + x) * rectSize + rectSize / 2, (h * gridSize + y) * rectSize + rectSize / 2, rectSize, rectSize);
-                    } 
+                    } else if (triangleChecked) {
+                        push();
+                        translate((g * gridSize + x) * rectSize + rectSize / 2, (h * gridSize + y) * rectSize + rectSize / 2);
+                        rotate(triangleRotateInput * PI / 2);
+                        let x1 = -rectSize / 2;
+                        let y1 = -rectSize / 2;
+                        let x2 = rectSize / 2;
+                        let y2 = -rectSize / 2;
+                        let x3 = -rectSize / 2;
+                        let y3 = rectSize / 2;
+                        triangle(x1, y1, x2, y2, x3, y3);
+                        pop();
+                    } else if (textChecked) {
+                        push();
+                        fill(0);
+                        textSize(rectSize);
+                        // textFont(funnelSans);
+                        text(textInputString[textNoiseValue], (g * gridSize + x) * rectSize + rectSize / 2, (h * gridSize + y) * rectSize + rectSize / 2);
+                        pop();
+                    }
                     fill(0);
                     textSize((rectSize) / 5);
                     if (document.getElementById('value').checked) {
@@ -268,7 +372,7 @@ function draw() {
                         let redNoiseValue = noise(xoff + redSliderValue, yoff + redSliderValue) * 255;
                         let greenNoiseValue = noise(xoff + greenSliderValue, yoff + greenSliderValue) * 255;
                         let blueNoiseValue = noise(xoff + blueSliderValue, yoff + blueSliderValue) * 255;
-                        let circleY = (h * gridSize + y) * rectSize; // Updated for correct positioning
+                        let circleY = (h * gridSize + y) * rectSize;
                         let circleX = (g * gridSize + x) * rectSize + (rectSize) - (noiseValue / 255) * (rectSize);
                         let circleXRed = (g * gridSize + x) * rectSize + (rectSize) - (redNoiseValue / 255) * (rectSize);
                         let circleXGreen = (g * gridSize + x) * rectSize + (rectSize) - (greenNoiseValue / 255) * (rectSize);

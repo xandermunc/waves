@@ -14,18 +14,41 @@
             overscroll-behavior: none;
         }
 
+        @font-face {
+            font-family: 'Lexend';
+            src: url('../../fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Funnel';
+            src: url('../../fonts/Funnel_Sans/static/FunnelSans-Light.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Lato';
+            src: url('../../fonts/Lato/Lato-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+            font-family: Funnel;
             font-weight: 100;
             letter-spacing: 0.7px;
             background-color: #e1e1e1;
             /* background-color: #1e1e1e; */
             cursor: default;
             color: #e1e1e1;
+            font-weight: 100;
         }
 
         input[type="range"] {
@@ -150,6 +173,30 @@
             background: #f90;
         }
 
+        #triangle-checkbox {
+            background: white;
+        }
+
+        #triangle-checkbox:checked {
+            background: #f90;
+        }
+
+        #text-checkbox {
+            background: white;
+        }
+
+        #text-checkbox:checked {
+            background: #f90;
+        }
+
+        #slot-one-checkbox {
+            background: white;
+        }
+
+        #slot-one-checkbox:checked {
+            background: #f90;
+        }
+
         .menu-controls {
             position: absolute;
             z-index: 10;
@@ -252,7 +299,9 @@
         }
 
         .redraw-frame,
-        .export-frame {
+        .export-frame,
+        .slot-one-frame,
+        .slot-two-frame {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -265,7 +314,9 @@
         }
 
         #redraw-button,
-        #export-button {
+        #export-button,
+        #slot-one-button,
+        #slot-two-button {
             all: unset;
             /* border: 1px solid white; */
             background-color: #e1e1e1;
@@ -276,7 +327,9 @@
         }
 
         .redraw-frame:hover #redraw-button,
-        .export-frame:hover #export-button {
+        .export-frame:hover #export-button,
+        .slot-one-frame:hover #slot-one-button,
+        .slot-two-frame:hover #slot-two-button {
             scale: 0.9;
             border-radius: 10px;
         }
@@ -317,6 +370,18 @@
             display: flex;
             justify-content: end;
         }
+
+        .text-input {
+            all: unset;
+            display: block;
+            margin-top: 20px;
+            width: calc(100% - 5px);
+            border-radius: none;
+            background-color: #e1e1e1;
+            color: #1e1e1e;
+            padding-left: 5px;
+            caret-color: #09f;
+        }
     </style>
 </head>
 
@@ -334,14 +399,28 @@
         <div class="checkbox-item">
             <label><input type="checkbox" id="ellipse-checkbox" unchecked> Ellipse</label>
         </div>
+        <div class="checkbox-item">
+            <label><input type="checkbox" id="triangle-checkbox" unchecked> Triangle</label>
+        </div>
+        <div class="checkbox-item">
+            <label><input type="checkbox" id="triangle-rotate-checkbox" unchecked> Triangle Rotate</label>
+        </div>
+        <div class="checkbox-item">
+            <label><input type="checkbox" id="text-checkbox" unchecked> Text</label>
+        </div>
+        <input type="text" class="text-input" value="%#*!=+:.">
+
+        <div class="checkbox-item">
+            <label><input type="checkbox" id="slot-one-checkbox" checked> One</label>
+        </div>
     </div>
 
-    <div class="text-text">
+    <!-- <div class="text-text">
         <h1>Perlin Noise</h1>
         <p>Perlin noise is a gradient noise function used in computer graphics to generate smooth, continuous textures
             and patterns. A noise function is a wave altered by various parameters. These waves carry information that
             can be translated into data, such as color or scale. It can be thought of as "smooth randomness".</p>
-    </div>
+    </div> -->
 
     <div class="menu-controls">
         <div class="space-between">
