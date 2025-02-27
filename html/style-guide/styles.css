@@ -5,7 +5,35 @@
 
 @font-face {
     font-family: 'Lato';
-    src: url('../fonts/Lato/Lato-Regular.ttf') format('ttf');
+    src: url('../../fonts/Lato/Lato-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Century';
+    src: url('../../fonts/Gothic_A1/GothicA1-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Funnel';
+    src: url('../../fonts/Funnel_Sans/FunnelSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Funnel Display';
+    src: url('../../fonts/Funnel_Display/FunnelDisplay-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lexend';
+    src: url('../../fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -14,8 +42,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-    font-family: Lato;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-family: Lato; */
+    /* font-family: Lato; */
     transition: 0.1s ease all;
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="10" fill="%239f0"/></svg>') 10 10, none;
 }
