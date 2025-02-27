@@ -64,7 +64,8 @@
             font-family: Funnel;
             font-weight: 100;
             letter-spacing: 0.7px;
-            background-color: var(--off-white);
+            /* background-color: var(--off-white); */
+            background-color: var(--black);
             cursor: default;
             color: var(--off-black);
             font-weight: 100;
@@ -140,7 +141,18 @@
         #text-checkbox,
         #slot-one-checkbox,
         #triangle-rotate-checkbox,
-        #slot-two-checkbox {
+        #slot-two-checkbox,
+        #vertical-slot-two,
+        #horizontal-slot-two,
+        #value-slot-two,
+        #red-checkbox-slot-two,
+        #green-checkbox-slot-two,
+        #blue-checkbox-slot-two,
+        #rect-checkbox-slot-two,
+        #ellipse-checkbox-slot-two,
+        #triangle-checkbox-slot-two,
+        #text-checkbox-slot-two,
+        #triangle-rotate-checkbox-slot-two {
             /* border: 1px solid var(--off-black); */
             background: var(--off-black);
         }
@@ -149,7 +161,12 @@
         #rect-checkbox:checked,
         #ellipse-checkbox:checked,
         #triangle-checkbox:checked,
-        #text-checkbox:checked {
+        #text-checkbox:checked, 
+        #vertical-slot-two:checked,
+        #rect-checkbox-slot-two:checked,
+        #ellipse-checkbox-slot-two:checked,
+        #triangle-checkbox-slot-two:checked,
+        #text-checkbox-slot-two:checked {
             background: var(--orange);
             /* border: none; */
         }
@@ -157,19 +174,24 @@
         #horizontal:checked,
         #blue-checkbox:checked,
         #slot-one-checkbox:checked,
-        #slot-two-checkbox:checked {
+        #slot-two-checkbox:checked,
+        #horizontal-slot-two:checked,
+        #blue-checkbox-slot-two:checked {
             background: var(--blue);
         }
 
-        #value:checked {
+        #value:checked,
+        #value-slot-two:checked {
             background: var(--grey);
         }
 
-        #red-checkbox:checked {
+        #red-checkbox:checked,
+        #red-checkbox-slot-two:checked {
             background: var(--red);
         }
 
-        #green-checkbox:checked {
+        #green-checkbox:checked,
+        #green-checkbox-slot-two:checked {
             background: var(--green);
         }
 
@@ -342,7 +364,9 @@
             justify-content: end;
         }
 
-        .text-input {
+        .text-input,
+        .text-input-slot-two { 
+            /* !!! */
             all: unset;
             display: block;
             margin-top: var(--margin-top);
@@ -360,7 +384,28 @@
         #grid-size-number-slot-two,
         #grid-size-slider-slot-two,
         #step-number-slot-two,
-        #step-slider-slot-two {
+        #step-slider-slot-two,
+        #offset-number-slot-two,
+        #offset-slider-slot-two,
+        #vertical-slot-two,
+        #horizontal-slot-two,
+        #value-slot-two,
+        #red-number-slot-two,
+        #green-number-slot-two,
+        #blue-number-slot-two,
+        #red-slider-slot-two,
+        #green-slider-slot-two,
+        #blue-slider-slot-two,
+        #red-checkbox-slot-two,
+        #green-checkbox-slot-two,
+        #blue-checkbox-slot-two,
+        #rect-checkbox-slot-two,
+        #ellipse-checkbox-slot-two,
+        #triangle-checkbox-slot-two,
+        #triangle-rotate-checkbox-slot-two,
+        #text-checkbox-slot-two,
+        #text-input-slot-two,
+        .text-input-slot-two  {
             display: none;
         }
 
@@ -385,21 +430,32 @@
             </div>
         </div>
         <div class="checkbox-item">
-            <label><input type="checkbox" id="rect-checkbox" checked> Rect</label>
+            <input type="checkbox" id="rect-checkbox" checked>
+            <input type="checkbox" id="rect-checkbox-slot-two" checked>
+            <p>Rect</p>
         </div>
         <div class="checkbox-item">
-            <label><input type="checkbox" id="ellipse-checkbox" unchecked> Ellipse</label>
+            <input type="checkbox" id="ellipse-checkbox" unchecked>
+            <input type="checkbox" id="ellipse-checkbox-slot-two" unchecked>
+            <p>Ellipse</p>
         </div>
         <div class="checkbox-item">
-            <label><input type="checkbox" id="triangle-checkbox" unchecked> Triangle</label>
+            <input type="checkbox" id="triangle-checkbox" unchecked>
+            <input type="checkbox" id="triangle-checkbox-slot-two" unchecked>
+            <p>Triangle</p>
         </div>
         <div class="checkbox-item">
-            <label><input type="checkbox" id="triangle-rotate-checkbox" unchecked> Triangle Rotate</label>
+            <input type="checkbox" id="triangle-rotate-checkbox" unchecked>
+            <input type="checkbox" id="triangle-rotate-checkbox-slot-two" unchecked>
+            <p>Triangle Rotate</p>
         </div>
         <div class="checkbox-item">
-            <label><input type="checkbox" id="text-checkbox" unchecked> Text</label>
+            <input type="checkbox" id="text-checkbox" unchecked>
+            <input type="checkbox" id="text-checkbox-slot-two" unchecked>
+            <p>Text</p>
         </div>
         <input type="text" class="text-input" value="%#*!=+:.">
+        <input type="text" class="text-input-slot-two" value="two">
 
         <div class="checkbox-item">
             <label><input type="checkbox" id="slot-one-checkbox" checked> One</label>
@@ -444,44 +500,66 @@
         <div class="space-between margin-top">
             <p>Offset</p>
             <p id="offset-number">#</p>
+            <p id="offset-number-slot-two" style="color: red">#</p>
         </div>
-        <input type="range" class="bottom-row-margin-bottom" id="offset-slider" min="0" max="10" step="0.1" value="1">
+        <input type="range" class="bottom-row-margin-bottom" id="offset-slider" min="0" max="10" step="0.1" value="0">
+        <input type="range" class="bottom-row-margin-bottom" id="offset-slider-slot-two" min="0" max="10" step="0.1" value="0">
 
         <div class="checkbox-item">
-            <label><input type="checkbox" id="vertical" unchecked> Vertical Waves</label>
+            <input type="checkbox" id="vertical" unchecked>
+            <input type="checkbox" id="vertical-slot-two" unchecked>
+            <p>Vertical Waves</p>
         </div>
         <div class="checkbox-item">
-            <label><input type="checkbox" id="horizontal" checked> Horizontal Waves</label>
+            <input type="checkbox" id="horizontal" checked>
+            <input type="checkbox" id="horizontal-slot-two" checked>
+            <p>Horizontal Waves</p>
         </div>
         <div class="checkbox-item">
-            <label><input type="checkbox" id="value" unchecked> Values</label>
+            <input type="checkbox" id="value" unchecked>
+            <input type="checkbox" id="value-slot-two" unchecked>
+            <p>Value</p>
         </div>
 
         <div class="space-between margin-top">
             <p>Red Noise Detail</p>
             <p id="red-number">#</p>
+            <p id="red-number-slot-two" style="color: red">#</p>
         </div>
         <input type="range" id="red-slider" min="0" max="1.5" step="0.01" value="0">
+        <input type="range" id="red-slider-slot-two" min="0" max="1.5" step="0.01" value="0">
+
         <div class="space-between margin-top">
             <p>Green Noise Detail</p>
             <p id="green-number">#</p>
+            <p id="green-number-slot-two" style="color: red">#</p>
         </div>
         <input type="range" id="green-slider" min="0" max="1.5" step="0.01" value="0">
+        <input type="range" id="green-slider-slot-two" min="0" max="1.5" step="0.01" value="0">
+
         <div class="space-between margin-top">
             <p>Blue Noise Detail</p>
             <p id="blue-number">#</p>
+            <p id="blue-number-slot-two" style="color: red">#</p>
         </div>
         <input type="range" class="bottom-row-margin-bottom" id="blue-slider" min="0" max="1.5" step="0.01" value="0">
+        <input type="range" class="bottom-row-margin-bottom" id="blue-slider-slot-two" min="0" max="1.5" step="0.01" value="0">
 
         <!-- BOTTOM -->
         <div class="checkbox-item">
-            <label><input type="checkbox" id="red-checkbox" checked> Red Waves</label>
+            <input type="checkbox" id="red-checkbox" checked>
+            <input type="checkbox" id="red-checkbox-slot-two" checked>
+            <p>Red Waves</p>
         </div>
         <div class="checkbox-item">
-            <label><input type="checkbox" id="green-checkbox" checked> Green Waves</label>
+            <input type="checkbox" id="green-checkbox" checked>
+            <input type="checkbox" id="green-checkbox-slot-two" checked>
+            <p>Green Waves</p>
         </div>
         <div class="checkbox-item">
-            <label><input type="checkbox" id="blue-checkbox" checked> Blue Waves</label>
+            <input type="checkbox" id="blue-checkbox" checked>
+            <input type="checkbox" id="blue-checkbox-slot-two" checked>
+            <p>Blue Waves</p>
         </div>
 
         <div class="button-frame">
