@@ -7,7 +7,7 @@
     <title>index</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://unpkg.com/p5.js-svg@1.5.1"></script>
-    <script src="4.js"></script>
+    <script src="5.js"></script>
     <style>
         * {
             margin: 0;
@@ -197,6 +197,14 @@
             background: #f90;
         }
 
+        #slot-two-checkbox {
+            background: white;
+        }
+
+        #slot-two-checkbox:checked {
+            background: #f90;
+        }
+
         .menu-controls {
             position: absolute;
             z-index: 10;
@@ -382,6 +390,10 @@
             padding-left: 5px;
             caret-color: #09f;
         }
+
+        #detail-slider-slot-two {
+            display: none;
+        }
     </style>
 </head>
 
@@ -413,6 +425,9 @@
         <div class="checkbox-item">
             <label><input type="checkbox" id="slot-one-checkbox" checked> One</label>
         </div>
+        <div class="checkbox-item">
+            <label><input type="checkbox" id="slot-two-checkbox" unchecked> Two</label>
+        </div>
     </div>
 
     <!-- <div class="text-text">
@@ -428,6 +443,7 @@
             <p id="noise-detail-number">#</p>
         </div>
         <input type="range" id="detail-slider" min="0" max="1.5" step="0.01" value="0.1">
+        <input type="range" id="detail-slider-slot-two" min="0" max="1.5" step="0.01" value="0.1">
 
         <div class="space-between margin-top">
             <p>Grid Size</p>
