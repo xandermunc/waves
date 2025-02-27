@@ -9,8 +9,29 @@
     <script src="https://unpkg.com/p5.js-svg@1.5.1"></script>
     <script src="5.js"></script>
     <style>
+        :root {
+            --black: #000;
+            --white: #fff;
+            --grey: #666;
+            --off-black: #1e1e1e;
+            --off-white: #e1e1e1;
+            --deep-red: #900;
+            --deep-blue: #009;
+            --red: #f00;
+            --blue: #09f;
+            --orange: #f90;
+            --green: #090;
+            --pink: #f9f;
+            --cyan: #099;
+            --purple: #90f;
+            --light-green: #9f0;
+            --light-purple: #99f;
+            --margin-top: 12px;
+        }
+
         * {
             margin: 0;
+            padding: 0;
             overscroll-behavior: none;
         }
 
@@ -40,49 +61,55 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
             font-family: Funnel;
             font-weight: 100;
             letter-spacing: 0.7px;
-            background-color: #e1e1e1;
-            /* background-color: #1e1e1e; */
+            background-color: var(--off-white);
             cursor: default;
-            color: #e1e1e1;
+            color: var(--off-black);
             font-weight: 100;
         }
 
+        /* #TEXT */
+        p {
+            pointer-events: none;
+        }
+
+        /* #SLIDERS */
         input[type="range"] {
             appearance: none;
             -webkit-appearance: none;
             width: 200px;
-            background: white;
+            background: var(--off-black);
             height: 3px;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: var(--margin-top);
         }
 
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             width: 20px;
             height: 20px;
-            background: white;
+            background: var(--off-black);
             border-radius: 50%;
         }
 
-        .checkbox-item {
-            margin-top: 20px;
+        /* #CHECKBOX */
+        label {
+            color: var(--off-black);
             display: flex;
-            /* justify-content: space-between; */
+            align-items: center;
+            background-color: transparent;
+        }
+
+        .checkbox-item {
+            margin-top: var(--margin-top);
+            display: flex;
             align-items: center;
             width: 100%;
             height: 20px;
             text-align: end;
-            color: white;
-        }
-
-        p {
-            pointer-events: none;
         }
 
         .checkbox-item:hover input[type="checkbox"] {
@@ -95,116 +122,58 @@
             -webkit-appearance: none;
             width: 20px;
             height: 20px;
-            background: white;
             border-radius: 50%;
             margin-right: 10px;
             transition: 0.1s ease all;
         }
 
-        label {
-            color: white;
-            display: flex;
-            align-items: center;
-            background-color: transparent;
+        /* CHECKBOX COLORS */
+        #vertical,
+        #horizontal,
+        #value,
+        #red-checkbox,
+        #green-checkbox,
+        #blue-checkbox,
+        #rect-checkbox,
+        #ellipse-checkbox,
+        #triangle-checkbox,
+        #text-checkbox,
+        #slot-one-checkbox,
+        #triangle-rotate-checkbox,
+        #slot-two-checkbox {
+            /* border: 1px solid var(--off-black); */
+            background: var(--off-black);
         }
 
-        #vertical {
-            background: white;
+        #vertical:checked,
+        #rect-checkbox:checked,
+        #ellipse-checkbox:checked,
+        #triangle-checkbox:checked,
+        #text-checkbox:checked {
+            background: var(--orange);
+            /* border: none; */
         }
 
-        #vertical:checked {
-            background: #f90;
-        }
-
-        #horizontal {
-            background: white;
-        }
-
-        #horizontal:checked {
-            background: #09f;
-        }
-
-        #value {
-            background: white;
+        #horizontal:checked,
+        #blue-checkbox:checked,
+        #slot-one-checkbox:checked,
+        #slot-two-checkbox:checked {
+            background: var(--blue);
         }
 
         #value:checked {
-            background: #666;
-            /* 888 */
-        }
-
-        #red-checkbox {
-            background: white;
+            background: var(--grey);
         }
 
         #red-checkbox:checked {
-            background: #f00;
-        }
-
-        #green-checkbox {
-            background: white;
+            background: var(--red);
         }
 
         #green-checkbox:checked {
-            background: #090;
+            background: var(--green);
         }
 
-        #blue-checkbox {
-            background: white;
-        }
-
-        #blue-checkbox:checked {
-            background: #09f;
-        }
-
-        #rect-checkbox {
-            background: white;
-        }
-
-        #rect-checkbox:checked {
-            background: #f90;
-        }
-
-        #ellipse-checkbox {
-            background: white;
-        }
-
-        #ellipse-checkbox:checked {
-            background: #f90;
-        }
-
-        #triangle-checkbox {
-            background: white;
-        }
-
-        #triangle-checkbox:checked {
-            background: #f90;
-        }
-
-        #text-checkbox {
-            background: white;
-        }
-
-        #text-checkbox:checked {
-            background: #f90;
-        }
-
-        #slot-one-checkbox {
-            background: white;
-        }
-
-        #slot-one-checkbox:checked {
-            background: #f90;
-        }
-
-        #slot-two-checkbox {
-            background: white;
-        }
-
-        #slot-two-checkbox:checked {
-            background: #f90;
-        }
-
+        /* #MENU */
         .menu-controls {
             position: absolute;
             z-index: 10;
@@ -215,8 +184,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: rgba(30, 30, 30, 1);
+            /* background-color: rgba(30, 30, 30, 1); */
             backdrop-filter: blur(10px);
+            /* border: 1px solid var(--off-black); */
             padding: 25px;
             border-radius: 10px;
             width: 200px;
@@ -231,12 +201,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: rgba(30, 30, 30, 1);
+            /* border: 1px solid var(--off-black); */
+            /* background-color: rgba(30, 30, 30, 1); */
             backdrop-filter: blur(10px);
             padding: 25px;
             border-radius: 10px;
             width: 200px;
-            margin-bottom: 20px;
+            /* margin-bottom: 50px; */
         }
 
         .menu-text {
@@ -245,13 +216,13 @@
             top: 50%;
             right: -370px;
             transform: translateY(-50%);
-            background-color: rgba(30, 30, 30, 1);
+            /* background-color: rgba(30, 30, 30, 1); */
             backdrop-filter: blur(10px);
+            /* border: 1px solid var(--off-black); */
             padding: 25px;
             padding-right: 70px;
             border-radius: 10px 0 0 10px;
             width: 300px;
-            /* color: #1e1e1e; */
             transition: 0.5s ease all;
         }
 
@@ -266,14 +237,12 @@
             padding-right: 70px;
             border-radius: 10px 0 0 10px;
             width: 300px;
-            /* color: #1e1e1e; */
         }
 
         .starter-text {
             position: absolute;
             z-index: 0;
             top: 50%;
-            /* right: -370px; */
             transform: translateY(-50%);
             background-color: rgba(30, 30, 30, 1);
             backdrop-filter: blur(10px);
@@ -306,6 +275,7 @@
             margin-bottom: 10px;
         }
 
+        /* #BUTTONS */
         .redraw-frame,
         .export-frame,
         .slot-one-frame,
@@ -315,10 +285,9 @@
             align-items: center;
             width: 80px;
             height: 40px;
-            margin-top: 20px;
+            margin-top: var(--margin-top);
             background-color: transparent;
-            /* color: white; */
-            color: black;
+            color: var(--off-black);
         }
 
         #redraw-button,
@@ -326,12 +295,12 @@
         #slot-one-button,
         #slot-two-button {
             all: unset;
-            /* border: 1px solid white; */
-            background-color: #e1e1e1;
+            /* background-color: var(--off-black); */
             border-radius: 5px;
             width: 100%;
             height: 100%;
             transition: 0.1s ease all;
+            border: 1px solid var(--off-black);
         }
 
         .redraw-frame:hover #redraw-button,
@@ -340,12 +309,6 @@
         .slot-two-frame:hover #slot-two-button {
             scale: 0.9;
             border-radius: 10px;
-        }
-
-        .absolute {
-            position: absolute;
-            z-index: 1;
-            pointer-events: none;
         }
 
         .button-frame {
@@ -364,14 +327,14 @@
         }
 
         .margin-top {
-            margin-top: 20px;
+            margin-top: var(--margin-top);
         }
 
         #hex-dot {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background-color: #e1e1e1;
+            background-color: var(--off-black);
         }
 
         .hex-frame {
@@ -382,17 +345,33 @@
         .text-input {
             all: unset;
             display: block;
-            margin-top: 20px;
+            margin-top: var(--margin-top);
             width: calc(100% - 5px);
-            border-radius: none;
-            background-color: #e1e1e1;
-            color: #1e1e1e;
+            border-radius: 2px;
+            border: 1px solid var(--off-black);
+            /* background-color: #e1e1e1; */
+            color: var(--off-black);
             padding-left: 5px;
-            caret-color: #09f;
+            caret-color: var(--off-black);
         }
 
-        #detail-slider-slot-two {
+        #detail-slider-slot-two,
+        #noise-detail-number-slot-two,
+        #grid-size-number-slot-two,
+        #grid-size-slider-slot-two,
+        #step-number-slot-two,
+        #step-slider-slot-two {
             display: none;
+        }
+
+        .absolute {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .bottom-row-margin-bottom {
+            margin-bottom: 8px;
         }
     </style>
 </head>
@@ -441,6 +420,7 @@
         <div class="space-between">
             <p>Noise Detail</p>
             <p id="noise-detail-number">#</p>
+            <p id="noise-detail-number-slot-two" style="color: red">#</p>
         </div>
         <input type="range" id="detail-slider" min="0" max="1.5" step="0.01" value="0.1">
         <input type="range" id="detail-slider-slot-two" min="0" max="1.5" step="0.01" value="0.1">
@@ -448,24 +428,27 @@
         <div class="space-between margin-top">
             <p>Grid Size</p>
             <p id="grid-size-number">#</p>
+            <p id="grid-size-number-slot-two" style="color: red">#</p>
         </div>
         <input type="range" id="grid-size-slider" min="1" max="20" step="1" value="6">
+        <input type="range" id="grid-size-slider-slot-two" min="1" max="20" step="1" value="6">
 
         <div class="space-between margin-top">
             <p>Step</p>
             <p id="step-number">#</p>
+            <p id="step-number-slot-two" style="color: red">#</p>
         </div>
-        <input type="range" id="step-slider" min="1" max="10" step="1" value="1">
+        <input type="range" id="step-slider" min="1" max="4" step="1" value="1">
+        <input type="range" id="step-slider-slot-two" min="1" max="4" step="1" value="1">
 
         <div class="space-between margin-top">
             <p>Offset</p>
             <p id="offset-number">#</p>
         </div>
-        <input type="range" id="offset-slider" min="0" max="10" step="0.1" value="1">
+        <input type="range" class="bottom-row-margin-bottom" id="offset-slider" min="0" max="10" step="0.1" value="1">
 
         <div class="checkbox-item">
-            <label><input type="checkbox" id="vertical" unchecked></label>
-            <p>Vertical Waves</p>
+            <label><input type="checkbox" id="vertical" unchecked> Vertical Waves</label>
         </div>
         <div class="checkbox-item">
             <label><input type="checkbox" id="horizontal" checked> Horizontal Waves</label>
@@ -488,7 +471,7 @@
             <p>Blue Noise Detail</p>
             <p id="blue-number">#</p>
         </div>
-        <input type="range" id="blue-slider" min="0" max="1.5" step="0.01" value="0">
+        <input type="range" class="bottom-row-margin-bottom" id="blue-slider" min="0" max="1.5" step="0.01" value="0">
 
         <!-- BOTTOM -->
         <div class="checkbox-item">
