@@ -52,15 +52,50 @@ function exportPNG() {
     save('export.png');
 }
 
-function updateBackgroundAlpha(gridSize) {
-    let menuControls = document.querySelector('.menu-controls');
-    let menuHex = document.querySelector('.menu-hex');
-    let menuText = document.querySelector('.menu-text');
-    if (gridSize >= 12 && gridSize <= 20) {
-        let alpha = 1 - (gridSize - 12) * 0.1;
-        menuControls.style.backgroundColor = `rgba(30, 30, 30, ${alpha})`;
-        menuHex.style.backgroundColor = `rgba(30, 30, 30, ${alpha})`;
-        menuText.style.backgroundColor = `rgba(30, 30, 30, ${alpha})`;
+function updateBackgroundAlpha() {
+    const menuControls = document.querySelector('.menu-controls');
+    const menuHex = document.querySelector('.menu-hex');
+    const rangeInputs = document.querySelectorAll('input[type="range"]');
+    if (slotOneToggle) {
+        if (gridSize >= 12 && gridSize <= 20) {
+            let alpha = (gridSize - 12) * 0.15;
+            let hue = Math.floor(alpha * 255);
+            menuControls.style.color = `rgb(${hue}, ${hue}, ${hue})`;
+            menuHex.style.color = `rgb(${hue}, ${hue}, ${hue})`;
+            rangeInputs.forEach(input => {
+                input.style.background = `rgb(${hue}, ${hue}, ${hue})`;
+                input.style.setProperty('--thumb-color', `rgb(${hue}, ${hue}, ${hue})`);
+                document.documentElement.style.setProperty('--thumb-color', `rgb(${hue}, ${hue}, ${hue})`);
+            });
+        } else if (gridSize < 12) {
+            menuControls.style.color = '#1e1e1e';
+            menuHex.style.color = '#1e1e1e';
+            rangeInputs.forEach(input => {
+                input.style.background = '#1e1e1e';
+                input.style.setProperty('--thumb-color', '#1e1e1e');
+                document.documentElement.style.setProperty('--thumb-color', '#1e1e1e');
+            });
+        }
+    } else if (slotTwoToggle) {
+        if (gridSizeSlotTwo >= 12 && gridSizeSlotTwo <= 20) {
+            let alphaSlotTwo = (gridSizeSlotTwo - 12) * 0.15;
+            let hueSlotTwo = Math.floor(alphaSlotTwo * 255);
+            menuControls.style.color = `rgb(${hueSlotTwo}, ${hueSlotTwo}, ${hueSlotTwo})`;
+            menuHex.style.color = `rgb(${hueSlotTwo}, ${hueSlotTwo}, ${hueSlotTwo})`;
+            rangeInputs.forEach(input => {
+                input.style.background = `rgb(${hueSlotTwo}, ${hueSlotTwo}, ${hueSlotTwo})`;
+                input.style.setProperty('--thumb-color', `rgb(${hueSlotTwo}, ${hueSlotTwo}, ${hueSlotTwo})`);
+                document.documentElement.style.setProperty('--thumb-color', `rgb(${hueSlotTwo}, ${hueSlotTwo}, ${hueSlotTwo})`);
+            });
+        } else if (gridSizeSlotTwo < 12) {
+            menuControls.style.color = '#1e1e1e';
+            menuHex.style.color = '#1e1e1e';
+            rangeInputs.forEach(input => {
+                input.style.background = '#1e1e1e';
+                input.style.setProperty('--thumb-color', '#1e1e1e');
+                document.documentElement.style.setProperty('--thumb-color', '#1e1e1e');
+            });
+        }
     }
 }
 
@@ -210,6 +245,7 @@ function checkTypeCheckboxes() {
             document.getElementById('slot-two-checkbox').checked = false;
             slotOneToggle = true;
             slotTwoToggle = false;
+            updateBackgroundAlpha(gridSize);
             detailSlider.style.display = 'block';
             detailSliderNumber.style.display = 'block';
             gridSizeSlider.style.display = 'block';
@@ -263,11 +299,13 @@ function checkTypeCheckboxes() {
             triangleCheckbox.style.display = 'block';
             triangleRotateCheckbox.style.display = 'block';
             textCheckbox.style.display = 'block';
+            inputField.style.display = 'block';
             rectCheckboxSlotTwo.style.display = 'none';
             ellipseCheckboxSlotTwo.style.display = 'none';
             triangleCheckboxSlotTwo.style.display = 'none';
             triangleRotateCheckboxSlotTwo.style.display = 'none';
             textCheckboxSlotTwo.style.display = 'none';
+            inputFieldSlotTwo.style.display = 'none';
         }
     });
 
@@ -276,6 +314,7 @@ function checkTypeCheckboxes() {
             document.getElementById('slot-one-checkbox').checked = false;
             slotTwoToggle = true;
             slotOneToggle = false;
+            updateBackgroundAlpha(gridSizeSlotTwo);
             detailSliderSlotTwo.style.display = 'block';
             detailSliderSlotTwoNumber.style.display = 'block';
             gridSizeSliderSlotTwo.style.display = 'block';
@@ -329,11 +368,13 @@ function checkTypeCheckboxes() {
             triangleCheckboxSlotTwo.style.display = 'block';
             triangleRotateCheckboxSlotTwo.style.display = 'block';
             textCheckboxSlotTwo.style.display = 'block';
+            inputFieldSlotTwo.style.display = 'block';
             rectCheckbox.style.display = 'none';
             ellipseCheckbox.style.display = 'none';
             triangleCheckbox.style.display = 'none';
             triangleRotateCheckbox.style.display = 'none';
             textCheckbox.style.display = 'none';
+            inputField.style.display = 'none';
         }
     });
 }
@@ -395,6 +436,8 @@ function setup() {
     triangleRotateCheckboxSlotTwo = document.getElementById('triangle-rotate-checkbox-slot-two');
     textCheckbox = document.getElementById('text-checkbox');
     textCheckboxSlotTwo = document.getElementById('text-checkbox-slot-two');
+    inputField = document.querySelector('.text-input');
+    inputFieldSlotTwo = document.querySelector('.text-input-slot-two');
 
     detailSliderNumber.textContent = parseFloat(detailSlider.value).toFixed(2);
     detailSlider.addEventListener('input', function () {
@@ -413,6 +456,7 @@ function setup() {
         gridSize = parseInt(gridSizeSlider.value);
         gridSizeNumber.textContent = gridSize;
         updateCanvasSize();
+        updateBackgroundAlpha(gridSize); //!
     });
 
     gridSizeNumberSlotTwo.textContent = gridSizeSliderSlotTwo.value;
@@ -420,6 +464,7 @@ function setup() {
         gridSizeSlotTwo = parseInt(gridSizeSliderSlotTwo.value);
         gridSizeNumberSlotTwo.textContent = gridSizeSlotTwo;
         updateCanvasSize();
+        updateBackgroundAlpha(gridSizeSlotTwo); //!
     });
 
     stepNumber.textContent = stepSlider.value;
@@ -511,15 +556,16 @@ function updateCanvasSize() {
         gridSizeToggle = gridSize;
         rectSizeConstToggle = rectSizeConst;
         calculatedCenter = `calc(50vh - ${(rectSizeConst * gridSize) / 2}px)`;
+        updateBackgroundAlpha(gridSize);
     } else if (slotTwoToggle) {
         gridSizeToggle = gridSizeSlotTwo;
         rectSizeConstToggle = rectSizeConstSlotTwo;
         calculatedCenter = `calc(50vh - ${(rectSizeConstSlotTwo * gridSizeSlotTwo) / 2}px)`;
+        updateBackgroundAlpha(gridSizeSlotTwo);
     }
     document.getElementById('canvas').style.marginTop = calculatedCenter;
     document.getElementById('redraw-button').addEventListener('click', newSeed);
     document.getElementById('export-button').addEventListener('click', exportPNG);
-    // updateBackgroundAlpha(gridSize)
 }
 
 function draw() {
@@ -584,8 +630,8 @@ function draw() {
                 for (let y = 0; y < gridSizeSlotTwo; y++) {
                     let xoff = g * offsetSlotTwo;
                     for (let x = 0; x < gridSizeSlotTwo; x++) {
-                        const inputField = document.querySelector('.text-input');
-                        const textInputString = inputField.value.replace(/\s+/g, '').split('');
+                        const inputFieldSlotTwo = document.querySelector('.text-input-slot-two');
+                        const textInputString = inputFieldSlotTwo.value.replace(/\s+/g, '').split('');
                         let noiseValueSlotTwo = noise(xoff, yoff) * 255;
                         let textNoiseValue = floor(map(noiseValueSlotTwo, 0, 255, 0, textInputString.length));
                         let redNoiseValueSlotTwo = noise(xoff + redSliderValueSlotTwo, yoff + redSliderValueSlotTwo) * 255;

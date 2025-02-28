@@ -27,6 +27,7 @@
             --light-green: #9f0;
             --light-purple: #99f;
             --margin-top: 12px;
+            --thumb-color: var(--off-black);
         }
 
         * {
@@ -64,8 +65,8 @@
             font-family: Funnel;
             font-weight: 100;
             letter-spacing: 0.7px;
-            /* background-color: var(--off-white); */
-            background-color: var(--black);
+            background-color: var(--off-white);
+            /* background-color: var(--black); */
             cursor: default;
             color: var(--off-black);
             font-weight: 100;
@@ -92,7 +93,7 @@
             -webkit-appearance: none;
             width: 20px;
             height: 20px;
-            background: var(--off-black);
+            background: var(--thumb-color, var(--off-black));
             border-radius: 50%;
         }
 
@@ -125,7 +126,7 @@
             height: 20px;
             border-radius: 50%;
             margin-right: 10px;
-            transition: 0.1s ease all;
+            transition: 0.1s ease scale;
         }
 
         /* CHECKBOX COLORS */
@@ -154,14 +155,14 @@
         #text-checkbox-slot-two,
         #triangle-rotate-checkbox-slot-two {
             /* border: 1px solid var(--off-black); */
-            background: var(--off-black);
+            background: var(--thumb-color, var(--off-black));
         }
 
         #vertical:checked,
         #rect-checkbox:checked,
         #ellipse-checkbox:checked,
         #triangle-checkbox:checked,
-        #text-checkbox:checked, 
+        #text-checkbox:checked,
         #vertical-slot-two:checked,
         #rect-checkbox-slot-two:checked,
         #ellipse-checkbox-slot-two:checked,
@@ -208,7 +209,8 @@
             align-items: center;
             /* background-color: rgba(30, 30, 30, 1); */
             backdrop-filter: blur(10px);
-            /* border: 1px solid var(--off-black); */
+            /* border: 1px solid var(--off-white); */
+            background-color: rgba(225, 225, 225, 0.1);
             padding: 25px;
             border-radius: 10px;
             width: 200px;
@@ -225,6 +227,7 @@
             align-items: center;
             /* border: 1px solid var(--off-black); */
             /* background-color: rgba(30, 30, 30, 1); */
+            background-color: rgba(225, 225, 225, 0.1);
             backdrop-filter: blur(10px);
             padding: 25px;
             border-radius: 10px;
@@ -309,7 +312,7 @@
             height: 40px;
             margin-top: var(--margin-top);
             background-color: transparent;
-            color: var(--off-black);
+            color: var(--thumb-color, var(--off-black));
         }
 
         #redraw-button,
@@ -317,12 +320,11 @@
         #slot-one-button,
         #slot-two-button {
             all: unset;
-            /* background-color: var(--off-black); */
             border-radius: 5px;
             width: 100%;
             height: 100%;
-            transition: 0.1s ease all;
-            border: 1px solid var(--off-black);
+            transition: 0.1s ease scale;
+            border: 1px solid var(--thumb-color, var(--off-black));
         }
 
         .redraw-frame:hover #redraw-button,
@@ -365,18 +367,16 @@
         }
 
         .text-input,
-        .text-input-slot-two { 
-            /* !!! */
+        .text-input-slot-two {
             all: unset;
             display: block;
             margin-top: var(--margin-top);
             width: calc(100% - 5px);
             border-radius: 2px;
-            border: 1px solid var(--off-black);
-            /* background-color: #e1e1e1; */
-            color: var(--off-black);
+            border: 1px solid var(--thumb-color, var(--off-black));
+            color: var(--thumb-color, var(--off-black));
             padding-left: 5px;
-            caret-color: var(--off-black);
+            caret-color: var(--thumb-color, var(--off-black));
         }
 
         #detail-slider-slot-two,
@@ -405,7 +405,7 @@
         #triangle-rotate-checkbox-slot-two,
         #text-checkbox-slot-two,
         #text-input-slot-two,
-        .text-input-slot-two  {
+        .text-input-slot-two {
             display: none;
         }
 
@@ -418,6 +418,56 @@
         .bottom-row-margin-bottom {
             margin-bottom: 8px;
         }
+
+        .slot-toggle-frame {
+            margin-top: var(--margin-top);
+            width: 100%;
+            height: 100px;
+            background-color: red;
+        }
+
+        /* #DROPDOWN */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown button {
+            background-color: var(--light-purple);
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            /* background-color: #f9f9f9; */
+            /* min-width: 160px; */
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content .checkbox-item {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content .checkbox-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover button {
+            background-color: var(--pink);
+        }
     </style>
 </head>
 
@@ -429,6 +479,7 @@
                 <p id="hex">#000000</p>
             </div>
         </div>
+
         <div class="checkbox-item">
             <input type="checkbox" id="rect-checkbox" checked>
             <input type="checkbox" id="rect-checkbox-slot-two" checked>
@@ -458,10 +509,12 @@
         <input type="text" class="text-input-slot-two" value="two">
 
         <div class="checkbox-item">
-            <label><input type="checkbox" id="slot-one-checkbox" checked> One</label>
+            <input type="checkbox" id="slot-one-checkbox" checked>
+            <p>One</p>
         </div>
         <div class="checkbox-item">
-            <label><input type="checkbox" id="slot-two-checkbox" unchecked> Two</label>
+            <input type="checkbox" id="slot-two-checkbox" unchecked>
+            <p>Two</p>
         </div>
     </div>
 
@@ -476,7 +529,7 @@
         <div class="space-between">
             <p>Noise Detail</p>
             <p id="noise-detail-number">#</p>
-            <p id="noise-detail-number-slot-two" style="color: red">#</p>
+            <p id="noise-detail-number-slot-two">#</p>
         </div>
         <input type="range" id="detail-slider" min="0" max="1.5" step="0.01" value="0.1">
         <input type="range" id="detail-slider-slot-two" min="0" max="1.5" step="0.01" value="0.1">
@@ -484,7 +537,7 @@
         <div class="space-between margin-top">
             <p>Grid Size</p>
             <p id="grid-size-number">#</p>
-            <p id="grid-size-number-slot-two" style="color: red">#</p>
+            <p id="grid-size-number-slot-two">#</p>
         </div>
         <input type="range" id="grid-size-slider" min="1" max="20" step="1" value="6">
         <input type="range" id="grid-size-slider-slot-two" min="1" max="20" step="1" value="6">
@@ -492,7 +545,7 @@
         <div class="space-between margin-top">
             <p>Step</p>
             <p id="step-number">#</p>
-            <p id="step-number-slot-two" style="color: red">#</p>
+            <p id="step-number-slot-two">#</p>
         </div>
         <input type="range" id="step-slider" min="1" max="4" step="1" value="1">
         <input type="range" id="step-slider-slot-two" min="1" max="4" step="1" value="1">
@@ -500,10 +553,11 @@
         <div class="space-between margin-top">
             <p>Offset</p>
             <p id="offset-number">#</p>
-            <p id="offset-number-slot-two" style="color: red">#</p>
+            <p id="offset-number-slot-two">#</p>
         </div>
         <input type="range" class="bottom-row-margin-bottom" id="offset-slider" min="0" max="10" step="0.1" value="0">
-        <input type="range" class="bottom-row-margin-bottom" id="offset-slider-slot-two" min="0" max="10" step="0.1" value="0">
+        <input type="range" class="bottom-row-margin-bottom" id="offset-slider-slot-two" min="0" max="10" step="0.1"
+            value="0">
 
         <div class="checkbox-item">
             <input type="checkbox" id="vertical" unchecked>
@@ -524,7 +578,7 @@
         <div class="space-between margin-top">
             <p>Red Noise Detail</p>
             <p id="red-number">#</p>
-            <p id="red-number-slot-two" style="color: red">#</p>
+            <p id="red-number-slot-two">#</p>
         </div>
         <input type="range" id="red-slider" min="0" max="1.5" step="0.01" value="0">
         <input type="range" id="red-slider-slot-two" min="0" max="1.5" step="0.01" value="0">
@@ -532,7 +586,7 @@
         <div class="space-between margin-top">
             <p>Green Noise Detail</p>
             <p id="green-number">#</p>
-            <p id="green-number-slot-two" style="color: red">#</p>
+            <p id="green-number-slot-two">#</p>
         </div>
         <input type="range" id="green-slider" min="0" max="1.5" step="0.01" value="0">
         <input type="range" id="green-slider-slot-two" min="0" max="1.5" step="0.01" value="0">
@@ -540,10 +594,11 @@
         <div class="space-between margin-top">
             <p>Blue Noise Detail</p>
             <p id="blue-number">#</p>
-            <p id="blue-number-slot-two" style="color: red">#</p>
+            <p id="blue-number-slot-two">#</p>
         </div>
         <input type="range" class="bottom-row-margin-bottom" id="blue-slider" min="0" max="1.5" step="0.01" value="0">
-        <input type="range" class="bottom-row-margin-bottom" id="blue-slider-slot-two" min="0" max="1.5" step="0.01" value="0">
+        <input type="range" class="bottom-row-margin-bottom" id="blue-slider-slot-two" min="0" max="1.5" step="0.01"
+            value="0">
 
         <!-- BOTTOM -->
         <div class="checkbox-item">
