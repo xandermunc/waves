@@ -5,7 +5,7 @@ h1 {
 
 h2 {
     font-weight: 500;
-    font-size: 1.2em;
+    font-size: var(--large-paragraph-font-size);
 }
 
 p {
@@ -44,10 +44,10 @@ h1.section-title {
 }
 
 p.paragraph {
-    font-size: 1.1em;
+    font-size: var(--paragraph-font-size);
     font-weight: 300;
     letter-spacing: 1px;
-    padding-bottom: 1.1em;
+    padding-bottom: var(--paragraph-font-size);
 }
 
 .big-header {
@@ -57,7 +57,7 @@ p.paragraph {
     padding-top: 80px;
 }
 
-p.large-paragraph {
+p.large-text-paragraph {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -73,7 +73,8 @@ p.hoverable:hover {
     color: var(--blue);
 }
 
-p.hoverable-white:hover {
+p.hoverable-white:hover,
+h2.hoverable-white:hover {
     color: var(--white);
 }
 
@@ -92,7 +93,7 @@ p.hoverable-underline::after {
     background-color: var(--black);
     opacity: 0;
     transform: scaleX(0);
-    transition: all 0.1s ease;
+    transition: var(--ease-time) ease all;
 }
 
 p.hoverable-underline.white::after {
@@ -105,7 +106,7 @@ p.hoverable-underline.white::after {
     background-color: var(--white);
     opacity: 0;
     transform: scaleX(0);
-    transition: all 0.1s ease;
+    transition: var(--ease-time) ease all;
 }
 
 .underline-parent:hover p.hoverable-underline::after {

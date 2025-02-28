@@ -11,4 +11,5 @@
     width: 40px;
     height: 40px;
     border-radius: 20px;
+    transition: var(--ease-time) ease all;
 }

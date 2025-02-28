@@ -28,12 +28,15 @@
 }
 
 .grid-item {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
     height: var(--header-height);
     border: var(--border-width) var(--black) solid;
     border-left: none;
     text-align: center;
     line-height: var(--header-height);
-    font-size: 1em;
+    /* font-size: 1em; */
     font-weight: 100;
 }
 
@@ -83,10 +86,9 @@
 
 .vertical-grid-item:hover .circle {
     background-color: var(--blue);
-    transition: 0.1s ease all;
 }
 
-/* HOVERABLE GRID ITEM */
+/* HOVERABLE GRID ITEMS */
 
 .hoverable-item:hover {
     background-color: var(--blue);

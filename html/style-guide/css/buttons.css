@@ -3,17 +3,19 @@
     height: var(--header-height);
     width: 25vw;
     /* var this */
-    border: var(--border-width) black solid;
+    /* border: var(--border-width) var(--black) solid; */
     margin-bottom: var(--header-height);
+    background-color: var(--blue);
     border-radius: 100px;
     /* not precise */
     font-size: 1em;
     font-weight: 100;
+    font-size: var(--large-paragraph-font-size);
 }
 
 .pill-button:hover {
-    color: white;
-    background-color: #f9f;
+    color: var(--white);
+    background-color: var(--deep-blue);
     border: none;
 }
 
@@ -22,16 +24,14 @@
     width: 280px;
     height: 80px;
     background-color: var(--blue);
-    /* border: var(--border-width) black solid; */
     margin-bottom: var(--header-height);
     border-radius: 100px;
-    /* not precise */
     font-size: 1em;
     font-weight: 400;
 }
 
 .pill-button-small:hover {
-    color: white;
+    color: var(--white);
     background-color: var(--deep-blue);
     border: none;
 }

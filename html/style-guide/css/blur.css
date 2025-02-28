@@ -10,7 +10,7 @@
     opacity: 0;
     overflow: hidden;
     pointer-events: none;
-    transition: all 0.2s ease;
+    transition: var(--ease-time) ease all;
 }
 
 .blur.active {

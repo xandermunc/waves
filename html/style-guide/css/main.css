@@ -13,7 +13,7 @@
     --green: #090;
     --pink: #f9f;
     --cyan: #099;
-    --purple: #60f; 
+    --purple: #60f;
     /* 90f */
     --light-green: #9f0;
     --light-purple: #99f;
@@ -21,6 +21,8 @@
     --border-width: 1.5px;
     --margin-bottom: 10px;
     --large-paragraph-font-size: 1.2em;
+    --paragraph-font-size: 1.1em;
+    --ease-time: 0.2s;
 }
 
 @font-face {
@@ -51,7 +53,7 @@
     user-select: none;
     overscroll-behavior: none;
     font-family: Lexend;
-    transition: 0.1s ease all;
+    transition: var(--ease-time) ease all;
 }
 
 /* .cursor {
