@@ -41,6 +41,7 @@ let textNoiseValue;
 let noiseValue, noiseValueSlotTwo;
 let slotOneToggle = true;
 let slotTwoToggle = false;
+let slotThreeToggle = false;
 let gridSizeToggle = gridSize;
 
 function newSeed() {
@@ -1121,3 +1122,4 @@ function checkCheckBoxes() {
         blueNumberSlotTwo.textContent = parseFloat(0).toFixed(2);
     }
 }
+

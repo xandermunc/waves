@@ -10,6 +10,7 @@
 </head>
 
 <body class="gradient">
+    <div class="cursor"></div>
     <div class="blur"></div>
     <header>
         <div class="header-item">
@@ -70,10 +71,46 @@
             <div class="grid-item hoverable-item">
                 <p class="hoverable-white">ONE</p>
             </div>
-            <div class="grid-item hoverable-item">
+            <div class="grid-item hoverable-item-green">
                 <p class="hoverable-white">TWO</p>
             </div>
             <div class="grid-item hoverable-item-orange">
+                <p class="hoverable-white">THREE</p>
+            </div>
+        </div>
+
+        <div class="small-section grid three-column">
+            <div class="text centered span-two">
+                <div class="one-third">
+                    <h1 class="margin-bottom big-header">Quantum</h1>
+                    <p class="margin-bottom-large">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas porro
+                        sint
+                        rerum inventore
+                        necessitatibus corrupti harum aut, est animi ipsum fuga veritatis. Explicabo ab dolore iusto
+                        odit.
+                        Quidem perspiciatis cum ducimus officia vero nihil vitae placeat earum quod iusto pariatur,
+                        cupiditate temporibus rem repellat iste maxime ea possimus reiciendis sint quis? Voluptates
+                        tenetur
+                        expedita illo necessitatibus odit cupiditate, ullam optio ab nemo vitae aliquid soluta itaque
+                        harum
+                        delectus quod natus ex nobis voluptate in temporibus aliquam esse! Mollitia, animi aut?
+                    </p>
+                    <a class="pill-button-small centered" href="../midi/combined/combined.html">
+                        PARAMETRIC CURVES
+                    </a>
+                </div>
+            </div>
+            <div class="centered">test</div>
+        </div>
+
+        <div class="grid three-column" style="margin-top: -1px;">
+            <div class="grid-item hoverable-item-purple">
+                <p class="hoverable-white">ONE</p>
+            </div>
+            <div class="grid-item hoverable-item-pink">
+                <p class="hoverable-white">TWO</p>
+            </div>
+            <div class="grid-item hoverable-item-red">
                 <p class="hoverable-white">THREE</p>
             </div>
         </div>
@@ -175,6 +212,13 @@
                 blur.classList.remove('active');
                 image.style.zIndex = 0;
             });
+        });
+
+        const cursor = document.querySelector('.cursor');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
         });
     </script>
     <script src="atom.js"></script>

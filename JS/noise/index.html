@@ -67,9 +67,9 @@
             letter-spacing: 0.7px;
             background-color: var(--off-white);
             /* background-color: var(--black); */
-            cursor: default;
             color: var(--off-black);
             font-weight: 100;
+            cursor: default;
         }
 
         /* #TEXT */
@@ -85,7 +85,6 @@
             background: var(--off-black);
             height: 3px;
             border-radius: 5px;
-            cursor: pointer;
             margin-top: var(--margin-top);
         }
 
@@ -153,7 +152,8 @@
         #ellipse-checkbox-slot-two,
         #triangle-checkbox-slot-two,
         #text-checkbox-slot-two,
-        #triangle-rotate-checkbox-slot-two {
+        #triangle-rotate-checkbox-slot-two,
+        #slot-three-checkbox {
             /* border: 1px solid var(--off-black); */
             background: var(--thumb-color, var(--off-black));
         }
@@ -177,7 +177,8 @@
         #slot-one-checkbox:checked,
         #slot-two-checkbox:checked,
         #horizontal-slot-two:checked,
-        #blue-checkbox-slot-two:checked {
+        #blue-checkbox-slot-two:checked,
+        #slot-three-checkbox:checked {
             background: var(--blue);
         }
 
@@ -405,6 +406,17 @@
         #triangle-rotate-checkbox-slot-two,
         #text-checkbox-slot-two,
         #text-input-slot-two,
+        #noise-detail-number-slot-three,
+        #detail-slider-slot-three,
+        #grid-size-number-slot-three,
+        #step-number-slot-three,
+        #step-slider-slot-three,
+        #offset-number-slot-three,
+        #offset-slider-slot-three,
+        #vertical-slot-three,
+        #horizontal-slot-three,
+        #value-slot-three,
+        #grid-size-slider-slot-three,
         .text-input-slot-two {
             display: none;
         }
@@ -438,7 +450,6 @@
             padding: 16px;
             font-size: 16px;
             border: none;
-            cursor: pointer;
         }
 
         .dropdown-content {
@@ -468,6 +479,41 @@
         .dropdown:hover button {
             background-color: var(--pink);
         }
+
+        .spacer {
+            width: 100%;
+            height: 10px;
+        }
+
+        .instruction-frame {
+            position: absolute;
+            transform: translateY(0);
+            z-index: 100;
+            width: 100vw;
+            height: 122vh;
+            /* background: linear-gradient(to bottom, var(--blue), var(--light-purple)); */
+            background-color: var(--off-white);
+            border-bottom: 1px solid var(--off-black);
+            backdrop-filter: blur(5px);
+        }
+
+        .frame {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Funnel;
+            font-weight: 100;
+            letter-spacing: 0.7px;
+            background-color: var(--off-white);
+            /* background-color: var(--black); */
+            color: var(--off-black);
+            font-weight: 100;
+            cursor: default;
+            background-color: blue;
+        }
     </style>
 </head>
 
@@ -479,6 +525,7 @@
                 <p id="hex">#000000</p>
             </div>
         </div>
+        <div class="spacer"></div>
 
         <div class="checkbox-item">
             <input type="checkbox" id="rect-checkbox" checked>
@@ -505,8 +552,10 @@
             <input type="checkbox" id="text-checkbox-slot-two" unchecked>
             <p>Text</p>
         </div>
+        <div class="spacer"></div>
         <input type="text" class="text-input" value="%#*!=+:.">
-        <input type="text" class="text-input-slot-two" value="two">
+        <input type="text" class="text-input-slot-two" value="123456">
+        <div class="spacer"></div>
 
         <div class="checkbox-item">
             <input type="checkbox" id="slot-one-checkbox" checked>
@@ -515,6 +564,23 @@
         <div class="checkbox-item">
             <input type="checkbox" id="slot-two-checkbox" unchecked>
             <p>Two</p>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="slot-three-checkbox" unchecked>
+            <p>Three</p>
+        </div>
+        <div class="spacer"></div>
+        <div class="spacer"></div>
+
+        <div class="button-frame">
+            <div class="export-frame">
+                <p class="absolute">Export</p>
+                <button id="export-button"></button>
+            </div>
+            <div class="redraw-frame">
+                <p class="absolute">Redraw</p>
+                <button id="redraw-button"></button>
+            </div>
         </div>
     </div>
 
@@ -530,50 +596,64 @@
             <p>Noise Detail</p>
             <p id="noise-detail-number">#</p>
             <p id="noise-detail-number-slot-two">#</p>
+            <p id="noise-detail-number-slot-three">#</p>
         </div>
         <input type="range" id="detail-slider" min="0" max="1.5" step="0.01" value="0.1">
         <input type="range" id="detail-slider-slot-two" min="0" max="1.5" step="0.01" value="0.1">
+        <input type="range" id="detail-slider-slot-three" min="0" max="1.5" step="0.01" value="0.1">
 
         <div class="space-between margin-top">
             <p>Grid Size</p>
             <p id="grid-size-number">#</p>
             <p id="grid-size-number-slot-two">#</p>
+            <p id="grid-size-number-slot-three">#</p>
         </div>
         <input type="range" id="grid-size-slider" min="1" max="20" step="1" value="6">
         <input type="range" id="grid-size-slider-slot-two" min="1" max="20" step="1" value="6">
+        <input type="range" id="grid-size-slider-slot-three" min="1" max="20" step="1" value="6">
 
         <div class="space-between margin-top">
             <p>Step</p>
             <p id="step-number">#</p>
             <p id="step-number-slot-two">#</p>
+            <p id="step-number-slot-three">#</p>
         </div>
         <input type="range" id="step-slider" min="1" max="4" step="1" value="1">
         <input type="range" id="step-slider-slot-two" min="1" max="4" step="1" value="1">
+        <input type="range" id="step-slider-slot-three" min="1" max="4" step="1" value="1">
 
         <div class="space-between margin-top">
             <p>Offset</p>
             <p id="offset-number">#</p>
             <p id="offset-number-slot-two">#</p>
+            <p id="offset-number-slot-three">#</p>
         </div>
         <input type="range" class="bottom-row-margin-bottom" id="offset-slider" min="0" max="10" step="0.1" value="0">
         <input type="range" class="bottom-row-margin-bottom" id="offset-slider-slot-two" min="0" max="10" step="0.1"
             value="0">
+        <input type="range" class="bottom-row-margin-bottom" id="offset-slider-slot-three" min="0" max="10" step="0.1"
+            value="0">
+        <div class="spacer"></div>
 
         <div class="checkbox-item">
             <input type="checkbox" id="vertical" unchecked>
             <input type="checkbox" id="vertical-slot-two" unchecked>
+            <input type="checkbox" id="vertical-slot-three" unchecked>
             <p>Vertical Waves</p>
         </div>
         <div class="checkbox-item">
             <input type="checkbox" id="horizontal" checked>
             <input type="checkbox" id="horizontal-slot-two" checked>
+            <input type="checkbox" id="horizontal-slot-three" checked>
             <p>Horizontal Waves</p>
         </div>
         <div class="checkbox-item">
             <input type="checkbox" id="value" unchecked>
             <input type="checkbox" id="value-slot-two" unchecked>
+            <input type="checkbox" id="value-slot-three" unchecked>
             <p>Value</p>
         </div>
+        <div class="spacer"></div>
 
         <div class="space-between margin-top">
             <p>Red Noise Detail</p>
@@ -599,6 +679,7 @@
         <input type="range" class="bottom-row-margin-bottom" id="blue-slider" min="0" max="1.5" step="0.01" value="0">
         <input type="range" class="bottom-row-margin-bottom" id="blue-slider-slot-two" min="0" max="1.5" step="0.01"
             value="0">
+        <div class="spacer"></div>
 
         <!-- BOTTOM -->
         <div class="checkbox-item">
@@ -615,17 +696,6 @@
             <input type="checkbox" id="blue-checkbox" checked>
             <input type="checkbox" id="blue-checkbox-slot-two" checked>
             <p>Blue Waves</p>
-        </div>
-
-        <div class="button-frame">
-            <div class="export-frame">
-                <p class="absolute">Export</p>
-                <button id="export-button"></button>
-            </div>
-            <div class="redraw-frame">
-                <p class="absolute">Redraw</p>
-                <button id="redraw-button"></button>
-            </div>
         </div>
     </div>
 
