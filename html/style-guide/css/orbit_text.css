@@ -1,0 +1,46 @@
+/* ORBIT */
+
+.orbit-container {
+    position: relative;
+    display: inline-block;
+}
+
+#orbit-text {
+    position: relative;
+    z-index: 2;
+}
+
+.orbit {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: #09f;
+    border-radius: 50%;
+    animation: orbit 2s linear infinite;
+}
+
+@keyframes orbit {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(35px);
+        z-index: 3;
+    }
+
+    25% {
+        z-index: 1;
+    }
+
+    50% {
+        z-index: 1;
+    }
+
+    75% {
+        z-index: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) translateX(35px);
+        z-index: 3;
+    }
+}

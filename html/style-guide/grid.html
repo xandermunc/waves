@@ -6,11 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <title>Grid</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header_footer.css">
+    <link rel="stylesheet" href="css/text.css">
+    <link rel="stylesheet" href="css/grids.css">
+    <link rel="stylesheet" href="css/orbit_text.css">
+    <link rel="stylesheet" href="css/svg_arrow_circle.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <!-- <link rel="stylesheet" href="css/blur.css"> -->
+    <link rel="stylesheet" href="css/gradients.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/images.css">
+    <link rel="stylesheet" href="css/scrollbar.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="gradient">
-    <div class="cursor"></div>
+    <!-- <div class="cursor"></div> -->
     <div class="blur"></div>
     <header>
         <div class="header-item">
@@ -36,11 +48,22 @@
 
     <section class="white">
         <div class="grid hover-fixed">
-            <div class="grid-item">
+            <div class="grid-item no-bottom-border">
                 <p class="hoverable">ONE</p>
             </div>
-            <div class="grid-item">
+            <div class="grid-item no-bottom-border">
                 <p class="hoverable">TWO</p>
+            </div>
+        </div>
+        <div class="grid three-column">
+            <div class="grid-item hoverable-item">
+                <p class="hoverable-white">ONE</p>
+            </div>
+            <div class="grid-item hoverable-item-green">
+                <p class="hoverable-white">TWO</p>
+            </div>
+            <div class="grid-item hoverable-item-orange">
+                <p class="hoverable-white">THREE</p>
             </div>
         </div>
 
@@ -49,14 +72,14 @@
                 <a class="vertical-grid-item" href="../midi/keyboard/keyboard4.html">
                     <p>THE 4 NOTE METHOD</p>
                     <div class="centered">
-                        <div class="svg-icon"></div>
+                        <div class="arrow"></div>
                         <div class="circle"></div>
                     </div>
                 </a>
                 <a class="vertical-grid-item" href="../midi/para.html">
                     <p>para.html</p>
                     <div class="centered">
-                        <div class="svg-icon"></div>
+                        <div class="arrow"></div>
                         <div class="circle"></div>
                     </div>
                 </a>
@@ -80,20 +103,16 @@
         </div>
 
         <div class="small-section grid three-column">
-            <div class="text centered span-two">
+            <div class="centered span-two">
                 <div class="one-third">
-                    <h1 class="margin-bottom big-header">Quantum</h1>
-                    <p class="margin-bottom-large">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas porro
-                        sint
-                        rerum inventore
-                        necessitatibus corrupti harum aut, est animi ipsum fuga veritatis. Explicabo ab dolore iusto
-                        odit.
-                        Quidem perspiciatis cum ducimus officia vero nihil vitae placeat earum quod iusto pariatur,
-                        cupiditate temporibus rem repellat iste maxime ea possimus reiciendis sint quis? Voluptates
-                        tenetur
-                        expedita illo necessitatibus odit cupiditate, ullam optio ab nemo vitae aliquid soluta itaque
-                        harum
-                        delectus quod natus ex nobis voluptate in temporibus aliquam esse! Mollitia, animi aut?
+                    <h1 class="big-header">Quantum</h1>
+                    <p class="large-paragraph margin-bottom-large">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Quas porro sint rerum inventore necessitatibus corrupti harum aut, est animi ipsum fuga
+                        veritatis. Explicabo ab dolore iusto odit. Quidem perspiciatis cum ducimus officia vero nihil
+                        vitae placeat earum quod iusto pariatur, cupiditate temporibus rem repellat iste maxime ea
+                        possimus reiciendis sint quis? Voluptates tenetur expedita illo necessitatibus odit cupiditate,
+                        ullam optio ab nemo vitae aliquid soluta itaque harum delectus quod natus ex nobis voluptate in
+                        temporibus aliquam esse!
                     </p>
                     <a class="pill-button-small centered" href="../midi/combined/combined.html">
                         PARAMETRIC CURVES
@@ -127,18 +146,14 @@
             <div class="grid margin gap">
                 <div>
                     <p class="paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam incidunt
-                        dolorem,
-                        vitae, sunt harum quis error perferendis fugit tempora possimus et quia ipsa, non doloremque
-                        tenetur
-                        optio eveniet ex minus eaque? Reiciendis, <strong>totam praesentium</strong> nobis molestiae
-                        nisi
-                        culpa consectetur
-                        nam dolore ad odit consequatur tempora dicta fugit corrupti voluptatibus quisquam nemo? Omnis
-                        placeat minus labore asperiores, perspiciatis officia facilis sequi eius? Eum perferendis
-                        aliquid
-                        molestiae vitae nisi. Animi laboriosam impedit dolores assumenda, voluptatum sint unde illo
-                        reiciendis et quo, culpa nesciunt inventore hic? Ipsum labore iusto ratione, quod aperiam vero,
-                        officiis ea excepturi voluptatum laborum repudiandae in qui deleniti asperiores!
+                        dolorem, vitae, sunt harum quis error perferendis fugit tempora possimus et quia ipsa, non
+                        doloremque tenetur optio eveniet ex minus eaque? Reiciendis, <strong>totam praesentium</strong>
+                        nobis molestiae nisi culpa consectetur nam dolore ad odit consequatur tempora dicta fugit
+                        corrupti voluptatibus quisquam nemo? Omnis placeat minus labore asperiores, perspiciatis officia
+                        facilis sequi eius? Eum perferendis aliquid molestiae vitae nisi. Animi laboriosam impedit
+                        dolores assumenda, voluptatum sint unde illo reiciendis et quo, culpa nesciunt inventore hic?
+                        Ipsum labore iusto ratione, quod aperiam vero, officiis ea excepturi voluptatum laborum
+                        repudiandae in qui deleniti asperiores!
                     </p>
                     <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit optio molestias
                         veritatis minus alias voluptas nobis unde animi ab corporis quo harum eius voluptatum blanditiis
@@ -165,18 +180,14 @@
                 </div>
                 <div>
                     <p class="paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam incidunt
-                        dolorem,
-                        vitae, sunt harum quis error perferendis fugit tempora possimus et quia ipsa, non doloremque
-                        tenetur
-                        optio eveniet ex minus eaque? Reiciendis, <strong>totam praesentium</strong> nobis molestiae
-                        nisi
-                        culpa consectetur
-                        nam dolore ad odit consequatur tempora dicta fugit corrupti voluptatibus quisquam nemo? Omnis
-                        placeat minus labore asperiores, perspiciatis officia facilis sequi eius? Eum perferendis
-                        aliquid
-                        molestiae vitae nisi. Animi laboriosam impedit dolores assumenda, voluptatum sint unde illo
-                        reiciendis et quo, culpa nesciunt inventore hic? Ipsum labore iusto ratione, quod aperiam vero,
-                        officiis ea excepturi voluptatum laborum repudiandae in qui deleniti asperiores!
+                        dolorem, vitae, sunt harum quis error perferendis fugit tempora possimus et quia ipsa, non
+                        doloremque tenetur optio eveniet ex minus eaque? Reiciendis, <strong>totam praesentium</strong>
+                        nobis molestiae nisi culpa consectetur nam dolore ad odit consequatur tempora dicta fugit
+                        corrupti voluptatibus quisquam nemo? Omnis placeat minus labore asperiores, perspiciatis officia
+                        facilis sequi eius? Eum perferendis aliquid molestiae vitae nisi. Animi laboriosam impedit
+                        dolores assumenda, voluptatum sint unde illo reiciendis et quo, culpa nesciunt inventore hic?
+                        Ipsum labore iusto ratione, quod aperiam vero, officiis ea excepturi voluptatum laborum
+                        repudiandae in qui deleniti asperiores!
                     </p>
                     <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit optio molestias
                         veritatis minus alias voluptas nobis unde animi ab corporis quo harum eius voluptatum blanditiis
@@ -201,29 +212,29 @@
         </div>
     </footer>
     <script>
-        const images = document.querySelectorAll('.image');
-        const blur = document.querySelector('.blur');
-        images.forEach(image => {
-            image.addEventListener('mouseover', () => {
-                blur.classList.add('active');
-                image.style.zIndex = 1000;
-            });
-            image.addEventListener('mouseout', () => {
-                blur.classList.remove('active');
-                image.style.zIndex = 0;
-            });
-        });
+        // const images = document.querySelectorAll('.image');
+        // const blur = document.querySelector('.blur');
+        // images.forEach(image => {
+        //     image.addEventListener('mouseover', () => {
+        //         blur.classList.add('active');
+        //         image.style.zIndex = 1000;
+        //     });
+        //     image.addEventListener('mouseout', () => {
+        //         blur.classList.remove('active');
+        //         image.style.zIndex = 0;
+        //     });
+        // });
 
-        const cursor = document.querySelector('.cursor');
+        // const cursor = document.querySelector('.cursor');
 
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
-        });
+        // document.addEventListener('mousemove', (e) => {
+        //     cursor.style.left = `${e.clientX}px`;
+        //     cursor.style.top = `${e.clientY}px`;
+        // });
     </script>
-    <script src="atom.js"></script>
-    <script src="flowfield.js"></script>
-    <script src="wave.js"></script>
+    <!-- <script src="atom.js"></script> -->
+    <!-- <script src="flowfield.js"></script> -->
+    <!-- <script src="wave.js"></script> -->
 </body>
 
 </html>

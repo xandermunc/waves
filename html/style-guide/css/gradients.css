@@ -1,0 +1,3 @@
+.gradient {
+    background: linear-gradient(to bottom, var(--blue), var(--pink), var(--orange));
+}

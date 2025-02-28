@@ -1,0 +1,40 @@
+/* HEADER */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+    z-index: 10;
+}
+
+.header-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--header-height);
+    border: var(--border-width) var(--black) solid;
+    border-top: none;
+    border-left: none;
+    text-align: center;
+    gap: 50px;
+}
+
+.header-item:not(:first-child) {
+    border-left: none;
+}
+
+.header-item:last-child {
+    border-right: none;
+}
+
+/* FOOTER */
+
+footer {
+    bottom: 0;
+    width: 100vw;
+    height: var(--header-height);
+    z-index: 10;
+}

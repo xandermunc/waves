@@ -1,0 +1,125 @@
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100vw;
+    background-color: var(--white);
+}
+
+.margin {
+    width: calc(100vw - 200px);
+    align-self: center;
+}
+
+.gap {
+    gap: 100px;
+}
+
+.three-column {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.span-two {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    grid-column: span 2;
+}
+
+.grid-item {
+    height: var(--header-height);
+    border: var(--border-width) var(--black) solid;
+    border-left: none;
+    text-align: center;
+    line-height: var(--header-height);
+    font-size: 1em;
+    font-weight: 100;
+}
+
+.grid-item:last-child {
+    border-right: none;
+}
+
+.grid-item-black {
+    background-color: var(--black);
+    height: var(--header-height);
+    text-align: center;
+    line-height: var(--header-height);
+    font-size: 1em;
+    font-weight: 100;
+    color: var(--white);
+}
+
+.vertical-grid {
+    margin-top: var(--header-height);
+    margin-bottom: var(--header-height);
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 25vw;
+    background-color: var(--white);
+}
+
+.vertical-grid-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: var(--header-height);
+    border: var(--border-width) var(--black) solid;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    text-align: center;
+    line-height: var(--header-height);
+    font-size: 1em;
+    font-weight: 100;
+}
+
+.vertical-grid-item:last-child {
+    border-bottom: var(--border-width) var(--black) solid;
+}
+
+.vertical-grid-item:hover .circle {
+    background-color: var(--blue);
+    transition: 0.1s ease all;
+}
+
+/* HOVERABLE GRID ITEM */
+
+.hoverable-item:hover {
+    background-color: var(--blue);
+}
+
+.hoverable-item-pink:hover {
+    background-color: var(--pink);
+}
+
+.hoverable-item-orange:hover {
+    background-color: var(--orange);
+}
+
+.hoverable-item-purple:hover {
+    background-color: var(--light-purple);
+}
+
+.hoverable-item-cyan:hover {
+    background-color: var(--cyan);
+}
+
+.hoverable-item-green:hover {
+    background-color: var(--green);
+}
+
+.hoverable-item-light-green:hover {
+    background-color: var(--light-green);
+}
+
+.hoverable-item-red:hover {
+    background-color: var(--red);
+}
+
+.hoverable-item-red:hover {
+    background-color: var(--red);
+}

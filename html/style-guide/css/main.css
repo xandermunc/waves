@@ -1,0 +1,77 @@
+:root {
+    --black: #000;
+    --white: #fff;
+    --grey: #666;
+    --off-black: #1e1e1e;
+    --off-white: #e1e1e1;
+    --deep-red: #900;
+    --deep-blue: #009;
+    --red: #f00;
+    --blue: #09f;
+    --light-blue: #7cf;
+    --orange: #f90;
+    --green: #090;
+    --pink: #f9f;
+    --cyan: #099;
+    --purple: #60f; 
+    /* 90f */
+    --light-green: #9f0;
+    --light-purple: #99f;
+    --header-height: 90px;
+    --border-width: 1.5px;
+    --margin-bottom: 10px;
+    --large-paragraph-font-size: 1.2em;
+}
+
+@font-face {
+    font-family: 'Lexend';
+    src: url('../../../fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lexend-Light';
+    src: url('../../../fonts/Lexend/static/Lexend-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'lexend-semi';
+    src: url('../../../fonts/Lexend/static/Lexend-SemiBold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    overscroll-behavior: none;
+    font-family: Lexend;
+    transition: 0.1s ease all;
+}
+
+/* .cursor {
+    position: fixed;
+    z-index: 100;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #60f;
+    mix-blend-mode: difference;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: none;
+} */
+
+body {
+    overflow-x: hidden;
+    padding-top: var(--header-height);
+    background: var(--white);
+    font-size: 1em;
+    font-weight: 100;
+    margin-right: 10px;
+}
