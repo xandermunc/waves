@@ -10,3 +10,13 @@
     transform: scale(0.99);
     border-radius: 15px;
 }
+
+.waves-image {
+    position: absolute;
+    mix-blend-mode: multiply;
+    width: 100%;
+    height: 100%;
+    background-image: url("../waves.jpg");
+    background-size: cover; 
+    background-position: center; 
+}

@@ -16,7 +16,7 @@
     left: 50%;
     width: 20px;
     height: 20px;
-    background-color: #09f;
+    background-color: var(--blue);
     border-radius: 50%;
     animation: orbit 2s linear infinite;
 }
@@ -44,3 +44,126 @@
         z-index: 3;
     }
 }
+
+/* TITLE ORBIT */
+
+.title-orbit-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+#title-orbit-text {
+    position: relative;
+    z-index: 2;
+}
+
+.title-planet-one {
+    position: absolute;
+    top: 35%; 
+    left: 52%; 
+    width: 50px;
+    height: 50px;
+    background-color: var(--blue);
+    border-radius: 50%;
+    animation: title-planet 3.5s linear infinite;
+}
+
+.title-planet-two {
+    position: absolute;
+    top: 35%; 
+    left: 52%; 
+    width: 30px;
+    height: 30px;
+    background-color: var(--orange);
+    border-radius: 50%;
+    animation: title-planet-two 4.5s linear infinite;
+}
+
+.title-planet-three {
+    position: absolute;
+    top: 35%; 
+    left: 52%; 
+    width: 20px;
+    height: 20px;
+    background-color: var(--pink);
+    border-radius: 50%;
+    animation: title-planet-three 4s linear infinite;
+}
+
+@keyframes title-planet {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(100px); 
+        z-index: 5;
+    }
+
+    25% {
+        z-index: 1;
+    }
+
+    50% {
+        z-index: 1;
+    }
+
+    75% {
+        z-index: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) translateX(100px); 
+        z-index: 5;
+    }
+}
+
+@keyframes title-planet-two {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(120px); 
+        z-index: 5;
+    }
+
+    25% {
+        z-index: 1;
+    }
+
+    50% {
+        z-index: 1;
+    }
+
+    75% {
+        z-index: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) translateX(120px); 
+        z-index: 5;
+    }
+}
+
+@keyframes title-planet-three {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(60px); 
+        z-index: 3;
+    }
+
+    20% {
+        z-index: 3;
+    }
+
+    25% {
+        z-index: 1;
+    }
+
+    50% {
+        z-index: 1;
+    }
+
+    75% {
+        z-index: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) translateX(60px); 
+        z-index: 3;
+    }
+}
+

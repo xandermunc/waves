@@ -67,9 +67,24 @@
     border-bottom: none;
     text-align: center;
     line-height: var(--header-height);
+    font-weight: 100;
+}
+
+.large-vertical-column-item.blue:hover span {
+    color: var(--blue);
+}
+
+.large-vertical-column-item.orange:hover span {
+    color: var(--orange);
+}
+
+.large-vertical-column-item.green:hover span {
+    color: var(--green);
+}
+
+.large-vertical-column-item span {
     font-family: lexend-semi;
     font-size: var(--big-header-font-size);
-    font-weight: 100;
 }
 
 .large-vertical-column {

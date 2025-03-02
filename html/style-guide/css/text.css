@@ -107,3 +107,94 @@ p.hoverable-text-underline::after {
     opacity: 1;
     transform: scaleX(1);
 }
+
+.large-hoverable-text-underline-parent {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.large-hoverable-text-underline-parent span {
+    position: relative;
+    display: inline-block;
+}
+
+.large-hoverable-text-underline-parent span::before {
+    content: ""; 
+    position: absolute;
+    left: 0;
+    bottom: -3.6em; 
+    font-size: 1.2rem; 
+    font-family: Lexend;
+    white-space: nowrap;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.large-hoverable-text-underline-parent.glossary span::before {
+    content: "Learn the basics of waves and their vocab"; 
+}
+
+.large-hoverable-text-underline-parent.atoms span::before {
+    content: "Play with atoms and their quantum structure"; 
+}
+
+.large-hoverable-text-underline-parent.circles span::before {
+    content: "Discover the connections between everything with circles"; 
+}
+
+.large-hoverable-text-underline-parent span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--blue);
+    transform: scaleX(0); 
+    transition: transform 0.3s ease-in-out;
+}
+
+.large-hoverable-text-underline-parent.blue span::after {
+    background-color: var(--blue);
+}
+
+.large-hoverable-text-underline-parent.orange span::after {
+    background-color: var(--orange);
+}
+
+.large-hoverable-text-underline-parent.green span::after {
+    background-color: var(--green);
+}
+
+.large-hoverable-text-underline-parent:hover span::before {
+    opacity: 1; 
+}
+
+.large-hoverable-text-underline-parent:hover span::after {
+    transform: scaleX(1); 
+}
+
+/* TITLE */
+
+.title {
+    width: 100vw;
+    height: calc(100vh - var(--header-height));
+}
+
+.title-text-parent {
+    height: calc(100vh - var(--header-height) - var(--header-height));
+    margin-bottom: calc(var(--header-height));
+}
+
+.title-text,
+.title-text span{
+    color: var(--white);
+    font-family: Lexend-semi;
+    font-size: var(--title-font-size);
+}
+
+.tab {
+    display: inline-block;
+    text-indent: 2em;
+}

@@ -1,3 +1,40 @@
-.gradient {
-    background: linear-gradient(to bottom, var(--blue), var(--pink), var(--orange));
+.gradient-two {
+    background: linear-gradient(to bottom, var(--blue), var(--light-blue));
 }
+
+.gradient-one {
+    /* background: linear-gradient(to bottom, var(--deep-blue), var(--pink)); */
+    background: linear-gradient(to bottom, var(--black), var(--deep-blue), var(--pink));
+}
+/* 
+.gradient-one {
+    position: relative; 
+    width: 100vw; 
+    overflow: hidden; 
+}
+
+.gradient-one::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, var(--black), var(--deep-blue), var(--pink));
+    z-index: -1; 
+}
+
+.gradient-one::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../Pink.png");
+    background-size: cover; 
+    background-position: center; 
+    mix-blend-mode:hard-light; 
+    z-index: 0; 
+    pointer-events: none; 
+} */

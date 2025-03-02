@@ -13,8 +13,8 @@
     --green: #090;
     --pink: #f9f;
     --cyan: #099;
-    --purple: #60f;
-    /* 90f */
+    --purple: #90f;
+    /* 90f / 60f */
     --light-green: #9f0;
     --light-purple: #99f;
     --header-height: 90px;
@@ -24,6 +24,7 @@
     --large-paragraph-font-size: 1.2em;
     --paragraph-font-size: 1.1em;
     --big-header-font-size: 4em;
+    --title-font-size: 10rem;
     --ease-time: 0.2s;
     --two-header-divs: calc(100vw / 8 * 2);
     --one-third: calc(100vw / 3);
