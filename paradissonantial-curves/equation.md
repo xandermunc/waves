@@ -1,5 +1,6 @@
 $$
 \left( \sum_{n=1}^{N} A \sin(i_n \theta+\phi), B \cos(i_v \theta) \right) \theta \in [0, λ] \\[10pt]
+\left( \prod_{n=3}^{N} \sin(i_n \theta), \cos(i_v \theta) \right) \theta \in [0, λ] \\[10pt]
 B = A \cdot N \\[10pt]
 i_n = \frac{a_n}{b_n} \\[10pt]
 L_b = \text{LCM}\{ b_n \} \\[10pt]

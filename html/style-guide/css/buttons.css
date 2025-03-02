@@ -1,13 +1,10 @@
 /* PILL BUTTON */
 .pill-button {
     height: var(--header-height);
-    width: 25vw;
-    /* var this */
-    /* border: var(--border-width) var(--black) solid; */
+    width: var(--two-header-divs);
+    border: var(--border-width) var(--black) solid;
     margin-bottom: var(--header-height);
-    background-color: var(--blue);
-    border-radius: 100px;
-    /* not precise */
+    border-radius: var(--header-height);
     font-size: 1em;
     font-weight: 100;
     font-size: var(--large-paragraph-font-size);
@@ -15,7 +12,7 @@
 
 .pill-button:hover {
     color: var(--white);
-    background-color: var(--deep-blue);
+    background-color: var(--pink);
     border: none;
 }
 

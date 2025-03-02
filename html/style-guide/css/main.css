@@ -18,11 +18,16 @@
     --light-green: #9f0;
     --light-purple: #99f;
     --header-height: 90px;
+    --triple-header-height: calc(var(--header-height) * 3);
     --border-width: 1.5px;
     --margin-bottom: 10px;
     --large-paragraph-font-size: 1.2em;
     --paragraph-font-size: 1.1em;
+    --big-header-font-size: 4em;
     --ease-time: 0.2s;
+    --two-header-divs: calc(100vw / 8 * 2);
+    --one-third: calc(100vw / 3);
+    --two-thirds: calc(100vw / 3 * 2);
 }
 
 @font-face {
@@ -53,7 +58,7 @@
     user-select: none;
     overscroll-behavior: none;
     font-family: Lexend;
-    transition: var(--ease-time) ease all;
+    transition: var(--ease-time) ease all, 0s ease width, 0s ease height;
 }
 
 /* .cursor {

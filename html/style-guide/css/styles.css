@@ -14,7 +14,7 @@
 }
 
 .one-third {
-    width: calc(100vw / 3);
+    width: var(--one-third);
 }
 
 .no-bottom-border {
