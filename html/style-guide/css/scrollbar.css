@@ -3,10 +3,26 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-    background: transparent;
-    height: 200vh;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%, 
+        transparent calc(var(--header-height) - var(--border-width)), 
+        var(--black) calc(var(--header-height) - var(--border-width)), 
+        var(--black) calc(var(--header-height)),
+        transparent calc(var(--header-height) - var(--border-width)),
+        transparent 100% 
+    );
+    height: 100vh; 
 }
 
 body::-webkit-scrollbar-thumb {
-    background: var(--black);
+    background: linear-gradient(
+        to bottom,
+        transparent 0%, 
+        transparent calc(var(--header-height) - var(--border-width)), 
+        var(--black) calc(var(--header-height) - var(--border-width)), 
+        var(--black) calc(var(--header-height)),
+        var(--black) 100%
+    );
+    height: 300px;
 }
