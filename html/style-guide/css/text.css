@@ -13,6 +13,7 @@ p {
     font-size: var(--header-button-font-size);
     /* font-size: var(--paragraph-font-size); */
     font-family: Lexend-Light;
+    letter-spacing: 0.5px;
 }
 
 strong {
@@ -184,8 +185,8 @@ p.hoverable-text-underline::after {
     background-color: var(--orange);
 }
 
-.large-hoverable-text-underline-parent.green span::after {
-    background-color: var(--green);
+.large-hoverable-text-underline-parent.pink span::after {
+    background-color: var(--pink);
 }
 
 .large-hoverable-text-underline-parent:hover span::before {

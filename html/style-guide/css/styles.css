@@ -17,6 +17,14 @@
     margin-bottom: var(--header-height);
 }
 
+.no-margin-bottom {
+    margin-bottom: none !important;
+}
+
+.no-padding-bottom {
+    padding-bottom: none !important;
+}
+
 .margin-bottom-large {
     margin-bottom: 40px;
 }

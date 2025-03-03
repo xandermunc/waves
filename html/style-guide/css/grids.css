@@ -74,8 +74,8 @@
     color: var(--orange);
 }
 
-.large-vertical-column-item.green:hover span {
-    color: var(--green);
+.large-vertical-column-item.pink:hover span {
+    color: var(--pink);
 }
 
 .large-vertical-column-item span {

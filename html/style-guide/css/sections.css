@@ -3,8 +3,15 @@ section.white {
     width: 100vw;
     background-color: var(--white);
     padding-bottom: var(--header-height);
+    z-index: 3;
+}
+
+section {
+    background-color: var(--white);
+    z-index: 3;
 }
 
 .small-section {
     width: 100vw;
+    z-index: -1;
 }

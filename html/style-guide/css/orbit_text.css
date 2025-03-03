@@ -12,7 +12,7 @@
 
 .orbit {
     position: absolute;
-    top: 60%;
+    top: 68%;
     left: 50%;
     width: 20px;
     height: 20px;
@@ -111,6 +111,10 @@
 
     75% {
         z-index: 1;
+    }
+
+    90% {
+        z-index: 5;
     }
 
     100% {

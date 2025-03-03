@@ -12,7 +12,7 @@
 
 .pill-button:hover {
     color: var(--white);
-    background-color: var(--pink);
+    background-color: var(--blue);
     border: none;
 }
 

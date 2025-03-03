@@ -1,0 +1,48 @@
+/* PARALLAX */
+
+.parallax-container {
+    position: relative;
+    display: inline-block;
+}
+
+#parallax-text {
+    position: relative;
+    z-index: 2;
+}
+
+.parallax-dot-one {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--pink);
+    transform: translate(700%, -500%);
+    transition: none;
+    z-index: -5;
+}
+
+.parallax-dot-two {
+    background-color: var(--orange);
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-600%, -100%);
+    transition: none;
+    z-index: -5;
+}
+
+.parallax-dot-three {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--blue);
+    transform: translate(100%, -50%);
+    transition: none;
+    z-index: 5;
+}
+
+.no-overflow {
+    overflow: hidden;
+}
