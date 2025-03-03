@@ -52,6 +52,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'inter-bold';
+    src: url('../../../fonts/Inter/static/Inter_18pt-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;

@@ -6,6 +6,16 @@
     border-radius: 10px;
 }
 
+.canvas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: var(--triple-header-height);
+    margin-top: 40px; 
+    /* important */
+}
+
 .image:hover {
     transform: scale(0.99);
     border-radius: 15px;
@@ -19,4 +29,13 @@
     background-image: url("../waves.jpg");
     background-size: cover; 
     background-position: center; 
+}
+
+#pd-curves {
+    height: 450px;
+    background-image: url("../curves/6.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    transition: none;
 }

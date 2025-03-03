@@ -3,8 +3,8 @@
 }
 
 .gradient-one {
-    /* background: linear-gradient(to bottom, var(--deep-blue), var(--pink)); */
-    background: linear-gradient(to bottom, var(--black), var(--deep-blue), var(--pink));
+    background: linear-gradient(to bottom, var(--deep-blue), var(--pink));
+    /* background: linear-gradient(to bottom, var(--black), var(--deep-blue), var(--pink)); */
 }
 /* 
 .gradient-one {

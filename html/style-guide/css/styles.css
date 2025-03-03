@@ -14,9 +14,17 @@
 }
 
 .one-third {
-    width: var(--one-third);
+    width: var(--one-third) !important;
 }
 
 .no-bottom-border {
     border-bottom: none !important;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.gap {
+    gap: 100px !important;
 }

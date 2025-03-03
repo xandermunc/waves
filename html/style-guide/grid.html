@@ -97,12 +97,21 @@
             <div class="large-vertical-column">
                 <div class="large-vertical-column-item large-hoverable-text-underline-parent blue glossary">
                     <span>Glossary</span>
+                    <div class="canvas">
+                        <div id="glossary"></div>
+                    </div>
                 </div>
                 <div class="large-vertical-column-item large-hoverable-text-underline-parent orange atoms">
                     <span>Atoms</span>
+                    <div class="canvas">
+                        <!-- <div id="atoms"></div> -->
+                    </div>
                 </div>
                 <div class="large-vertical-column-item large-hoverable-text-underline-parent green circles">
                     <span>Circles</span>
+                    <div class="canvas">
+                        <div id="circles"></div>
+                    </div>
                 </div>
             </div>
 
@@ -123,26 +132,22 @@
             </div>
         </div>
 
-        <div class="small-section grid three-column gradient-two">
-            <!-- needs work make flexbox  -->
-            <div class="centered span-two">
-                <div class="one-third">
-                    <h1 class="big-header">Quantum</h1>
-                    <p class="large-text-paragraph margin-bottom-large">Lorem ipsum dolor sit, amet consectetur
-                        adipisicing elit.
-                        Quas porro sint rerum inventore necessitatibus corrupti harum aut, est animi ipsum fuga
-                        veritatis. Explicabo ab dolore iusto odit. Quidem perspiciatis cum ducimus officia vero nihil
-                        vitae placeat earum quod iusto pariatur, cupiditate temporibus rem repellat iste maxime ea
-                        possimus reiciendis sint quis? Voluptates tenetur expedita illo necessitatibus odit cupiditate,
-                        ullam optio ab nemo vitae aliquid soluta itaque harum delectus quod natus ex nobis voluptate in
-                        temporibus aliquam esse!
-                    </p>
-                    <a class="pill-button-small centered" href="../midi/combined/combined.html">
-                        PARAMETRIC CURVES
-                    </a>
-                </div>
+        <div class="small-section two-thirds gradient-two centered row gap">
+            <div class="one-third">
+                <h1 class="big-header">Sonofunctia</h1>
+                <p class="large-text-paragraph margin-bottom-large">Lorem ipsum dolor sit, amet consectetur adipisicing
+                    elit. Quas porro sint rerum inventore necessitatibus corrupti harum aut, est animi ipsum fuga
+                    veritatis. Explicabo ab dolore iusto odit. Quidem perspiciatis cum ducimus officia vero nihil vitae
+                    placeat earum quod iusto pariatur, cupiditate temporibus rem repellat iste maxime ea possimus
+                    reiciendis sint quis? Voluptates tenetur expedita illo necessitatibus odit cupiditate, ullam optio
+                    ab nemo vitae aliquid soluta itaque harum delectus quod natus ex nobis voluptate in temporibus
+                    aliquam esse!
+                </p>
+                <a class="pill-button-small centered" href="../midi/combined/combined.html">
+                    MIDI WEBSITE
+                </a>
             </div>
-            <div class="centered">test</div>
+            <div class="one-third" id="pd-curves"></div>
         </div>
 
         <div class="grid three-column" style="margin-top: -1px;">
@@ -258,6 +263,8 @@
     <script src="atom.js"></script>
     <script src="flowfield.js"></script>
     <script src="wave.js"></script>
+    <!-- <script src="circles.js"></script> -->
+    <!-- <script src="glossary.js"></script> -->
 </body>
 
 </html>

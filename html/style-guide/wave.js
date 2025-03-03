@@ -1,22 +1,22 @@
-let waveSketch = function(p) {
+let waveSketch = function (p) {
     let angle = 0;
     let amplitude = 12;
     let circleSize = 15;
-    let frequency; 
-    let circleColor; 
+    let frequency;
+    let circleColor;
 
-    p.setup = function() {
+    p.setup = function () {
         const canvas = p.createCanvas(100, 80);
         canvas.parent('wave');
     };
 
-    p.draw = function() {
+    p.draw = function () {
         frequency = p.lerp(0.1, 0.2, (p.sin(angle * 0.5) + 1) / 2);
-        
-        let startColor = p.color('#f00'); 
-        let endColor = p.color('#09f');  
+
+        let startColor = p.color('#f00');
+        let endColor = p.color('#09f');
         let lerpAmount = (p.sin(angle * 0.5) + 1) / 2;
-        circleColor = p.lerpColor(startColor, endColor, lerpAmount); 
+        circleColor = p.lerpColor(startColor, endColor, lerpAmount);
 
         p.background(255);
         p.strokeWeight(2);
@@ -32,9 +32,9 @@ let waveSketch = function(p) {
         let circleX = p.width / 2;
         let circleY = p.height / 2 + p.sin(circleX * frequency + angle) * amplitude;
         p.noStroke();
-        p.fill(circleColor); 
+        p.fill(circleColor);
         p.ellipse(circleX, circleY, circleSize, circleSize);
-        
+
         angle += 0.05;
     };
 };
