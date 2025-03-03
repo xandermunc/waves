@@ -10,7 +10,8 @@ let superposition = function (p) {
   };
 
   p.draw = function () {
-      p.background(255);
+    //   p.background(255);
+      p.clear();
       p.strokeWeight(2);
       p.noFill();
 

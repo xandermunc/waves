@@ -14,6 +14,10 @@
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+.four-column {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 .span-two {
     display: flex;
     flex-direction: column;
@@ -132,6 +136,12 @@
 
 /* HOVERABLE GRID ITEMS */
 
+.hoverable-item.active,
+.hoverable-item-deep-blue.active {
+    background-color: var(--blue);
+    border-bottom: none;
+}
+
 .hoverable-item:hover {
     background-color: var(--blue);
 }
@@ -164,6 +174,6 @@
     background-color: var(--red);
 }
 
-.hoverable-item-red:hover {
-    background-color: var(--red);
+.hoverable-item-deep-blue:hover {
+    background-color: var(--deep-blue);
 }

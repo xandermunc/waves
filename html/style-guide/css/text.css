@@ -41,22 +41,22 @@ h1.white {
 }
 
 h1.section-title {
-    /* display: inline-block; */
+    display: inline-block;
     border-bottom: var(--border-width) solid var(--black);
     padding-bottom: 4px;
     font-size: var(--section-title-font-size);
     font-weight: 500;
-    margin-top: 100px;
+    margin-top: var(--header-height);
     margin-bottom: calc(var(--paragraph-font-size) * 2);
 }
 
 h2.section-title {
     display: inline-block;
-    /* border-bottom: var(--border-width) solid var(--black); */
-    /* padding-bottom: 4px; */
+    border-bottom: var(--border-width) solid var(--black);
+    padding-bottom: 4px;
     font-size: var(--section-title-font-size);
     font-weight: 500;
-    margin-top: 100px;
+    margin-top: var(--header-height);
     padding-bottom: var(--paragraph-font-size);
 }
 
@@ -71,11 +71,26 @@ p.paragraph {
     padding-bottom: var(--paragraph-font-size);
 }
 
+p.paragraph.white {
+    color: var(--white);
+}
+
 .big-header {
     font-family: lexend-semi;
     font-size: var(--big-header-font-size);
     margin-bottom: var(--margin-bottom);
     padding-top: 80px;
+}
+
+.big-header.underline {
+    display: inline-block;
+    font-family: lexend-semi;
+    font-size: var(--big-header-font-size);
+    /* margin-bottom: var(--margin-bottom); */
+    padding-top: 80px;
+    padding-bottom: 4px;
+    border-bottom: var(--border-width) solid var(--black);
+    margin-bottom: calc(var(--paragraph-font-size) * 2);
 }
 
 p.large-text-paragraph {
@@ -104,6 +119,10 @@ p.large-text-paragraph {
 }
 
 .hoverable-text-white:hover {
+    color: var(--white);
+}
+
+.hoverable-text-white.active {
     color: var(--white);
 }
 

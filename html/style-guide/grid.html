@@ -122,7 +122,7 @@
                 <div class="parallax-dot-one"></div>
                 <div class="parallax-dot-two"></div>
                 <div class="centered">
-                    <h1 class="white" id="parallax-text">Get started exploring with the lessons below.</h1>
+                    <h1 class="white" id="parallax-text">Get started by exploring the lessons below.</h1>
                 </div>
             </div>
         </div>
@@ -288,18 +288,18 @@
         const dotOne = document.querySelector('.parallax-dot-one');
         const dotTwo = document.querySelector('.parallax-dot-two');
         const dotThree = document.querySelector('.parallax-dot-three');
-        const initialOffsetOne = 1160; 
-        const initialOffsetTwo = 1000; 
-        const initialOffsetThree = 600; 
+        const initialOffsetOne = 1160;
+        const initialOffsetTwo = 1000;
+        const initialOffsetThree = 600;
 
         function updateDotPosition() {
-            const scrollOffsetOne = window.scrollY / 10; 
+            const scrollOffsetOne = window.scrollY / 10;
             dotOne.style.top = `${window.innerHeight / 2 + scrollOffsetOne + initialOffsetOne}px`;
             dotOne.style.left = `${window.innerWidth / 2}px`;
-            const scrollOffsetTwo = window.scrollY / 5; 
+            const scrollOffsetTwo = window.scrollY / 5;
             dotTwo.style.top = `${window.innerHeight / 2 + scrollOffsetTwo + initialOffsetTwo}px`;
             dotTwo.style.left = `${window.innerWidth / 2}px`;
-            const scrollOffsetThree = window.scrollY / 2; 
+            const scrollOffsetThree = window.scrollY / 2;
             dotThree.style.top = `${window.innerHeight / 2 + scrollOffsetThree + initialOffsetThree}px`;
             dotThree.style.left = `${window.innerWidth / 2}px`;
         }

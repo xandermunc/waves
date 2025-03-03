@@ -6,7 +6,12 @@ section.white {
     z-index: 3;
 }
 
+section.blue {
+    background-color: var(--blue);
+}
+
 section {
+    width: 100vw;
     background-color: var(--white);
     z-index: 3;
 }

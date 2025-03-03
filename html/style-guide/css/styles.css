@@ -17,12 +17,24 @@
     margin-bottom: var(--header-height);
 }
 
+.small-margin-bottom {
+    margin-bottom: var(--paragraph-font-size);
+}
+
 .no-margin-bottom {
-    margin-bottom: none !important;
+    margin-bottom: 0 !important;
+}
+
+.no-margin-top {
+    margin-top: 0 !important;
+}
+
+.no-padding-top {
+    padding-top: 0 !important;
 }
 
 .no-padding-bottom {
-    padding-bottom: none !important;
+    padding-bottom: 0 !important;
 }
 
 .margin-bottom-large {
@@ -39,6 +51,10 @@
 
 .no-bottom-border {
     border-bottom: none !important;
+}
+
+.bottom-border {
+    border-bottom: var(--black) var(--border-width) solid !important;
 }
 
 .row {
