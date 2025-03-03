@@ -13,6 +13,7 @@ body::-webkit-scrollbar-track {
         transparent 100% 
     );
     height: 100vh; 
+    /* border: var(--black) var(--stroke-weight) solid; */
 }
 
 body::-webkit-scrollbar-thumb {

@@ -10,7 +10,8 @@ h2 {
 
 p {
     font-weight: 100;
-    font-size: 1em;
+    font-size: var(--header-button-font-size);
+    /* font-size: var(--paragraph-font-size); */
     font-family: Lexend-Light;
 }
 
@@ -27,6 +28,10 @@ strong.red {
 a {
     text-decoration: none;
     color: var(--black);
+}
+
+h1.white {
+    color: var(--white);
 }
 
 .huge-text {
@@ -61,7 +66,7 @@ span.inter {
 p.paragraph {
     font-size: var(--paragraph-font-size);
     font-weight: 300;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     padding-bottom: var(--paragraph-font-size);
 }
 
@@ -77,9 +82,10 @@ p.large-text-paragraph {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    width: 33vw;
+    width: var(--one-third);
     font-size: var(--large-paragraph-font-size);
-    line-height: 1.3em;
+    /* letter-spacing: 0.5px; */
+    /* line-height: 1.3rem; */
 }
 
 /* TEXT HOVER STATES */

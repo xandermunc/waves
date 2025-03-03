@@ -1,17 +1,25 @@
 .gradient-two {
     background: linear-gradient(to bottom, var(--blue), var(--light-blue));
     /* background-attachment: fixed;  */
+    background-attachment: fixed;
 }
 
 .gradient-one {
     background: linear-gradient(to bottom, var(--deep-blue), var(--blue-two), var(--pink));
     /* background: linear-gradient(to bottom, var(--black), var(--deep-blue), var(--pink)); */
-    background-attachment: fixed; 
+    background-attachment: fixed;
+    border-bottom: var(--border-width) var(--black) solid;
 }
 
 .gradient-three {
     background: linear-gradient(to bottom, var(--white), var(--light-blue), var(--blue));
-    background-attachment: fixed; 
+    background-attachment: fixed;
+    border-bottom: var(--border-width) var(--black) solid;
+}
+
+.gradient-four {
+    background: linear-gradient(to bottom, var(--pink), var(--deep-blue), var(--blue));
+    background-attachment: fixed;
     border-bottom: var(--border-width) var(--black) solid;
 }
 

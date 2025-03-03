@@ -23,9 +23,10 @@
     --border-width: 1.5px;
     --margin-bottom: 10px;
     --section-title-font-size: 1.5rem;
-    --large-paragraph-font-size: 1.2em;
-    --paragraph-font-size: 1.1em;
-    --big-header-font-size: 4em;
+    --large-paragraph-font-size: 1.2rem;
+    --paragraph-font-size: 1.1rem;
+    --big-header-font-size: 4rem;
+    --header-button-font-size: 1rem;
     --title-font-size: 10rem;
     --ease-time: 0.2s;
     --two-header-divs: calc(100vw / 8 * 2);

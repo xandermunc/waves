@@ -5,8 +5,16 @@
     justify-content: center;
 }
 
-.margin-bottom {
+/* .margin-bottom {
     margin-bottom: var(--margin-bottom);
+} */
+
+.margin-top {
+    margin-top: var(--header-height);
+}
+
+.margin-bottom {
+    margin-bottom: var(--header-height);
 }
 
 .margin-bottom-large {
