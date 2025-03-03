@@ -6,6 +6,7 @@
     --off-white: #e1e1e1;
     --deep-red: #900;
     --deep-blue: #009;
+    --blue-two: #03c;
     --red: #f00;
     --blue: #09f;
     --light-blue: #7cf;
@@ -21,6 +22,7 @@
     --triple-header-height: calc(var(--header-height) * 3);
     --border-width: 1.5px;
     --margin-bottom: 10px;
+    --section-title-font-size: 1.5rem;
     --large-paragraph-font-size: 1.2em;
     --paragraph-font-size: 1.1em;
     --big-header-font-size: 4em;
@@ -55,6 +57,13 @@
 @font-face {
     font-family: 'inter-bold';
     src: url('../../../fonts/Inter/static/Inter_18pt-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'inter';
+    src: url('../../../fonts/Inter/static/Inter_18pt-Medium.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }

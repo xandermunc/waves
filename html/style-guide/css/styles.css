@@ -17,6 +17,10 @@
     width: var(--one-third) !important;
 }
 
+.two-thirds {
+    width: var(--two-thirds) !important;
+}
+
 .no-bottom-border {
     border-bottom: none !important;
 }

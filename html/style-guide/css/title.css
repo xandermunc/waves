@@ -1,0 +1,38 @@
+.title {
+    width: 100vw;
+    height: calc(100vh - var(--header-height));
+}
+
+.title-text-parent {
+    height: calc(100vh - var(--header-height) - var(--header-height));
+    margin-bottom: calc(var(--header-height));
+}
+
+.title-text,
+.title-text span {
+    color: var(--white);
+    font-family: Lexend-semi;
+    font-size: var(--title-font-size);
+}
+
+.title-text-black,
+.title-text-black span {
+    font-family: Lexend-semi;
+    font-size: var(--title-font-size);
+    color: var(--black) !important;
+}
+
+.tab,
+.tab-black {
+    display: inline-block;
+    text-indent: 2em;
+}
+
+.tab.black {
+    color: var(--black) !important;
+}
+
+.title-paragraph {
+    position: absolute;
+    color: var(--white);
+}
