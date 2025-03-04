@@ -1,5 +1,4 @@
 section.white {
-    /* margin-top: 100vh; */
     width: 100vw;
     background-color: var(--white);
     padding-bottom: var(--header-height);

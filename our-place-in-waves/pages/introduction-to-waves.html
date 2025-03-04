@@ -5,16 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <title>An Introduction to Waves</title> <!-- <link rel="stylesheet" href="styles.css"> -->
-    <link rel="stylesheet" href="../../html/style-guide/css/main.css">
-    <link rel="stylesheet" href="../../html/style-guide/css/grids.css">
-    <link rel="stylesheet" href="../../html/style-guide/css/header_footer.css">
-    <link rel="stylesheet" href="../../html/style-guide/css/scrollbar.css">
-    <link rel="stylesheet" href="../../html/style-guide/css/sections.css">
-    <link rel="stylesheet" href="../../html/style-guide/css/styles.css">
-    <link rel="stylesheet" href="../../html/style-guide/css/text.css">
-    <link rel="stylesheet" href="../../html/style-guide/css/title.css">
-    <link rel="stylesheet" href="../../html/style-guide/css/gradients.css">
+    <title>An Introduction to Waves</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header_footer.css">
+    <link rel="stylesheet" href="../css/text.css">
+    <link rel="stylesheet" href="../css/grids.css">
+    <link rel="stylesheet" href="../css/orbit_text.css">
+    <link rel="stylesheet" href="../css/parallax_text.css">
+    <link rel="stylesheet" href="../css/svg_arrow_circle.css">
+    <link rel="stylesheet" href="../css/buttons.css">
+    <!-- <link rel="stylesheet" href="../css/blur.css"> -->
+    <link rel="stylesheet" href="../css/gradients.css">
+    <link rel="stylesheet" href="../css/sections.css">
+    <link rel="stylesheet" href="../css/images.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/title.css">
     <style>
         .nav-shell-shell {
             display: flex;
@@ -64,11 +70,11 @@
 <body>
     <header>
         <div class="header-item">
-            <div id="superposition"></div> <a href="../../html/style-guide/grid.html">
+            <div id="superposition"></div> <a href="landing-page.html">
                 <h1>SPECTRA</h1>
             </a>
         </div>
-        <div class="header-item hoverable-text-underline-parent"> <a href="../../glossary/main/index.html">
+        <div class="header-item hoverable-text-underline-parent"> <a href="introduction-to-waves.html">
                 <p class="hoverable-text-underline">Intro</p>
             </a> </div>
         <div class="header-item hoverable-text-underline-parent">
@@ -84,12 +90,29 @@
             <p class="hoverable-text-underline">About</p>
         </div>
     </header>
-    <!-- <div class="header-shell-shell"> <div class="header-shell"> <div class="header-text"> <div class="header-text-hover-shell hoverable-text-underline-parent"> <p class="header-text-hover hoverable-text-underline" id="top-header">Equation</p> </div> <div class="header-text-hover-shell hoverable-text-underline-parent"> <p class="header-text-hover hoverable-text-underline" id="glossary-header">Wavelength</p> </div> <div class="header-text-hover-shell hoverable-text-underline-parent"> <p class="header-text-hover hoverable-text-underline" id="bottom-header">Contrast</p> </div> </div> </div> </div> -->
+
+    <!-- <div class="header-shell-shell">
+        <div class="header-shell">
+            <div class="header-text">
+                <div class="header-text-hover-shell hoverable-text-underline-parent">
+                    <p class="header-text-hover hoverable-text-underline" id="top-header">Equation</p>
+                </div>
+                <div class="header-text-hover-shell hoverable-text-underline-parent">
+                    <p class="header-text-hover hoverable-text-underline" id="glossary-header">Wavelength</p>
+                </div>
+                <div class="header-text-hover-shell hoverable-text-underline-parent">
+                    <p class="header-text-hover hoverable-text-underline" id="bottom-header">Contrast</p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
     <div class="title centered gradient-three">
         <div class="title-text-parent centered title-orbit-container">
             <h1 class="title-text-black">An Intro<br><span class="tab black">to Waves</span></h1>
         </div>
     </div>
+
     <section class="bottom-border centered">
         <div class="two-thirds">
             <h1 class="big-header underline">Overview</h1>
@@ -98,6 +121,7 @@
                 learners to explore the phenomena of the beautiful world of waves around them. </p>
         </div>
     </section>
+
     <section class="bottom-border centered">
         <div class="two-thirds">
             <h1 class="big-header underline">What are Waves?</h1>
@@ -111,6 +135,17 @@
                 around us, from the light we see, to the sounds we hear, to the force that holds us to our planet.</p>
         </div>
     </section>
+
+    <div class="centered">
+        <div class="small-section gradient-five">
+            <div class="centered margin-top margin-bottom">
+                <div class="centered">
+                    <h1 class="white" id="parallax-text">Waves are patterns of moving energy.</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <section class="centered">
         <div class="two-thirds">
             <h1 class="big-header underline">The Anatomy of a Wave</h1>
@@ -155,28 +190,6 @@
 
     <section class="bottom-border centered">
         <div class="two-thirds">
-            <h1 class="section-title">Velocity</h1>
-            <p class="paragraph">Velocity is the speed of a wave. The measurement of a wave's velocity varies depending
-                on the type of wave and the medium being propagated.</p>
-            <p class="paragraph">The speed of light waves through a medium. In a vacuum, it is about 300,000 kilometers
-                per second, slowing in denser materials like water or glass.</p>
-            <p class="paragraph">The speed of sound waves is influenced by the medium's density and elasticity. In air,
-                the speed is about 343 meters per second, and it is generally faster in solids and liquids.</p>
-            <h1 class="section-title">Wavelength</h1>
-            <p class="paragraph">Wavelength is the distance between two consecutive points on a wave. Waves with shorter
-                wavelengths carry more energy than those with longer ones. Higher wavelengths correspond to shorter
-                frequencies as wavelength and frequency are inversely proportional.</p>
-            <p class="paragraph">In light, wavelength determines color. Shorter wavelengths produce cooler colors, while
-                longer wavelengths create warmer ones. Higher-energy lightwaves, those with shorter wavelengths, produce
-                higher temperatures as they are more energetic. For example, blue stars are much hotter than red stars.
-            </p>
-            <p class="paragraph margin-bottom">In sound, wavelength is relative to pitch with typical wavelengths in air
-                spanning from a few centimeters for high-pitched sounds, to several meters for lower-pitched ones. In
-                music, a high note has a much shorter wavelength than one a few octaves lower.</p>
-        </div>
-    </section>
-    <section class="bottom-border centered">
-        <div class="two-thirds">
             <h1 class="big-header underline">The Equation <span class="inter">v=fλ</span></h1>
             <p class="paragraph margin-bottom">The relationship between velocity, frequency, and wavelength is
                 represented by the equation v=fλ. It shows that the speed of a wave is equal to its frequency multiplied
@@ -185,6 +198,7 @@
                 properties interact with each other.</p>
         </div>
     </section>
+
     <footer>
         <div class="grid">
             <div class="grid-item-black">
@@ -195,17 +209,20 @@
             </div>
         </div>
     </footer>
-    <script src="../../html/style-guide/superposition.js"></script>
+    <script src="../js/superposition.js"></script>
     <script>
         const titleMap = {
-
+            "amplitude-selection": "Amplitude",
+            "frequency-selection": "Frequency",
+            "velocity-selection": "Velocity",
+            "wavelength-selection": "Wavelength"
         }
 
         const contentMap = {
             "amplitude-selection": "Amplitude is the wave's maximum displacement, the higher the amplitude, the more energy the wave carries. The energy of the wave is proportional to the square of the amplitude. It is measured in various units depending on the type of wave.<br><br>In light, amplitude affects intensity or brightness. It is commonly measured in electric field strength (Volts per meter, V/m).<br><br>In sound, amplitude corresponds to loudness and is expressed as pressure. It is measured in decibels (dB), which represents perceived loudness on a logarithmic scale.",
             "frequency-selection": "Frequency is the number of wave cycles that pass a given point in a second. It is measured in hertz (Hz) where one hertz equals one cycle per second. Higher frequencies correspond to shorter wavelengths as frequency and wavelength are inversely proportional. <br><br> In light, frequency is relative to color. Higher frequencies correspond to shorter wavelengths, resulting in cooler colors like blue and violet, while lower frequencies correspond to longer wavelengths, producing warmer colors like red and orange. <br><br> In sound, frequency determines pitch, measured by the number of vibrations of a sound wave per second in hertz. Higher frequencies produce high-pitched sounds, while lower frequencies produce low-pitched ones.",
-            "velocity-selection": "3",
-            "wavelength-selection": "4"
+            "velocity-selection": "Velocity is the speed of a wave. The measurement of a wave's velocity varies depending on the type of wave and the medium being propagated. <br><br> The speed of light waves through a medium. In a vacuum, it is about 300,000 kilometers per second, slowing in denser materials like water or glass. <br><br> The speed of sound waves is influenced by the medium's density and elasticity. In air, the speed is about 343 meters per second, and it is generally faster in solids and liquids.",
+            "wavelength-selection": "Wavelength is the distance between two consecutive points on a wave. Waves with shorter wavelengths carry more energy than those with longer ones. Higher wavelengths correspond to shorter frequencies as wavelength and frequency are inversely proportional.<br><br> In light, wavelength determines color. Shorter wavelengths produce cooler colors, while longer wavelengths create warmer ones. Higher-energy lightwaves, those with shorter wavelengths, produce higher temperatures as they are more energetic. For example, blue stars are much hotter than red stars. <br><br>In sound, wavelength is relative to pitch with typical wavelengths in air spanning from a few centimeters for high-pitched sounds, to several meters for lower-pitched ones. In music, a high note has a much shorter wavelength than one a few octaves lower."
         };
 
         document.querySelectorAll('.grid-item').forEach(item => {
@@ -220,11 +237,10 @@
                 item.classList.remove('hoverable-item-deep-blue');
                 item.querySelector('p').classList.add('active');
 
-                document.getElementById('anatomy-paragraph').innerHTML = contentMap[item.id];
+                document.getElementById('anatomy-title').innerHTML = titleMap[item.id];
                 document.getElementById('anatomy-paragraph').innerHTML = contentMap[item.id];
             });
         });
-
     </script>
 </body>
 

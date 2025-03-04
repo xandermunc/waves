@@ -36,35 +36,35 @@
 
 @font-face {
     font-family: 'Lexend';
-    src: url('../../../fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
+    src: url('../fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Lexend-Light';
-    src: url('../../../fonts/Lexend/static/Lexend-Light.ttf') format('truetype');
+    src: url('../fonts/Lexend/static/Lexend-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'lexend-semi';
-    src: url('../../../fonts/Lexend/static/Lexend-SemiBold.ttf') format('truetype');
+    src: url('../fonts/Lexend/static/Lexend-SemiBold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'inter-bold';
-    src: url('../../../fonts/Inter/static/Inter_18pt-Bold.ttf') format('truetype');
+    src: url('../fonts/Inter/static/Inter_18pt-Bold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'inter';
-    src: url('../../../fonts/Inter/static/Inter_18pt-Bold.ttf') format('truetype');
+    src: url('../fonts/Inter/static/Inter_18pt-Bold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
