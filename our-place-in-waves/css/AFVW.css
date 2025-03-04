@@ -1,3 +1,21 @@
+@font-face {
+    font-family: 'Lexend';
+    src: url('../fonts/Lexend/static/Lexend-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'inter';
+    src: url('../fonts/Inter/static/Inter_18pt-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+span.inter {
+    font-family: inter;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -74,11 +92,12 @@ input[type="range"]::-ms-thumb {
 
 label {
     align-self: left;
-    font-family: system-ui;
-    font-size: 1.5em;
+    font-family: Lexend;
+    font-size: 1.3em;
     width: 220px;
     color: white;
 }
+
 .wave-control-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
