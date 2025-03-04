@@ -75,6 +75,10 @@ p.paragraph.white {
     color: var(--white);
 }
 
+a.white {
+    color: var(--white) !important;
+}
+
 .big-header {
     font-family: lexend-semi;
     font-size: var(--big-header-font-size);
@@ -144,6 +148,10 @@ p.hoverable-text-underline::after {
     transition: var(--ease-time) ease all;
 }
 
+p.hoverable-text-underline.black::after {
+    background-color: var(--white);
+}
+
 .hoverable-text-underline-parent:hover p.hoverable-text-underline::after {
     opacity: 1;
     transform: scaleX(1);
@@ -160,11 +168,11 @@ p.hoverable-text-underline::after {
 }
 
 .large-hoverable-text-underline-parent span::before {
-    content: ""; 
+    content: "";
     position: absolute;
     left: 0;
-    bottom: -3.6em; 
-    font-size: 1.2rem; 
+    bottom: -3.6em;
+    font-size: 1.2rem;
     font-family: Lexend;
     white-space: nowrap;
     text-align: left;
@@ -173,15 +181,15 @@ p.hoverable-text-underline::after {
 }
 
 .large-hoverable-text-underline-parent.glossary span::before {
-    content: "Learn the basics of waves and their vocab"; 
+    content: "Learn the basics of waves and their vocab";
 }
 
 .large-hoverable-text-underline-parent.atoms span::before {
-    content: "Play with atoms and their quantum structure"; 
+    content: "Play with atoms and their quantum structure";
 }
 
 .large-hoverable-text-underline-parent.circles span::before {
-    content: "Discover the connections between everything with circles"; 
+    content: "Discover the connections between everything with circles";
 }
 
 .large-hoverable-text-underline-parent span::after {
@@ -192,7 +200,7 @@ p.hoverable-text-underline::after {
     width: 100%;
     height: 2px;
     background-color: var(--blue);
-    transform: scaleX(0); 
+    transform: scaleX(0);
     transition: transform 0.3s ease-in-out;
 }
 
@@ -209,9 +217,9 @@ p.hoverable-text-underline::after {
 }
 
 .large-hoverable-text-underline-parent:hover span::before {
-    opacity: 1; 
+    opacity: 1;
 }
 
 .large-hoverable-text-underline-parent:hover span::after {
-    transform: scaleX(1); 
+    transform: scaleX(1);
 }

@@ -53,6 +53,14 @@
     border-bottom: none !important;
 }
 
+.no-left-border {
+    border-left: none !important;
+}
+
+.no-right-border {
+    border-right: none !important;
+}
+
 .bottom-border {
     border-bottom: var(--black) var(--border-width) solid !important;
 }

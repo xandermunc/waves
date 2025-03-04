@@ -54,7 +54,7 @@ class Key {
 
     show() {
         if (activeNotesArturia.has(this.note)) {
-            fill('#03f');
+            fill('var(--blue)');
         } else if ([1, 3, 6, 8, 10].includes(this.note % 12)) {
             fill('#111'); 
         } else {

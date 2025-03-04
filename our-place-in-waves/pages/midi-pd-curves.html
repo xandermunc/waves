@@ -5,14 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parametric Curves</title>
-    <link rel="stylesheet" href="../../html/style-guide/styles.css">
+    <!-- <link rel="stylesheet" href="../../html/style-guide/styles.css"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header_footer.css">
+    <link rel="stylesheet" href="../css/text.css">
+    <link rel="stylesheet" href="../css/grids.css">
+    <link rel="stylesheet" href="../css/orbit_text.css">
+    <link rel="stylesheet" href="../css/parallax_text.css">
+    <link rel="stylesheet" href="../css/svg_arrow_circle.css">
+    <link rel="stylesheet" href="../css/buttons.css">
+    <!-- <link rel="stylesheet" href="../css/blur.css"> -->
+    <link rel="stylesheet" href="../css/gradients.css">
+    <link rel="stylesheet" href="../css/sections.css">
+    <link rel="stylesheet" href="../css/images.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/title.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="10" fill="%2303f"/></svg>') 10 10, none;
         }
 
         body {
@@ -21,9 +35,13 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #111;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="10" fill="%23f90"/></svg>') 10 10, none;
+            background-color: var(--off-black);
             overflow: hidden;
+            margin-right: 0;
+        }
+
+        .off-black {
+            border: var(--border-width) solid white;
         }
 
         .grid {
@@ -37,7 +55,7 @@
             justify-content: center;
             align-items: center;
             height: calc(100vh - (var(--header-height) * 3));
-            background-color: #111;
+            background-color: var(--off-black);
             border: var(--border-width) solid white;
             border-left: none;
             border-top: none;
@@ -47,9 +65,15 @@
         .keyboard-div {
             display: grid;
             height: calc(var(--header-height) * 2);
-            background-color: red;
             grid-template-columns: 1fr 2fr;
             width: 100vw;
+            border-left: none;
+            border-bottom: var(--off-black);
+            border-right: none;
+        }
+
+        .keyboard-div:last-child {
+            border-right: none;
         }
 
         .grid-item:last-child {
@@ -62,25 +86,6 @@
 
         #svgCanvas {
             filter: drop-shadow(0 0 75px #00f);
-        }
-
-        input[type="range"] {
-            appearance: none;
-            -webkit-appearance: none;
-            width: 200px;
-            background: white;
-            height: 4px;
-            border-radius: 2px;
-            cursor: pointer;
-            margin-top: 12px;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
         }
 
         #startButton {
@@ -98,14 +103,8 @@
             color: #111;
         }
 
-        .black {
-            background-color: #111;
-            color: white;
-            border: var(--border-width) white solid;
-        }
-
         .no-left-border {
-            border-left: none;
+            border-left: none !important;
         }
 
         .double-header-height {
@@ -137,24 +136,28 @@
 </head>
 
 <body>
-    <header>
-        <div class="header-item black no-left-border">
-            <h1>BIG ONE</h1>
+    <header class="off-black">
+        <div class="header-item">
+            <a href="landing-page.html" class="white">
+                <h1>SPECTRA</h1>
+            </a>
         </div>
-        <div class="header-item underline-parent black">
-            <p class="hoverable-underline white">ONE</p>
+        <div class="header-item hoverable-text-underline-parent">
+            <a href="introduction-to-waves.html" class="white">
+                <p class="hoverable-text-underline black">Intro</p>
+            </a>
         </div>
-        <div class="header-item underline-parent black">
-            <p class="hoverable-underline white">TWO</p>
+        <div class="header-item hoverable-text-underline-parent">
+            <p class="hoverable-text-underline black">Atoms</p>
         </div>
-        <div class="header-item underline-parent black">
-            <p class="hoverable-underline white">THREE</p>
+        <div class="header-item hoverable-text-underline-parent">
+            <p class="hoverable-text-underline black">Circles</p>
         </div>
-        <div class="header-item underline-parent black">
-            <p class="hoverable-underline white">FOUR</p>
+        <div class="header-item hoverable-text-underline-parent">
+            <p class="hoverable-text-underline black">Sonofunctia</p>
         </div>
-        <div class="header-item underline-parent black">
-            <p class="hoverable-underline white">FIVE</p>
+        <div class="header-item hoverable-text-underline-parent">
+            <p class="hoverable-text-underline black">About</p>
         </div>
     </header>
 
@@ -169,18 +172,19 @@
             <svg id="svgCanvas2" width="400" height="400"></svg>
         </div>
     </div>
+
     <div class="keyboard-div">
-        <div class="header-item double-header-height black no-left-border">
+        <div class="header-item double-header-height off-black no-bottom-border no-bottom-border">
             <canvas id="superposition" width="300" height="400"></canvas>
         </div>
-        <div class="header-item double-header-height black flex-row">
+        <div class="header-item double-header-height flex-row off-black no-bottom-border">
             <button id="startButton">Start Audio</button>
             <div id="arturia"></div>
         </div>
     </div>
-    <script src="arturia.js"></script>
-    <script src="parafull.js"></script>
-    <script src="audio.js"></script>
+    <script src="../js/midi_pd/arturia.js"></script>
+    <script src="../js/midi_pd/parafull.js"></script>
+    <script src="../js/midi_pd/audio.js"></script>
 </body>
 
 </html>

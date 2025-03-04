@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>
+    <title>Noise</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://unpkg.com/p5.js-svg@1.5.1"></script>
-    <script src="5.js"></script>
+    <script src="../js/noise/5.js"></script>
     <style>
         :root {
             --black: #000;
@@ -38,7 +38,7 @@
 
         @font-face {
             font-family: 'Lexend';
-            src: url('../../fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
+            src: url('../fonts/Lexend/static/Lexend-Light.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -62,13 +62,13 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: Funnel;
-            font-weight: 100;
-            letter-spacing: 0.7px;
+            font-family: Lexend;
+            /* letter-spacing: 0.7px; */
             background-color: var(--off-white);
             /* background-color: var(--black); */
             color: var(--off-black);
             font-weight: 100;
+            font-size: 0.9em;
             cursor: default;
         }
 
@@ -504,7 +504,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: Funnel;
+            font-family: Lexend;
             font-weight: 100;
             letter-spacing: 0.7px;
             background-color: var(--off-white);
