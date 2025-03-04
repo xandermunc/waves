@@ -9,8 +9,14 @@
     border-bottom: var(--border-width) var(--black) solid;
 }
 
-.gradient-three {
+/* .gradient-three {
     background: linear-gradient(to bottom, var(--white), var(--light-blue), var(--blue));
+    background-attachment: fixed;
+    border-bottom: var(--border-width) var(--black) solid;
+} */
+
+.gradient-three {
+    background: linear-gradient(to bottom, var(--white), var(--blue), var(--blue-two));
     background-attachment: fixed;
     border-bottom: var(--border-width) var(--black) solid;
 }

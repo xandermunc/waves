@@ -4,15 +4,56 @@ The Glossary of Light and Sound is an interactive resource for understanding the
 
 ## What are Waves? 
 
-Waves are patterns of moving energy.
+Waves are dynamic patterns of moving energy.
+Waves are dynamic patterns that transfer energy. !!!
+(Waves are dynamic patterns that transfer energy through a medium or space.)
+(Without "dynamic," saying "waves are patterns" might imply a fixed or stationary structure, like a frozen ripple in water. But waves are disturbances that propagate (move) and transfer energy, making them inherently dynamic.)
+(The word "dynamic" is important because it emphasizes that waves are not static—they involve continuous movement and change over time.)
+(For example:
+Sound waves are vibrations that move through air.
+Water waves are oscillations that travel across a surface.
+Light waves are electromagnetic disturbances that propagate through space.
+By including "dynamic," your definition correctly reflects the active and time-dependent nature of waves.)
+(Waves transfer energy, but the individual particles (in mechanical waves like sound or water) or the fields (in electromagnetic waves like light) oscillate in place rather than moving with the wave.
+The wave pattern moves, but in many cases, the energy does not physically flow like a moving object—it is transferred through interactions between particles or fields.)
 
 Waves move energy from one place to another, like ripples running on water or sound traveling through air.
 
 Light is a wave, and sound is a wave.
+(Light behaves like a wave, and sound is a wave.)
 
 Some waves transport energy by moving through matter, traveling through different mediums such as air, water, or solids. But, other waves can even move through empty space.
+(Some waves transfer energy by traveling through matter, moving through mediums like air, water, or solids. Others, like light, can even travel through empty space.)
 
 Understanding waves is the key to understanding how we perceive the world around us, from the light we see, to the sounds we hear, to the force that holds us to our planet. 
+(Understanding waves is key to understanding how we perceive the world around us, from the light we see to the sounds we hear, to the signals that connect us.)
+
+## INTRO INTRO INTRO 
+
+Waves are dynamic patterns that transfer energy.
+
+This is a complicated thought to describe a complicated process. Let's start by simplifying this sentence and defining what it means.  
+
+Waves are dynamic patterns...
+
+Waves are a repeating, structured motion that move in space and time. This means that if you observe a wave over time, you’ll see recurring features. They are dynamic because they move and change with time and are not a static structure. 
+
+Waves transfer energy...
+
+Some waves transfer energy by traveling through matter, causing particles in a medium, such as air, water, or solids, to move back and forth as the wave passes through. While other waves can even transfer energy through empty space.
+
+Waves are dynamic patterns that transfer energy.
+
+Waves are a repeating, structured motion that move in space and time. They Transfer energy through space by traveling through matter or moving through empty space. 
+
+Light behaves like a wave, and sound is a wave.
+
+## How do they move? 
+
+Oscilation 
+Propegation 
+Fields 
+Sources 
 
 ## The Anatomy of a Wave 
 
