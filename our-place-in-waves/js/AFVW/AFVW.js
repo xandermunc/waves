@@ -13,9 +13,9 @@ colorRect.style.backgroundColor = wavelengthToColor(initialWavelength);
 let velocity = parseFloat(velocitySlider.value);
 
 // Update displays for initial values
-velocityValueDisplay.textContent = velocity.toFixed(1);
-frequencyValueDisplay.textContent = frequencySlider.value;
-wavelengthValueDisplay.textContent = (velocity / frequencySlider.value).toFixed(1);
+// velocityValueDisplay.textContent = velocity.toFixed(1);
+// frequencyValueDisplay.textContent = frequencySlider.value;
+// wavelengthValueDisplay.textContent = (velocity / frequencySlider.value).toFixed(1);
 
 // Update frequency and wavelength based on velocity
 velocitySlider.addEventListener('input', () => {
@@ -24,8 +24,8 @@ velocitySlider.addEventListener('input', () => {
     const wavelength = velocity / frequency;
 
     wavelengthSlider.value = wavelength.toFixed(wavelengthSlider.min);
-    wavelengthValueDisplay.textContent = wavelength.toFixed(1);
-    velocityValueDisplay.textContent = velocity.toFixed(1);
+    // wavelengthValueDisplay.textContent = wavelength.toFixed(1);
+    // velocityValueDisplay.textContent = velocity.toFixed(1);
 });
 
 // Update wavelength based on frequency
@@ -34,8 +34,8 @@ frequencySlider.addEventListener('input', () => {
     const wavelength = velocity / frequency;
 
     wavelengthSlider.value = wavelength.toFixed(wavelengthSlider.min);
-    wavelengthValueDisplay.textContent = wavelength.toFixed(1);
-    frequencyValueDisplay.textContent = frequency.toFixed(1);
+    // wavelengthValueDisplay.textContent = wavelength.toFixed(1);
+    // frequencyValueDisplay.textContent = frequency.toFixed(1);
 });
 
 // Update frequency based on wavelength
@@ -44,57 +44,57 @@ wavelengthSlider.addEventListener('input', () => {
     const frequency = velocity / wavelength;
 
     frequencySlider.value = frequency.toFixed(frequencySlider.min);
-    frequencyValueDisplay.textContent = frequency.toFixed(1);
-    wavelengthValueDisplay.textContent = wavelength.toFixed(1);
+    // frequencyValueDisplay.textContent = frequency.toFixed(1);
+    // wavelengthValueDisplay.textContent = wavelength.toFixed(1);
 });
 
 frequencySlider.addEventListener('input', function () {
     if (parseFloat(velocitySlider.value) <= parseFloat(frequencySlider.value)) {
         velocitySlider.value = frequencySlider.value;
-        velocityValueDisplay.textContent = frequency.toFixed(1);
-        wavelengthValueDisplay.textContent = wavelength.toFixed(1);
+        // velocityValueDisplay.textContent = frequency.toFixed(1);
+        // wavelengthValueDisplay.textContent = wavelength.toFixed(1);
         wavelengthSlider.value = wavelengthSlider.min;
     } else if (parseFloat(frequencySlider.value) >= parseFloat(velocitySlider.value)) {
         frequencySlider.value = velocitySlider.value;
-        frequencyValueDisplay.textContent = velocity.toFixed(1);
-        wavelengthValueDisplay.textContent = wavelength.toFixed(1);
+        // frequencyValueDisplay.textContent = velocity.toFixed(1);
+        // wavelengthValueDisplay.textContent = wavelength.toFixed(1);
         wavelengthSlider.value = wavelengthSlider.min;
     } else {
         wavelengthSlider.value = (velocitySlider.value / frequencySlider.value).toFixed(1);
-        wavelengthValueDisplay.textContent = (velocitySlider.value / frequencySlider.value).toFixed(1);
+        // wavelengthValueDisplay.textContent = (velocitySlider.value / frequencySlider.value).toFixed(1);
     }
 });
 
 wavelengthSlider.addEventListener('input', function () {
     if (parseFloat(velocitySlider.value) <= parseFloat(wavelengthSlider.value)) {
         velocitySlider.value = wavelengthSlider.value;
-        velocityValueDisplay.textContent = wavelength.toFixed(1);
-        frequencyValueDisplay.textContent = frequency.toFixed(1);
+        // velocityValueDisplay.textContent = wavelength.toFixed(1);
+        // frequencyValueDisplay.textContent = frequency.toFixed(1);
         frequencySlider.value = frequencySlider.min;
     } else if (parseFloat(wavelengthSlider.value) >= parseFloat(velocitySlider.value)) {
         wavelengthSlider.value = velocitySlider.value;
-        wavelengthValueDisplay.textContent = velocity.toFixed(1);
-        frequencyValueDisplay.textContent = frequency.toFixed(1);
+        // wavelengthValueDisplay.textContent = velocity.toFixed(1);
+        // frequencyValueDisplay.textContent = frequency.toFixed(1);
         frequencySlider.value = frequencySlider.min;
     } else {
         frequencySlider.value = (velocitySlider.value / wavelengthSlider.value).toFixed(1);
-        frequencyValueDisplay.textContent = (velocitySlider.value / wavelengthSlider.value).toFixed(1);
+        // frequencyValueDisplay.textContent = (velocitySlider.value / wavelengthSlider.value).toFixed(1);
     }
 });
 
 velocitySlider.addEventListener('input', function () {
     if (parseFloat(wavelengthSlider.value) == parseFloat(wavelengthSlider.min) && parseFloat(velocitySlider.value) < parseFloat(frequencySlider.value)) {
         frequencySlider.value = velocitySlider.value;
-        frequencyValueDisplay.textContent = velocity.toFixed(1);
+        // frequencyValueDisplay.textContent = velocity.toFixed(1);
         wavelengthSlider.value = wavelengthSlider.min;
-        wavelengthValueDisplay.textContent = wavelength.toFixed(1);
+        // wavelengthValueDisplay.textContent = wavelength.toFixed(1);
     }
 });
 
 const minValue = velocitySlider.min;
 const maxValue = velocitySlider.max;
-console.log(minValue);
-console.log(maxValue);
+// console.log(minValue);
+// console.log(maxValue);
 
 // // // // // // // // // // // // // // // // // // // 
 
@@ -151,27 +151,41 @@ animate();
 log();
 
 const amplitudeSlider = document.getElementById('amplitude');
-const amplitudeValueDisplay = document.getElementById('amplitudeValue');
+// const amplitudeValueDisplay = document.getElementById('amplitudeValue');
 
-const minOpacity = 0.2; 
-const maxOpacity = 2; 
+const minOpacity = 0.2;
+const maxOpacity = 2;
 
 amplitudeSlider.addEventListener('input', () => {
     amplitude = parseFloat(amplitudeSlider.value);
-    amplitudeValueDisplay.textContent = Math.round(amplitude);
+    // amplitudeValueDisplay.textContent = Math.round(amplitude);
     log();
     const opacity = minOpacity + (amplitude / 100) * (maxOpacity - minOpacity);
     colorRect.style.opacity = opacity;
+    console.log(opacity)
+    // colorRect.style.width = '400px';
+    // colorRect.style.height = '400px';
+
+    // if (amplitude >= 51 && amplitude <= 100) {
+    //     const minHeight = 100;
+    //     const maxHeight = 150;
+    //     const minWidth = 100;
+    //     const maxWidth = 200;
+    //     const height = minHeight + ((amplitude - 51) / 49) * (maxHeight - minHeight);
+    //     const width = minWidth + ((amplitude - 51) / 49) * (maxWidth - minWidth);
+    //     colorRect.style.height = `${height}vh`;
+    //     colorRect.style.width = `${width}vw`;
+    // }
 
     if (amplitude >= 51 && amplitude <= 100) {
-        const minHeight = 100; 
-        const maxHeight = 150;
-        const minWidth = 100;
-        const maxWidth = 200;
-        const height = minHeight + ((amplitude - 51) / 49) * (maxHeight - minHeight);
+        const minHeight = 600;
+        const maxHeight = 1200;
+        const minWidth = 800;
+        const maxWidth = 1600;
         const width = minWidth + ((amplitude - 51) / 49) * (maxWidth - minWidth);
-        colorRect.style.height = `${height}vh`;
-        colorRect.style.width = `${width}vw`;
+        const height = minHeight + ((amplitude - 51) / 49) * (maxHeight - minHeight);
+        colorRect.style.height = `${height}px`;
+        colorRect.style.width = `${width}px`;
     }
 });
 
@@ -190,19 +204,19 @@ velocitySlider.addEventListener('input', () => {
 function updateFrequency() {
     const frequencyValue = parseFloat(frequencySlider.value);
     frequency = (velocity / frequencyValue);
-    log();
+    // log();
 }
 
 function updateWavelength() {
     const wavelengthValue = parseFloat(wavelengthSlider.value);
     wavelength = wavelengthValue * 100;
-    log();
+    // log();
 }
 
 function updateVelocity() {
     const velocityValue = parseFloat(velocitySlider.value);
     velocity = velocityValue;
-    log(); 
+    // log();
 }
 
 function updateWaveValues() {
@@ -213,11 +227,12 @@ function updateWaveValues() {
 }
 
 function log() {
-    console.clear();
-    console.log('frequency', frequency);
-    console.log('wavelength', wavelength);
-    console.log('velocity', velocity);
-    console.log('phase', phase);
+    // console.clear();
+    // console.log('frequency', frequency);
+    // console.log('wavelength', wavelength);
+    // console.log('velocity', velocity);
+    // console.log('phase', phase);
+    // console.log(opacity)
 }
 
 function wavelengthToColor(wavelength) {
@@ -258,6 +273,7 @@ function wavelengthToColor(wavelength) {
     g = Math.round(g * 255);
     b = Math.round(b * 255);
 
-    return `rgba(${r},${g},${b},${alpha})`;
+    const color = `rgba(${r},${g},${b},${alpha})`;
+    document.documentElement.style.setProperty('--input-color', color);
 }
 

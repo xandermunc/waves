@@ -1,6 +1,6 @@
 section.white {
     width: 100vw;
-    background-color: var(--white);
+    background-color: var(--white) !important;
     padding-bottom: var(--header-height);
     z-index: 3;
 }
@@ -12,10 +12,10 @@ section.blue {
 section {
     width: 100vw;
     background-color: var(--white);
-    z-index: 3;
+    z-index: 3 !important;
 }
 
 .small-section {
     width: 100vw;
-    z-index: -1;
+    z-index: -1 !important;
 }

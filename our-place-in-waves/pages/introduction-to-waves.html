@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../css/scrollbar.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/title.css">
+    <link rel="stylesheet" href="../css/AFVW.css">
     <style>
         .nav-shell-shell {
             display: flex;
@@ -189,20 +190,59 @@
         </div>
     </section>
 
-    <section class="bottom-border centered">
+    <div class="centered">
         <div class="two-thirds">
             <h1 class="big-header underline">The Equation <span class="inter">v=fλ</span></h1>
-            <p class="paragraph margin-bottom">The relationship between velocity, frequency, and wavelength is
+            <p class="paragraph">The relationship between velocity, frequency, and wavelength is
                 represented by the equation v=fλ. It shows that the speed of a wave is equal to its frequency multiplied
                 by its wavelength. This creates a connection between how fast a wave moves and its shape-related
                 properties. This equation is universal, applying to all types of waves, and illustrates how these
                 properties interact with each other.</p>
         </div>
-    </section>
+    </div>
 
-    <section class="bottom-border centered">
-        <iframe src="AFVW.html" style="border: none; width: 100vw; height: 100vh;" scrolling="no"></iframe>
-    </section>
+    <div class="small-section bottom-border centered">
+        <!-- <div class="two-thirds centered">
+            <h1 class="big-header white">Overview</h1>
+        </div> -->
+        <!-- <div class="centered" style="height: 60vh;"> -->
+            <canvas id="wave" width="800" height="300"></canvas>
+    
+            <div class="wave-control-grid">
+                <div class="wave-control-grid-item">
+                    <label for="amplitude">
+                        <h1>Amplitude</h1>
+                        <!-- <span id="amplitudeValue"> 50</span> px</h1> -->
+                    </label>
+                </div>
+                <input type="range" id="amplitude" min="5" max="100" value="50" step="0.001">
+                <div class="wave-control-grid-item">
+                    <label for="velocity">
+                        <h1>Velocity</h1>
+                        <!-- <span id="velocityValue"> 1.6</span> m/s</h1> -->
+                    </label>
+                </div>
+                <input type="range" id="velocity" min="1" max="5" value="1.6" step="0.001">
+                <div class="wave-control-grid-item">
+                    <label for="frequency">
+                        <h1>Frequency</h1>
+                        <!-- <span id="frequencyValue"> 1</span> Hz</h1> -->
+                    </label>
+                </div>
+                <input type="range" id="frequency" min="1" max="5" value="1" step="0.001">
+                <div class="wave-control-grid-item">
+                    <label for="wavelength">
+                        <h1>Wavelength</h1>
+                        <!-- <span class="inter">λ</span>: <span id="wavelengthValue"> 1.6</span >m</h1> -->
+                    </label>
+                </div>
+                <input type="range" id="wavelength" min="1" max="5" value="1.6" step="0.001">
+            </div>
+    
+            <div id="color-rect"></div>
+        <!-- </div> -->
+        <!-- <iframe src="AFVW.html" style="border: none; width: 100vw; height: 80vh;" scrolling="no"></iframe> -->
+    </div>
 
     <section class="bottom-border centered">
         <div class="two-thirds">
@@ -228,6 +268,7 @@
             </div>
         </div>
     </footer>
+    <script src="../js/AFVW/AFVW.js"></script>
     <script src="../js/superposition.js"></script>
     <script>
         const titleMap = {

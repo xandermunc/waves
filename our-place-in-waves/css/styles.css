@@ -66,9 +66,9 @@
 }
 
 .row {
-    flex-direction: row;
+    flex-direction: row !important;
 }
 
 .gap {
-    gap: 100px !important;
+    gap: var(--header-height) !important;
 }

@@ -1,40 +1,31 @@
-@font-face {
-    font-family: 'Lexend';
-    src: url('../fonts/Lexend/static/Lexend-Light.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'inter';
-    src: url('../fonts/Inter/static/Inter_18pt-Light.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 span.inter {
     font-family: inter;
 }
 
-body {
+/* body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background-color: #f0f0f0;
-}
+} */
 
 canvas {
     width: 800px;
     height: 300px;
+    z-index: 2;
 }
 
 #color-rect {
     position: absolute;
-    width: 100vw;
-    height: 100vh;
-    filter: blur(5000px);
+    width: 800px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(200px);
     will-change: transform;
+    background-color: var(--input-color);
+    margin-bottom: var(--double-header-height);
     z-index: -1;
+    transition: none !important;
 }
 
 /* #wavelength-display {
@@ -60,12 +51,13 @@ canvas {
 input[type="range"] {
     appearance: none;
     -webkit-appearance: none;
-    width: 200px;
+    width: 170px;
     background: white;
     height: 4px;
     border-radius: 2px;
     cursor: pointer;
-    margin-top: 12px;
+    margin-top: var(--large-paragraph-font-size);
+    /* margin-left: 10px; */
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -91,16 +83,22 @@ input[type="range"]::-ms-thumb {
 } */
 
 label {
-    align-self: left;
     font-family: Lexend;
-    font-size: 1.3em;
-    width: 220px;
-    color: white;
+    font-size: var(--large-paragraph-font-size);
+    width: var(--double-header-height);
+    color: var(--white);
 }
 
 .wave-control-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-    margin-top: 50px;
+    grid-template-columns: auto auto;
+    row-gap: 4px;
+    column-gap: var(--half-header-height);
+    /* margin-top: var(--header-height); */
+    margin-bottom: var(--header-height);
+    z-index: 2;
+}
+
+.wave-control-grid-item {
+    width: 170px;
 }
