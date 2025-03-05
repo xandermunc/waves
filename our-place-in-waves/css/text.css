@@ -60,7 +60,8 @@ h2.section-title {
     padding-bottom: var(--paragraph-font-size);
 }
 
-span.inter {
+span.inter,
+h1.inter {
     font-family: inter !important;
 }
 
@@ -222,4 +223,9 @@ p.hoverable-text-underline.black::after {
 
 .large-hoverable-text-underline-parent:hover span::after {
     transform: scaleX(1);
+}
+
+.double-title-text {
+    font-family: inter-bold;
+    font-size: var(--double-title-font-size);
 }

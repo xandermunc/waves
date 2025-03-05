@@ -30,6 +30,7 @@
     --big-header-font-size: 4rem;
     --header-button-font-size: 1rem;
     --title-font-size: 10rem;
+    --double-title-font-size: calc(var(--title-font-size) * 2);
     --ease-time: 0.2s;
     --two-header-divs: calc(100vw / 8 * 2);
     --one-third: calc(100vw / 3);

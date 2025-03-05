@@ -66,9 +66,25 @@
 }
 
 .row {
+    display: flex;
     flex-direction: row !important;
 }
 
 .gap {
     gap: var(--header-height) !important;
+}
+
+.space-between {
+    display: flex;
+    width: 100%;
+    justify-content: space-between !important;
+}
+
+.absolute {
+    position: absolute;
+    z-index: 5;
+}
+
+.z-index-1 {
+    z-index: 1;
 }

@@ -102,3 +102,16 @@ label {
 .wave-control-grid-item {
     width: 170px;
 }
+
+.anatomy-symbol-blur-rect {
+    width: 200px;
+    height: 200px;
+    background-color: var(--white);
+    filter: blur(100px);
+    position: absolute;
+    z-index: 0;
+}
+
+.inactive-slider {
+    display: none;
+}
