@@ -88,3 +88,11 @@
 .z-index-1 {
     z-index: 1;
 }
+
+.double-header-height {
+    height: var(--double-header-height);
+}
+
+.svg-height {
+    height: 237px;
+}

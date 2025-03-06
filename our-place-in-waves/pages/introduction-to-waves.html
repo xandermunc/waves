@@ -61,10 +61,6 @@
         p.nav-text-hover.active {
             left: -10px;
         }
-
-        /* header {
-            transition: top 0.4s ease;
-        } */
     </style>
 </head>
 
@@ -190,13 +186,54 @@
                 </p>
             </div>
             <div class="one-third centered">
-                <!-- <canvas id="amplitude-wave" class="absolute margin-bottom" width="800" height="300"></canvas> -->
+                <canvas id="amplitude-wave" class="absolute margin-bottom inactive" width="800" height="300"></canvas>
+                <canvas id="solo-wave" class="absolute margin-bottom" width="800" height="300"></canvas>
                 <h1 id="anatomy-title-symbol" class="double-title-text white z-index-1">A</h1>
                 <div class="anatomy-symbol-blur-rect margin-bottom"></div>
-                <!-- <input type="range" id="solo-amplitude" class="margin-bottom inactive-slider" min="5" max="100" value="50" step="0.001"> -->
-                <!-- <input type="range" id="solo-frequency" class="margin-bottom" min="1" max="5" value="1" step="0.001"> -->
-                <!-- <input type="range" id="solo-velocity" class="margin-bottom inactive-slider" min="1" max="5" value="1.6" step="0.001"> -->
-                <!-- <input type="range" id="solo-wavelength"class="margin-bottom inactive-slider" min="1" max="5" value="1.6" step="0.001"> -->
+                <input type="range" id="solo-amplitude" class="margin-bottom" min="5" max="100" value="50" step="0.001">
+                <input type="range" id="solo-frequency" class="margin-bottom inactive" min="1" max="5" value="1"
+                    step="0.001">
+                <input type="range" id="solo-velocity" class="margin-bottom inactive" min="1" max="5" value="1.6"
+                    step="0.001">
+                <input type="range" id="solo-wavelength" class="margin-bottom inactive" min="1" max="5" value="1.6"
+                    step="0.001">
+            </div>
+        </div>
+    </section>
+
+    <section class="bottom-border centered">
+        <div class="two-thirds">
+            <h1 class="big-header underline">A Closer Look</h1>
+        </div>
+        <div class="two-thirds row">
+            <div class="one-third centered">
+                <image class="margin-bottom svg-height" src="../svg/Anatomy.svg"></image>
+            </div>
+            <div class="one-third centered">
+                <p class="large-text-paragraph margin-bottom" style="margin-left: var(--header-height);">Amplitude is the wave's maximum displacement.<br><br>
+                    Frequency is the number of wave cycles that pass a given point in a second.<br><br>
+                    Velocity is the speed of a wave.<br><br>
+                    Wavelength is the distance between two consecutive points on a wave.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bottom-border centered">
+        <div class="two-thirds">
+            <h1 class="big-header underline">Wavelength vs Frequency</h1>
+            <p class="paragraph">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta alias tempora tenetur
+                quaerat. Similique ducimus in repellendus neque autem natus obcaecati voluptatibus ullam hic ipsum
+                magni, temporibus iusto quia aut tempora fugiat minima commodi, ab nobis dignissimos ut vero, aliquid
+                ex! Culpa rerum veritatis maiores nobis at facere eveniet, ea quaerat iusto illum accusantium
+                praesentium. Illum magni id explicabo delectus.</p><br>
+        </div>
+        <div class="two-thirds row gap">
+            <div class="one-third centered">
+                <image class="margin-bottom double-header-height" src="../svg/LowWHighF.svg"></image>
+            </div>
+            <div class="one-third centered">
+                <image class="margin-bottom double-header-height" src="../svg/HighWLowF.svg"></image>
             </div>
         </div>
     </section>
@@ -248,7 +285,7 @@
 
     <section class="bottom-border centered">
         <div class="two-thirds">
-            <h1 class="big-header underline">What are Waves?</h1>
+            <h1 class="big-header underline">Conclusion</h1>
             <p class="paragraph">Waves are patterns of moving energy.</p>
             <p class="paragraph">Waves move energy from one place to another, like ripples running on water or sound
                 traveling through air. </p>
@@ -271,7 +308,7 @@
         </div>
     </footer>
     <script src="../js/AFVW/AFVW.js"></script>
-    <!-- <script src="../js/AFVW/amplitude.js"></script> -->
+    <script src="../js/AFVW/AFWVSolo.js"></script>
     <script src="../js/superposition.js"></script>
     <script>
         const titleMap = {
@@ -311,6 +348,49 @@
                 document.getElementById('anatomy-title-symbol').innerHTML = titleSymbolMap[item.id];
                 document.getElementById('anatomy-paragraph').innerHTML = contentMap[item.id];
             });
+        });
+
+        function resetDefaults() {
+            amplitudeS = 50;
+            frequencyS = 1;
+            wavelengthS = 160;
+            velocityS = 1.6;
+            document.getElementById('solo-amplitude').value = 50;
+            document.getElementById('solo-wavelength').value = 1.6;
+            document.getElementById('solo-frequency').value = 1;
+            document.getElementById('solo-velocity').value = 1.6;
+        }
+
+        document.getElementById('amplitude-selection').addEventListener('click', () => {
+            document.getElementById('solo-amplitude').classList.remove('inactive');
+            document.getElementById('solo-wavelength').classList.add('inactive');
+            document.getElementById('solo-frequency').classList.add('inactive');
+            document.getElementById('solo-velocity').classList.add('inactive');
+            resetDefaults();
+        });
+
+        document.getElementById('wavelength-selection').addEventListener('click', () => {
+            document.getElementById('solo-amplitude').classList.add('inactive');
+            document.getElementById('solo-wavelength').classList.remove('inactive');
+            document.getElementById('solo-frequency').classList.add('inactive');
+            document.getElementById('solo-velocity').classList.add('inactive');
+            resetDefaults();
+        });
+
+        document.getElementById('frequency-selection').addEventListener('click', () => {
+            document.getElementById('solo-amplitude').classList.add('inactive');
+            document.getElementById('solo-wavelength').classList.add('inactive');
+            document.getElementById('solo-frequency').classList.remove('inactive');
+            document.getElementById('solo-velocity').classList.add('inactive');
+            resetDefaults();
+        });
+
+        document.getElementById('velocity-selection').addEventListener('click', () => {
+            document.getElementById('solo-amplitude').classList.add('inactive');
+            document.getElementById('solo-wavelength').classList.add('inactive');
+            document.getElementById('solo-frequency').classList.add('inactive');
+            document.getElementById('solo-velocity').classList.remove('inactive');
+            resetDefaults();
         });
     </script>
 </body>

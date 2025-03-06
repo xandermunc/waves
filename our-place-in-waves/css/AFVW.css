@@ -112,6 +112,6 @@ label {
     z-index: 0;
 }
 
-.inactive-slider {
+.inactive {
     display: none;
 }

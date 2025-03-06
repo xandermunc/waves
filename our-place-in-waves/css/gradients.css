@@ -16,14 +16,17 @@
 } */
 
 .gradient-three {
-    background: linear-gradient(to bottom, var(--white), var(--blue), var(--blue-two));
+    /* background: linear-gradient(to bottom, var(--white), var(--blue), var(--blue-two)); */
+    background: linear-gradient(to bottom, var(--white), var(--input-color), var(--blue-two));
     background-attachment: fixed;
     border-bottom: var(--border-width) var(--black) solid;
 }
 
 .gradient-five {
-    background: radial-gradient(circle at top, var(--blue) 0%, transparent 50%),
-        linear-gradient(to top, var(--white), var(--light-blue), var(--blue));
+    /* background: radial-gradient(circle at top, var(--blue) 0%, transparent 50%),
+        linear-gradient(to top, var(--white), var(--light-blue), var(--blue)); */
+    background: radial-gradient(circle at top, var(--input-color) 0%, transparent 50%),
+        linear-gradient(to top, var(--white), var(--light-blue), var(--input-color));
     background-attachment: fixed;
     border-bottom: var(--border-width) var(--black) solid;
 }
