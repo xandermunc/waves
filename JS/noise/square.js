@@ -3,6 +3,8 @@ let ellipseSize = 30;
 let speedX = 2, speedY = 2;
 let ellipseX, ellipseY;
 let waveOffset = 0;
+let frequency = 0.02;
+let frequencyOffset = 0;
 
 function setup() {
     createCanvas(innerWidth, innerHeight);
@@ -26,7 +28,8 @@ function draw() {
     noFill();
     beginShape();
     let amplitude = rectSize / 2;
-    let frequency = 0.02;
+    frequencyOffset += 0.005;
+    frequency = map(sin(frequencyOffset), -1, 1, 0.01, 0.04);
     let startX = width / 2 - rectSize / 2;
     let endX = width / 2 + rectSize / 2;
     waveOffset += 0.02;
