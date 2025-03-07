@@ -104,7 +104,7 @@ def compute_probability_density(psi):
     return np.abs(psi) ** 2
 
 
-def plot_wf_probability_density(n, l, m, a0_scale_factor, dark_theme=False, colormap='rocket'):
+def plot_wf_probability_density(n, l, m, a0_scale_factor, colormap='rocket'):
     """ Plot the probability density of the hydrogen
     atom's wavefunction for a given quantum state (n,l,m).
 
@@ -113,7 +113,6 @@ def plot_wf_probability_density(n, l, m, a0_scale_factor, dark_theme=False, colo
         l (int): azimuthal quantum number, defines the shape of the orbital
         m (int): magnetic quantum number, defines the orientation of the orbital
         a0_scale_factor (float): Bohr radius scale factor
-        dark_theme (bool): If True, uses a dark background for the plot, defaults to False
         colormap (str): Seaborn plot colormap, defaults to 'rocket'
     """
 
@@ -145,63 +144,52 @@ def plot_wf_probability_density(n, l, m, a0_scale_factor, dark_theme=False, colo
     fig, ax = plt.subplots(figsize=(16, 16.5))
     plt.subplots_adjust(top=0.82)
     plt.subplots_adjust(right=0.905)
-    plt.subplots_adjust(left=-0.1)
+    plt.subplots_adjust(left=0.1)  # Increased left margin
 
     # Compute and visualize the wavefunction probability density
     psi = compute_wavefunction(n, l, m, a0_scale_factor)
     prob_density = compute_probability_density(psi)
 
-    # Here we transpose the array to align the calculated z-x plane with Matplotlib's y-x imshow display
-    # im = ax.imshow(np.sqrt(prob_density).T, cmap=sns.color_palette(colormap, as_cmap=True))
-    im = ax.imshow(np.sqrt(prob_density).T, cmap='Greys')
+    # Print max value to inspect the probability density
+    print(f'Max probability density: {np.max(prob_density)}')
 
-    cbar = plt.colorbar(im, fraction=0.046, pad=0.03)
+    # Use linspace for contour levels
+    contour = ax.contour(np.sqrt(prob_density).T, levels=np.linspace(0, np.max(prob_density), 10), cmap='Greys', linewidths=2)
+
+    # Set axis limits
+    ax.set_xlim(-100, 100)  # Adjust limits to focus on the center
+    ax.set_ylim(-100, 100)
+
+    cbar = plt.colorbar(contour, fraction=0.046, pad=0.03)
     cbar.set_ticks([])
 
     # Apply dark theme parameters
-    if dark_theme:
-        theme = 'dt'
-        background_color = sorted(
-            sns.color_palette(colormap, n_colors=100),
-            key=lambda color: 0.2126 * color[0] + 0.7152 * color[1] + 0.0722 * color[2]
-        )[0]
-        plt.rcParams['text.color'] = '#000'
-        title_color = '#000'
-        fig.patch.set_facecolor(background_color)
-        cbar.outline.set_visible(False)
-        ax.tick_params(axis='x', colors='#000')
-        ax.tick_params(axis='y', colors='#000')
-        for spine in ax.spines.values():
-            spine.set_color('#000')
-
-    else:  # Apply light theme parameters
-        theme = 'lt'
-        plt.rcParams['text.color'] = '#000000'
-        title_color = '#000000'
-        ax.tick_params(axis='x', colors='#000000')
-        ax.tick_params(axis='y', colors='#000000')
+    plt.rcParams['text.color'] = '#000'
+    title_color = '#000'
+    fig.patch.set_facecolor('#fff' )
+    cbar.outline.set_visible(False)
+    ax.tick_params(axis='x', colors='#000')
+    ax.tick_params(axis='y', colors='#000')
+    for spine in ax.spines.values():
+        spine.set_color('#000')
 
     ax.set_title('Hydrogen Atom - Wavefunction Electron Density', pad=130, fontsize=44, loc='left', color=title_color)
     ax.text(0, 722, (
         r'$|\psi_{n \ell m}(r, \theta, \varphi)|^{2} ='
         r' |R_{n\ell}(r) Y_{\ell}^{m}(\theta, \varphi)|^2$'
-    ), fontsize=36)
+    ), fontsize=36, color='#000')
     ax.text(30, 615, r'$({0}, {1}, {2})$'.format(n, l, m), color='#000', fontsize=42)
-    ax.text(770, 140, 'Electron probability distribution', rotation='vertical', fontsize=40)
-    ax.text(705, 700, 'Higher\nprobability', fontsize=24)
-    ax.text(705, -60, 'Lower\nprobability', fontsize=24)
-    ax.text(775, 590, '+', fontsize=34)
-    ax.text(769, 82, '−', fontsize=34, rotation='vertical')
+    ax.text(770, 140, 'Electron probability distribution', rotation='vertical', fontsize=40, color='#000')
+    ax.text(705, 700, 'Higher\nprobability', fontsize=24, color='#000')
+    ax.text(705, -60, 'Lower\nprobability', fontsize=24, color='#000')
+    ax.text(775, 590, '+', fontsize=34, color='#000')
+    ax.text(769, 82, '−', fontsize=34, rotation='vertical', color='#000')
     ax.invert_yaxis()
 
-    # Save and display the plot
-    plt.savefig(f'({n},{l},{m})[{theme}].png')
+    plt.savefig(f'({n},{l},{m})[dt].png')
     plt.show()
 
 
 # - - - Example probability densities for various quantum states (n,l,m)
 if __name__ == '__main__':
-
-    plot_wf_probability_density(2, 1, 0, 1, True)
-
-
+    plot_wf_probability_density(2, 0, 0, 1)  
