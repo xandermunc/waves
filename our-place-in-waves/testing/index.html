@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header_footer.css">
+    <link rel="stylesheet" href="../css/text.css">
+    <link rel="stylesheet" href="../css/grids.css">
+    <link rel="stylesheet" href="../css/orbit_text.css">
+    <link rel="stylesheet" href="../css/parallax_text.css">
+    <link rel="stylesheet" href="../css/svg_arrow_circle.css">
+    <link rel="stylesheet" href="../css/buttons.css">
+    <!-- <link rel="stylesheet" href="../css/blur.css"> -->
+    <link rel="stylesheet" href="../css/gradients.css">
+    <link rel="stylesheet" href="../css/sections.css">
+    <link rel="stylesheet" href="../css/images.css">
+    <!-- <link rel="stylesheet" href="../css/scrollbar.css"> -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/title.css">
+    <title>Test</title>
+    <style>
+        @font-face {
+            font-family: 'Lexend-Light';
+            src: url('../fonts/Lexend/static/Lexend-Light.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Noto-Bold';
+            src: url('../fonts/Noto_Serif/static/NotoSerif-Medium.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Inter-Bold';
+            src: url('../fonts/Inter/static/Inter_18pt-Bold.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overscroll-behavior: none;
+            user-select: none;
+            transition: 0.2s ease all;
+            /* overflow-y: hidden; */
+        }
+
+        body {
+            /* display: flex; */
+            /* justify-content: center; */
+            /* align-items: center; */
+            background-color: #eee;
+            height: 100vh;
+        }
+
+        .paragraph-div {
+            position: fixed;
+            display: flex;
+            top: 0;
+            left: 0;
+            width: 35vw;
+            margin-left: 10vw;
+            margin-top: 10vh;
+            gap: 1.1rem;
+            z-index: 2;
+        }
+
+        .symbol-div {
+            padding-left: 20vw;
+            display: flex;
+            flex-direction: row;
+            z-index: -2;
+            overflow-x: scroll !important;
+        }
+
+        .title-div {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+        }
+
+        p {
+            font-family: Lexend-Light;
+            font-size: 1.1rem;
+            margin-bottom: 1.1rem;
+            font-weight: 300;
+        }
+
+        h1.symbol {
+            font-family: Inter-Bold;
+            font-size: 50rem;
+            color: #09f;
+        }
+
+        h1.symbol:hover {
+            filter: blur(50px);
+        }
+
+        h2 {
+            font-family: Lexend-light;
+            font-size: 10rem;
+            color: #fff;
+            pointer-events: none;
+        }
+
+        span {
+            color: #09f;
+        }
+
+        span.red {
+            color: #f40;
+        }
+
+        h1.noto {
+            font-family: Noto-Bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-item">
+            <h1>SPECTRA</h1>
+        </div>
+    </header>
+
+    <div class="paragraph-div">
+        <div class="paragraph-left">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, ipsum veritatis repellendus
+                incidunt, quibusdam <span>aliquam nemo inventore aspernatur accusamus</span> officiis veniam sint
+                voluptate alias
+                dolorum expedita perspiciatis rerum mollitia eius recusandae et quidem excepturi magni! A id deleniti
+                dicta nulla. </p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, ipsum veritatis repellendus
+                incidunt, quibusdam aliquam nemo inventore aspernatur accusamus officiis veniam sint voluptate alias
+                dolorum expedita perspiciatis rerum mollitia eius recusandae et quidem excepturi magni! A id deleniti
+                dicta nulla. </p>
+        </div>
+        <div class="paragraph-right">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, ipsum veritatis repellendus
+                incidunt, quibusdam aliquam nemo inventore aspernatur accusamus officiis veniam sint voluptate alias
+                dolorum expedita perspiciatis rerum mollitia eius recusandae et quidem excepturi magni! A id deleniti
+                dicta nulla. </p>
+            <p>
+                Lorem ipsum dolor sit amet <span class="red">consectetur adipisicing elit.</span> Ex eligendi
+                consectetur accusantium possimus
+                reprehenderit placeat! Fugiat reprehenderit debitis hic fugit.
+            </p>
+        </div>
+    </div>
+
+    <div class="title-div">
+        <h2>Wavelength</h2>
+    </div>
+
+    <div class="symbol-div">
+        <h1 class="symbol">λ</h1>
+        <h1 class="symbol">ƒ</h1>
+        <h1 class="noto symbol">Ѱ</h1>
+        <h1 class="symbol">ω</h1>
+        <h1 class="symbol">ϕ</h1>
+        <h1 class="symbol">k</h1>
+        <h1 class="symbol">h</h1>
+    </div>
+</body>
+
+</html>

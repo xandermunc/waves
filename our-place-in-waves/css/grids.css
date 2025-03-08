@@ -5,6 +5,22 @@
     background-color: var(--white);
 }
 
+@media (max-width: 768px) {
+    .grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .grid-item {
+        border-top: none;
+    }
+
+    .grid-item:last-child {
+        border-top: none;
+    }
+}
+
 .margin {
     width: calc(100vw - 200px);
     align-self: center;

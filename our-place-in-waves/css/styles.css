@@ -96,3 +96,13 @@
 .svg-height {
     height: 237px;
 }
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .one-third {
+        width: var(--two-thirds);
+    }
+}
