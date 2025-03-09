@@ -12,11 +12,9 @@
     <link rel="stylesheet" href="../css/parallax_text.css">
     <link rel="stylesheet" href="../css/svg_arrow_circle.css">
     <link rel="stylesheet" href="../css/buttons.css">
-    <!-- <link rel="stylesheet" href="../css/blur.css"> -->
     <link rel="stylesheet" href="../css/gradients.css">
     <link rel="stylesheet" href="../css/sections.css">
     <link rel="stylesheet" href="../css/images.css">
-    <!-- <link rel="stylesheet" href="../css/scrollbar.css"> -->
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/title.css">
     <title>Test</title>
@@ -24,6 +22,13 @@
         @font-face {
             font-family: 'Lexend-Light';
             src: url('../fonts/Lexend/static/Lexend-Light.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Lexend';
+            src: url('../fonts/Lexend/static/Lexend-Regular.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -49,20 +54,17 @@
             overscroll-behavior: none;
             user-select: none;
             transition: 0.2s ease all;
-            /* overflow-y: hidden; */
         }
 
         body {
-            /* display: flex; */
-            /* justify-content: center; */
-            /* align-items: center; */
             background-color: #eee;
             height: 100vh;
         }
 
         .paragraph-div {
             position: fixed;
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             top: 0;
             left: 0;
             width: 35vw;
@@ -72,12 +74,31 @@
             z-index: 2;
         }
 
+        html,
+        body {
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .symbol-div {
-            padding-left: 20vw;
             display: flex;
             flex-direction: row;
-            z-index: -2;
-            overflow-x: scroll !important;
+            overflow-x: auto;
+            white-space: nowrap;
+            align-items: center;
+            gap: 25vw;
+        }
+
+        .margin-left {
+            margin-left: 50vw;
+        }
+
+        .margin-right {
+            margin-right: 15vw;
         }
 
         .title-div {
@@ -90,6 +111,7 @@
             width: 100vw;
             height: 100vh;
             z-index: 0;
+            pointer-events: none;
         }
 
         p {
@@ -105,15 +127,11 @@
             color: #09f;
         }
 
-        h1.symbol:hover {
-            filter: blur(50px);
-        }
-
         h2 {
-            font-family: Lexend-light;
+            font-family: Lexend;
             font-size: 10rem;
+            letter-spacing: -10px;
             color: #fff;
-            pointer-events: none;
         }
 
         span {
@@ -131,30 +149,23 @@
 </head>
 
 <body>
-    <header>
-        <div class="header-item">
-            <h1>SPECTRA</h1>
-        </div>
-    </header>
-
     <div class="paragraph-div">
-        <div class="paragraph-left">
+        <div id="paragraph-left" class="paragraph-left">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, ipsum veritatis repellendus
                 incidunt, quibusdam <span>aliquam nemo inventore aspernatur accusamus</span> officiis veniam sint
                 voluptate alias
                 dolorum expedita perspiciatis rerum mollitia eius recusandae et quidem excepturi magni! A id deleniti
-                dicta nulla. </p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, ipsum veritatis repellendus
+                dicta nulla.<br><br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, ipsum veritatis repellendus
                 incidunt, quibusdam aliquam nemo inventore aspernatur accusamus officiis veniam sint voluptate alias
                 dolorum expedita perspiciatis rerum mollitia eius recusandae et quidem excepturi magni! A id deleniti
                 dicta nulla. </p>
         </div>
-        <div class="paragraph-right">
+        <div id="paragraph-right" class="paragraph-right">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, ipsum veritatis repellendus
                 incidunt, quibusdam aliquam nemo inventore aspernatur accusamus officiis veniam sint voluptate alias
                 dolorum expedita perspiciatis rerum mollitia eius recusandae et quidem excepturi magni! A id deleniti
-                dicta nulla. </p>
-            <p>
+                dicta nulla. <br><br>
                 Lorem ipsum dolor sit amet <span class="red">consectetur adipisicing elit.</span> Ex eligendi
                 consectetur accusantium possimus
                 reprehenderit placeat! Fugiat reprehenderit debitis hic fugit.
@@ -163,18 +174,102 @@
     </div>
 
     <div class="title-div">
-        <h2>Wavelength</h2>
+        <h2 id="symbol-name">Wavelength</h2>
     </div>
 
     <div class="symbol-div">
-        <h1 class="symbol">λ</h1>
-        <h1 class="symbol">ƒ</h1>
-        <h1 class="noto symbol">Ѱ</h1>
-        <h1 class="symbol">ω</h1>
-        <h1 class="symbol">ϕ</h1>
-        <h1 class="symbol">k</h1>
-        <h1 class="symbol">h</h1>
+        <h1 id="symbol-1" class="symbol margin-left">λ</h1>
+        <h1 id="symbol-2" class="symbol">ƒ</h1>
+        <h1 id="symbol-3" class="noto symbol">Ѱ</h1>
+        <h1 id="symbol-4" class="symbol">ω</h1>
+        <h1 id="symbol-5" class="symbol">ϕ</h1>
+        <h1 id="symbol-6" class="symbol">k</h1>
+        <h1 id="symbol-7" class="symbol margin-right">h</h1>
     </div>
+
+    <script>
+        const scrollContainer = document.querySelector('.symbol-div');
+        const symbols = document.querySelectorAll('.symbol');
+        const titleElement = document.getElementById('symbol-name');
+        const paragraphLeft = document.getElementById('paragraph-left');
+        const paragraphRight = document.getElementById('paragraph-right');
+
+        const titles = [
+            "Wavelength",
+            "Frequency",
+            "Wave Function",
+            "Angular Velocity",
+            "Phase",
+            "Wave Number",
+            "Planck's Constant"
+        ];
+        const paragraphsLeft = [
+            "Wavelength: The distance between successive crests of a wave. <span>It determines the color of light in the visible spectrum and is crucial for understanding wave behavior.</span> <span class='red'>Wavelength is inversely related to frequency, meaning that longer wavelengths correspond to lower frequencies.</span> This relationship is fundamental in various applications, including optics and telecommunications. In the context of light, different wavelengths correspond to different colors; for example, red light has a longer wavelength than blue light. Understanding wavelength is essential in fields like astronomy, where it helps in studying distant celestial bodies through the analysis of the light they emit.<br><br>",
+
+            "Frequency: The number of cycles of a wave that pass a point in one second. <span>Higher frequencies correspond to shorter wavelengths and higher energy.</span> <span class='red'>In acoustics, frequency determines the pitch of a sound; higher frequencies result in higher pitches, while lower frequencies produce lower pitches.</span> Frequency is measured in hertz (Hz), with one hertz equaling one cycle per second. In radio communications, different frequencies are used to transmit signals, allowing multiple channels to operate simultaneously without interference. Understanding frequency is vital for designing audio equipment, radio transmitters, and even in understanding the vibrations of musical instruments.<br><br>",
+
+            "Wave Function: A mathematical description of the quantum state of a particle. <span>It contains all the information about a quantum system and is fundamental to quantum mechanics.</span> <span class='red'>The wave function is typically represented by the Greek letter Ψ (psi) and can describe the probability amplitude of a particle's position and momentum.</span> One of the key principles of quantum mechanics is that particles can exist in multiple states at once until measured, a phenomenon known as superposition. The square of the wave function's absolute value gives the probability density, indicating where a particle is likely to be found. This concept has profound implications for understanding the behavior of atoms and subatomic particles.<br><br>",
+
+            "Angular Velocity: The rate of rotation of an object around an axis, measured in radians per second. <span>It is critical in dynamics for understanding the motion of rotating bodies.</span> <span class='red'>Angular velocity provides insight into how quickly an object is spinning and is essential in fields such as engineering and physics.</span> It is a vector quantity, meaning it has both magnitude and direction, which indicates the axis of rotation. In mechanical systems, understanding angular velocity helps in designing gears, wheels, and various rotating machinery. It also plays a crucial role in sports science, where analyzing angular velocity can improve athletic performance by optimizing techniques in activities such as gymnastics or diving.<br><br>",
+
+            "Phase: The position of a point in time on a waveform. <span>Phase differences between waves can lead to constructive or destructive interference.</span> <span class='red'>When two waves meet, their phases interact; if they are in phase, they combine to create a wave of greater amplitude (constructive interference), while if they are out of phase, they can cancel each other out (destructive interference).</span> Phase is critical in many applications, such as audio engineering, where it affects sound quality, and in optics, where it influences the behavior of light waves. Understanding phase is essential in fields like telecommunications, where signal clarity and integrity are paramount.<br><br>",
+
+            "Wave Number: The number of wavelengths per unit distance. <span>It is inversely related to wavelength and is used in various fields, including spectroscopy.</span> <span class='red'>Wave number is typically measured in reciprocal meters and is particularly useful in identifying spectral lines in light emitted or absorbed by substances.</span> In spectroscopy, analyzing the wave numbers of light can provide information about molecular structures and chemical compositions. The concept of wave number is also employed in physics to describe wave propagation in different media, making it a crucial aspect of wave mechanics.<br><br>",
+
+            "Planck's Constant: A fundamental constant that relates the energy of a photon to its frequency. <span>It is a key element of quantum mechanics, influencing the behavior of particles at atomic scales.</span> <span class='red'>Planck's constant is denoted by the symbol h and has a value of approximately 6.626 x 10^-34 Joule seconds.</span> It plays a crucial role in the field of quantum mechanics, particularly in the formulation of the photoelectric effect, where it helps explain how light can eject electrons from a material. The concept of quantization, which arises from Planck's constant, is fundamental in understanding atomic and subatomic processes, leading to advancements in various technologies such as lasers and semiconductors."
+        ];
+
+        const paragraphsRight = [
+            "In the context of wavelength, it is essential to understand how different wavelengths affect various phenomena, including the color spectrum of light and sound waves. <span>Different media can affect the speed and wavelength of light, which is crucial for designing optical devices.</span> <span class='red'>This understanding can lead to advancements in technologies such as fiber optics and laser communication systems.</span><br><br>",
+
+            "For frequency, it is vital to recognize its applications in sound engineering and telecommunications. <span>By manipulating frequency, audio engineers can create immersive sound experiences, while radio frequency engineers can develop efficient communication systems.</span> <span class='red'>Moreover, frequency analysis is used in fields like medicine for various diagnostic tools, including ultrasound imaging.</span><br><br>",
+
+            "When discussing wave functions, one must appreciate their role in quantum computing and modern physics. <span>The manipulation of wave functions can lead to breakthroughs in quantum information processing, which promises to revolutionize computing.</span> <span class='red'>Understanding these concepts is fundamental for physicists and engineers working on the next generation of technological advancements.</span><br><br>",
+
+            "Angular velocity's applications extend to various real-world scenarios, from analyzing the motion of planets in astrophysics to optimizing the design of rotating machinery in industries. <span>By understanding the relationship between angular velocity and linear speed, engineers can improve the efficiency of machines, such as turbines and motors.</span> <span class='red'>This understanding is also crucial for developing safe and effective transportation systems, such as in the automotive and aerospace industries.</span><br><br>",
+
+            "In terms of phase, it is crucial to understand how phase shifts can affect signal transmission in telecommunications. <span>Engineers can use this knowledge to improve data transfer rates and reduce signal degradation over distances.</span> <span class='red'>In the entertainment industry, phase manipulation is also used in audio mixing to enhance sound quality and create specific auditory effects.</span><br><br>",
+
+            "Wave number is a significant parameter in various scientific applications, such as analyzing wave propagation in geophysics and environmental science. <span>Understanding wave numbers allows scientists to interpret seismic data and study atmospheric waves, providing critical insights into natural phenomena.</span> <span class='red'>This knowledge is essential for disaster preparedness and response, particularly in regions prone to earthquakes or extreme weather events.</span><br><br>",
+
+            "Finally, Planck's constant is essential not only in theoretical physics but also in practical applications, such as determining the energy levels of electrons in atoms. <span>This fundamental constant is pivotal in developing new materials and technologies, including solar cells and quantum sensors.</span> <span class='red'>As our understanding of quantum mechanics deepens, the implications of Planck's constant will continue to be significant, influencing future innovations in various fields.</span>"
+        ];
+
+        window.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                e.preventDefault();
+                scrollContainer.scrollLeft += e.deltaY;
+            }
+        }, { passive: false });
+
+        function updateContent() {
+            let closestSymbol = null;
+            let minDistance = Infinity;
+            let containerCenter = scrollContainer.scrollLeft + (window.innerWidth / 2);
+
+            symbols.forEach((symbol, index) => {
+                const symbolRect = symbol.getBoundingClientRect();
+                const symbolCenter = symbolRect.left + (symbolRect.width / 2);
+                const distance = Math.abs(symbolCenter - (window.innerWidth / 2));
+
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestSymbol = index;
+                }
+            });
+
+            if (closestSymbol !== null) {
+                titleElement.textContent = titles[closestSymbol];
+                paragraphLeft.innerHTML = paragraphsLeft[closestSymbol];
+                paragraphRight.innerHTML = paragraphsRight[closestSymbol];
+            }
+        }
+
+        scrollContainer.addEventListener('scroll', updateContent);
+        window.addEventListener('resize', updateContent);
+
+        updateContent();
+    </script>
 </body>
 
 </html>
