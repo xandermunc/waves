@@ -1,0 +1,6 @@
+Name,Symbol,Atomic Number,Category,Standard State,Crystal Structure,Atomic Mass,Electronegativity,Energy Levels,Melting Point,Boiling Point,Radius,Abundance % (Universe),Electron Affinity,Ionization,Oxidation States,Protons,Neutrons,Electrons,Electron Configuration,Quantum Numbers (HOAO),Descovered,Light Emission (nm)
+Hydrogen ,H,1,Reactive nonmetals,Gas,x,1.008,,1,x,x,x,75,0.755,13.6,x,1,0,1,1s^1,"1,0,0",x,x
+Helium,He,2,Noble gases,Gas,x,4.0026,,2,x,x,x,23,0,24.587,x,2,2,2,1s^2,"1,0,0",x,x
+Lithium,Li,3,Alkali metals,Solid,x,6.94,,"2,1",x,x,x,6.00E-07,0.618,5.391,x,3,4,3,[He]2s^1,"2,0,0",x,x
+Beryllium,Be,4,Alkaline earth metals,Solid,x,9.012183,,"2,2",x,x,x,1.00E-07,0,9.323,x,4,5,4,[He]2s^2,"2,0,0",x,x
+Boron,B,5,Metalloids,Solid,x,10.81,,"2,3",x,x,x,1.00E-07,0.277,8.298,x,5,6,5,[He]2s²2p¹,"2,1,-1",x,x
