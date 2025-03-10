@@ -1,0 +1,6 @@
+Name,Symbol,Atomic Number,Category,Standard State,Crystal Structure,Atomic Mass (u),Electronegativity (Pauling Scale),Energy Levels,Melting Point (°C),Boiling Point (°C),Radius (pm),Abundance % (Universe),Electron Affinity (eV),Ionization Energy (eV),Oxidation States,Protons,Neutrons,Electrons,Electron Configuration,Quantum Numbers (HOAO),Discovered,Light Emission (nm)
+Helium,He,2,Noble Gas,Gas,Hexagonal,4.0026,None,2,None,-268.93,31,23,None,24.5874,0,2,2,2,1s2,"(1,0,0,1/2)",1868,"447.1, 501.6, 587.6, 667.8"
+Neon,Ne,10,Noble Gas,Gas,Cubic,20.18,None,"2,8",-248.59,-246.08,38,0.13,None,21.5645,0,10,10,10,[He] 2s2 2p6,"(2,1,-1,1/2)",1898,"540.1, 585.2, 614.3, 640.2"
+Argon,Ar,18,Noble Gas,Gas,Cubic,39.948,None,"2,8,8",-189.34,-185.85,71,0.02,None,15.7596,0,18,22,18,[Ne] 3s2 3p6,"(3,1,-1,1/2)",1894,"696.5, 706.7, 727.3, 763.5"
+Krypton,Kr,36,Noble Gas,Gas,Cubic,83.798,3.0,"2,8,18,8",-157.36,-153.41,88,0.0001,-0.379,13.9996,"0, +2",36,48,36,[Ar] 3d10 4s2 4p6,"(4,1,-1,1/2)",1898,"427.4, 431.9, 556.2, 760.2"
+Xenon,Xe,54,Noble Gas,Gas,Cubic,131.293,2.6,"2,8,18,18,8",-111.8,-108.12,108,9e-06,-0.02,12.1298,"0, +2, +4, +6",54,77,54,[Kr] 4d10 5s2 5p6,"(5,1,-1,1/2)",1898,"467.1, 529.2, 823.2, 881.9"

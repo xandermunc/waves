@@ -1,0 +1,6 @@
+Name,Symbol,Atomic Number,Category,Standard State,Crystal Structure,Atomic Mass (u),Electronegativity (Pauling Scale),Energy Levels,Melting Point (°C),Boiling Point (°C),Radius (pm),Abundance % (Universe),Electron Affinity (eV),Ionization Energy (eV),Oxidation States,Protons,Neutrons,Electrons,Electron Configuration,Quantum Numbers (HOAO),Discovered,Light Emission (nm)
+Hydrogen,H,1,Reactive Nonmetal,Gas,Hexagonal,1.008,2.2,1,-259.16,-252.87,53,75,0.755,13.5984,"-1, +1",1,0,1,1s1,"(1,0,0,+1/2)",1766,"656.3, 486.1, 434.0, 410.2"
+Carbon,C,6,Reactive Nonmetal,Solid,"Hexagonal (Graphite), Diamond Cubic",12.011,2.55,"2,4",3550,4027,70,0.5,1.262,11.2603,"-4, -3, -2, -1, +1, +2, +3, +4",6,6,6,[He] 2s2 2p2,"(2,1,-1,+1/2)",Ancient,None
+Nitrogen,N,7,Reactive Nonmetal,Gas,Hexagonal,14.007,3.04,"2,5",-210.0,-195.79,65,0.1,-0.07,14.5341,"-3, -2, -1, +1, +2, +3, +4, +5",7,7,7,[He] 2s2 2p3,"(2,1,-1,+1/2)",1772,149.3
+Oxygen,O,8,Reactive Nonmetal,Gas,Monoclinic,15.999,3.44,"2,6",-218.79,-182.96,60,1,1.451,13.6181,"-2, -1, +1, +2",8,8,8,[He] 2s2 2p4,"(2,1,-1,+1/2)",1774,130.2
+Fluorine,F,9,Reactive Nonmetal,Gas,Cubic,18.998,3.98,"2,7",-219.67,-188.11,50,4e-05,3.402,17.4228,-1,9,10,9,[He] 2s2 2p5,"(2,1,-1,+1/2)",1886,None

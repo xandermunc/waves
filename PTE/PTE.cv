@@ -2,57 +2,142 @@
  "activeComp": "compNode#1",
  "assets": [
   {
-   "data": { "decimalSeparator": ".", "delimiter": ",", "factorize": false, "filePath": "/Users/xandermunc/Desktop/PTE/Periodic Table of Elements - Sheet1.csv", "quote": "\"" },
-   "nodeId": "asset#2",
+   "data": { "decimalSeparator": ".", "delimiter": ",", "factorize": false, "filePath": "/Users/xandermunc/Desktop/Main/Local Repositories/waves/PTE/noble_gases.csv", "quote": "\"" },
+   "nodeId": "asset#5",
+   "type": "file"
+  },
+  {
+   "data": { "decimalSeparator": ".", "delimiter": ",", "factorize": false, "filePath": "/Users/xandermunc/Desktop/Main/Local Repositories/waves/PTE/reactive_nonmetals.csv", "quote": "\"" },
+   "nodeId": "asset#4",
    "type": "file"
   }
  ],
  "connections": [
-  { "from": "numberRangeBase#1.id", "to": "spreadsheet#1.remapping" },
-  { "from": "asset#2.id", "to": "spreadsheet#1.file" },
-  { "from": "asset#2.id", "to": "spreadsheet#2.file" },
-  { "from": "linearDistribution#1.size", "to": "linearDistribution#2.size" },
-  { "from": "linearDistribution#1.count", "to": "linearDistribution#2.count" },
-  { "from": "linearDistribution#2.id", "to": "duplicator#2.generator" },
-  { "from": "textShape#2.id", "to": "duplicator#2.shapes.0" },
-  { "from": "visibilityCurve#5.out", "to": "duplicator#2.on" },
-  { "from": "spreadsheet#2.id", "to": "textShape#2.text" },
-  { "from": "colorMaterial#4.id", "to": "textShape#2.material" },
-  { "from": "visibilityCurve#4.out", "to": "textShape#2.on" },
-  { "from": "colorMaterial#1.id", "to": "basicShape#1.material" },
-  { "from": "ellipseShape#1.id", "to": "basicShape#1.generator" },
-  { "from": "visibilityCurve#1.out", "to": "basicShape#1.on" },
-  { "from": "spreadsheet#1.id", "to": "duplicator#1.shapeScale.y" },
-  { "from": "linearDistribution#1.id", "to": "duplicator#1.generator" },
-  { "from": "basicShape#1.id", "to": "duplicator#1.shapes.0" },
-  { "from": "spreadsheet#1.id", "to": "duplicator#1.shapeScale.x" },
-  { "from": "visibilityCurve#2.out", "to": "duplicator#1.on" },
-  { "from": "keyframe#2.id", "to": "visibilityCurve#1.keyframes.1" },
-  { "from": "keyframe#1.id", "to": "visibilityCurve#1.keyframes.0" },
+  { "from": "keyframe#16.id", "to": "visibilityCurve#8.keyframes.1" },
+  { "from": "keyframe#15.id", "to": "visibilityCurve#8.keyframes.0" },
+  { "from": "compNode#1.outActiveAnimationLayer", "to": "visibilityCurve#8.activeAnimationLayer" },
+  { "from": "compNode#1.time", "to": "visibilityCurve#8.time" },
+  { "from": "keyframe#18.id", "to": "visibilityCurve#9.keyframes.1" },
+  { "from": "compNode#1.outActiveAnimationLayer", "to": "visibilityCurve#9.activeAnimationLayer" },
+  { "from": "keyframe#17.id", "to": "visibilityCurve#9.keyframes.0" },
+  { "from": "compNode#1.time", "to": "visibilityCurve#9.time" },
+  { "from": "keyframe#20.id", "to": "visibilityCurve#10.keyframes.1" },
+  { "from": "keyframe#19.id", "to": "visibilityCurve#10.keyframes.0" },
+  { "from": "compNode#1.outActiveAnimationLayer", "to": "visibilityCurve#10.activeAnimationLayer" },
+  { "from": "compNode#1.time", "to": "visibilityCurve#10.time" },
   { "from": "compNode#1.outActiveAnimationLayer", "to": "visibilityCurve#1.activeAnimationLayer" },
+  { "from": "keyframe#1.id", "to": "visibilityCurve#1.keyframes.0" },
   { "from": "compNode#1.time", "to": "visibilityCurve#1.time" },
-  { "from": "keyframe#8.id", "to": "visibilityCurve#4.keyframes.1" },
-  { "from": "keyframe#7.id", "to": "visibilityCurve#4.keyframes.0" },
+  { "from": "keyframe#2.id", "to": "visibilityCurve#1.keyframes.1" },
   { "from": "compNode#1.outActiveAnimationLayer", "to": "visibilityCurve#4.activeAnimationLayer" },
   { "from": "compNode#1.time", "to": "visibilityCurve#4.time" },
-  { "from": "keyframe#10.id", "to": "visibilityCurve#5.keyframes.1" },
-  { "from": "compNode#1.outActiveAnimationLayer", "to": "visibilityCurve#5.activeAnimationLayer" },
+  { "from": "keyframe#7.id", "to": "visibilityCurve#4.keyframes.0" },
+  { "from": "keyframe#8.id", "to": "visibilityCurve#4.keyframes.1" },
   { "from": "keyframe#9.id", "to": "visibilityCurve#5.keyframes.0" },
   { "from": "compNode#1.time", "to": "visibilityCurve#5.time" },
-  { "from": "keyframe#4.id", "to": "visibilityCurve#2.keyframes.1" },
-  { "from": "compNode#1.outActiveAnimationLayer", "to": "visibilityCurve#2.activeAnimationLayer" },
+  { "from": "compNode#1.outActiveAnimationLayer", "to": "visibilityCurve#5.activeAnimationLayer" },
+  { "from": "keyframe#10.id", "to": "visibilityCurve#5.keyframes.1" },
+  { "from": "compNode#1.time", "to": "visibilityCurve#2.time" },
   { "from": "keyframe#3.id", "to": "visibilityCurve#2.keyframes.0" },
-  { "from": "compNode#1.time", "to": "visibilityCurve#2.time" }
+  { "from": "compNode#1.outActiveAnimationLayer", "to": "visibilityCurve#2.activeAnimationLayer" },
+  { "from": "keyframe#4.id", "to": "visibilityCurve#2.keyframes.1" },
+  { "from": "keyframe#13.id", "to": "visibilityCurve#7.keyframes.0" },
+  { "from": "keyframe#14.id", "to": "visibilityCurve#7.keyframes.1" },
+  { "from": "compNode#1.outActiveAnimationLayer", "to": "visibilityCurve#7.activeAnimationLayer" },
+  { "from": "compNode#1.time", "to": "visibilityCurve#7.time" },
+  { "from": "asset#4.id", "to": "spreadsheet#1.file" },
+  { "from": "numberRangeBase#1.id", "to": "spreadsheet#1.remapping" },
+  { "from": "asset#4.id", "to": "spreadsheet#2.file" },
+  { "from": "linearDistribution#1.size", "to": "linearDistribution#4.size" },
+  { "from": "linearDistribution#1.count", "to": "linearDistribution#4.count" },
+  { "from": "linearDistribution#1.count", "to": "linearDistribution#2.count" },
+  { "from": "linearDistribution#1.size", "to": "linearDistribution#2.size" },
+  { "from": "linearDistribution#1.size", "to": "linearDistribution#3.size" },
+  { "from": "linearDistribution#1.count", "to": "linearDistribution#3.count" },
+  { "from": "spreadsheet#5.id", "to": "polygonShape#4.sides" },
+  { "from": "numberRangeBase#3.id", "to": "spreadsheet#5.remapping" },
+  { "from": "asset#4.id", "to": "spreadsheet#5.file" },
+  { "from": "numberRangeBase#2.id", "to": "spreadsheet#4.remapping" },
+  { "from": "asset#4.id", "to": "spreadsheet#4.file" },
+  { "from": "spreadsheet#4.id", "to": "duplicator#3.shapeScale.y" },
+  { "from": "spreadsheet#4.id", "to": "duplicator#3.shapeScale.x" },
+  { "from": "basicShape#3.id", "to": "duplicator#3.shapes.0" },
+  { "from": "linearDistribution#3.id", "to": "duplicator#3.generator" },
+  { "from": "visibilityCurve#7.out", "to": "duplicator#3.on" },
+  { "from": "textShape#2.id", "to": "duplicator#2.shapes.0" },
+  { "from": "visibilityCurve#5.out", "to": "duplicator#2.on" },
+  { "from": "linearDistribution#2.id", "to": "duplicator#2.generator" },
+  { "from": "spreadsheet#1.id", "to": "duplicator#1.shapeScale.x" },
+  { "from": "basicShape#1.id", "to": "duplicator#1.shapes.0" },
+  { "from": "linearDistribution#1.id", "to": "duplicator#1.generator" },
+  { "from": "visibilityCurve#2.out", "to": "duplicator#1.on" },
+  { "from": "spreadsheet#1.id", "to": "duplicator#1.shapeScale.y" },
+  { "from": "visibilityCurve#1.out", "to": "basicShape#1.on" },
+  { "from": "ellipseShape#1.id", "to": "basicShape#1.generator" },
+  { "from": "colorMaterial#1.id", "to": "basicShape#1.material" },
+  { "from": "visibilityCurve#4.out", "to": "textShape#2.on" },
+  { "from": "colorMaterial#4.id", "to": "textShape#2.material" },
+  { "from": "spreadsheet#2.id", "to": "textShape#2.text" },
+  { "from": "strokeMaterial#8.id", "to": "basicShape#3.stroke" },
+  { "from": "ellipseShape#2.id", "to": "basicShape#3.generator" },
+  { "from": "visibilityCurve#8.out", "to": "basicShape#3.on" },
+  { "from": "strokeMaterial#9.id", "to": "basicShape#4.stroke" },
+  { "from": "polygonShape#4.id", "to": "basicShape#4.generator" },
+  { "from": "visibilityCurve#9.out", "to": "basicShape#4.on" },
+  { "from": "duplicator#3.shapeScale", "to": "duplicator#4.shapeScale" },
+  { "from": "linearDistribution#4.id", "to": "duplicator#4.generator" },
+  { "from": "basicShape#4.id", "to": "duplicator#4.shapes.0" },
+  { "from": "visibilityCurve#10.out", "to": "duplicator#4.on" }
  ],
  "labelColors": "Pastel",
  "nodeMeta": [
   {
-   "children": [ "asset#2", "compNode#1" ],
+   "children": [ "keyframe#16", "keyframe#15" ],
+   "nodeId": "visibilityCurve#8"
+  },
+  {
+   "children": [ "keyframe#18", "keyframe#17" ],
+   "nodeId": "visibilityCurve#9"
+  },
+  {
+   "children": [ "keyframe#20", "keyframe#19" ],
+   "nodeId": "visibilityCurve#10"
+  },
+  {
+   "children": [ "keyframe#2", "keyframe#1" ],
+   "nodeId": "visibilityCurve#1"
+  },
+  {
+   "children": [ "duplicator#2", "duplicator#4", "duplicator#1", "duplicator#3", "spreadsheet#4", "spreadsheet#1", "spreadsheet#2", "spreadsheet#5" ],
+   "nodeId": "compNode#1"
+  },
+  {
+   "children": [ "keyframe#8", "keyframe#7" ],
+   "nodeId": "visibilityCurve#4"
+  },
+  {
+   "children": [ "keyframe#10", "keyframe#9" ],
+   "nodeId": "visibilityCurve#5"
+  },
+  {
+   "children": [ "keyframe#4", "keyframe#3" ],
+   "nodeId": "visibilityCurve#2"
+  },
+  {
+   "children": [ "keyframe#14", "keyframe#13" ],
+   "nodeId": "visibilityCurve#7"
+  },
+  {
+   "children": [ "asset#5", "asset#4", "asset#3", "compNode#1" ],
    "nodeId": "asset#1"
   },
   {
-   "children": [ "motionBlurFilter#4", "strokeMaterial#4", "colorMaterial#4", "visibilityCurve#4" ],
-   "nodeId": "hiddenFolder#5"
+   "children": [ "linearDistribution#4", "motionBlurFilter#10", "strokeMaterial#10", "colorMaterial#10", "gridDistribution#4", "visibilityCurve#10" ],
+   "nodeId": "hiddenFolder#13"
+  },
+  {
+   "children": [ "linearDistribution#3", "motionBlurFilter#7", "strokeMaterial#7", "colorMaterial#7", "gridDistribution#3", "visibilityCurve#7" ],
+   "nodeId": "hiddenFolder#9"
   },
   {
    "children": [ "linearDistribution#2", "motionBlurFilter#5", "strokeMaterial#5", "colorMaterial#5", "gridDistribution#2", "visibilityCurve#5" ],
@@ -67,8 +152,16 @@
    "nodeId": "spreadsheet#1"
   },
   {
-   "children": [ "colorArray#1" ],
-   "nodeId": "paletteContainer#1"
+   "children": [ "numberRangeBase#3" ],
+   "nodeId": "hiddenFolder#12"
+  },
+  {
+   "children": [ "motionBlurFilter#9", "strokeMaterial#9", "polygonShape#4", "colorMaterial#9", "visibilityCurve#9" ],
+   "nodeId": "hiddenFolder#11"
+  },
+  {
+   "children": [ "ellipseShape#2", "motionBlurFilter#8", "strokeMaterial#8", "polygonShape#3", "colorMaterial#8", "visibilityCurve#8" ],
+   "nodeId": "hiddenFolder#10"
   },
   {
    "children": [ "numberRangeBase#1" ],
@@ -79,50 +172,96 @@
    "nodeId": "hiddenFolder#3"
   },
   {
+   "children": [ "hiddenFolder#12" ],
+   "nodeId": "spreadsheet#5"
+  },
+  {
+   "children": [ "hiddenFolder#7" ],
+   "nodeId": "spreadsheet#4"
+  },
+  {
+   "children": [ "numberRangeBase#2" ],
+   "nodeId": "hiddenFolder#7"
+  },
+  {
+   "children": [ "motionBlurFilter#4", "strokeMaterial#4", "colorMaterial#4", "visibilityCurve#4" ],
+   "nodeId": "hiddenFolder#5"
+  },
+  {
+   "children": [ "colorArray#1" ],
+   "nodeId": "paletteContainer#1"
+  },
+  {
+   "children": [ "basicShape#3", "hiddenFolder#9" ],
+   "nodeId": "duplicator#3"
+  },
+  {
    "children": [ "textShape#2", "hiddenFolder#6" ],
    "nodeId": "duplicator#2"
-  },
-  {
-   "children": [ "hiddenFolder#5" ],
-   "nodeId": "textShape#2"
-  },
-  {
-   "children": [ "hiddenFolder#1" ],
-   "nodeId": "basicShape#1"
   },
   {
    "children": [ "basicShape#1", "hiddenFolder#3" ],
    "nodeId": "duplicator#1"
   },
   {
-   "children": [ "keyframe#2", "keyframe#1" ],
-   "nodeId": "visibilityCurve#1"
+   "children": [ "hiddenFolder#1" ],
+   "nodeId": "basicShape#1"
   },
   {
-   "children": [ "duplicator#2", "duplicator#1", "spreadsheet#1", "spreadsheet#2" ],
-   "nodeId": "compNode#1"
+   "children": [ "hiddenFolder#5" ],
+   "nodeId": "textShape#2"
   },
   {
-   "children": [ "keyframe#8", "keyframe#7" ],
-   "nodeId": "visibilityCurve#4"
+   "children": [ "hiddenFolder#10" ],
+   "nodeId": "basicShape#3"
   },
   {
-   "children": [ "keyframe#10", "keyframe#9" ],
-   "nodeId": "visibilityCurve#5"
+   "children": [ "hiddenFolder#11" ],
+   "nodeId": "basicShape#4"
   },
   {
-   "children": [ "keyframe#4", "keyframe#3" ],
-   "nodeId": "visibilityCurve#2"
+   "children": [ "basicShape#4", "hiddenFolder#13" ],
+   "nodeId": "duplicator#4"
   }
  ],
  "nodes": [
+  { "nodeId": "visibilityCurve#8", "nodeType": "visibilityCurve" },
+  { "nodeId": "visibilityCurve#9", "nodeType": "visibilityCurve" },
+  { "nodeId": "visibilityCurve#10", "nodeType": "visibilityCurve" },
+  { "nodeId": "visibilityCurve#1", "nodeType": "visibilityCurve" },
+  {
+   "attributes": {
+    "backgroundColor": {
+     "value": { "a": 255, "b": 255, "g": 255, "r": 255 },
+     "varType": "color"
+    },
+    "colorId": { "value": 3, "varType": "int" },
+    "niceName": { "value": "Composition 1", "varType": "string" },
+    "uuid": { "value": "c59409e7-1c76-4f7a-990b-9181d643d4e4", "varType": "string" }
+   },
+   "nodeId": "compNode#1",
+   "nodeType": "compNode"
+  },
+  { "nodeId": "visibilityCurve#4", "nodeType": "visibilityCurve" },
+  { "nodeId": "visibilityCurve#5", "nodeType": "visibilityCurve" },
+  { "nodeId": "visibilityCurve#2", "nodeType": "visibilityCurve" },
+  { "nodeId": "visibilityCurve#7", "nodeType": "visibilityCurve" },
   {
    "attributes": {
     "colorId": { "value": 12, "varType": "int" },
-    "niceName": { "value": "Periodic Table of Elements - Sheet1", "varType": "string" },
-    "uuid": { "value": "81c28eed-9de2-4092-88ef-b5cb533a07de", "varType": "string" }
+    "niceName": { "value": "noble_gases", "varType": "string" },
+    "uuid": { "value": "806a483a-214d-43fd-994f-b140ac109ca0", "varType": "string" }
    },
-   "nodeId": "asset#2",
+   "nodeId": "asset#5",
+   "nodeType": "asset"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 12, "varType": "int" },
+    "niceName": { "value": "Asset", "varType": "string" },
+    "uuid": { "value": "43998e0c-2493-465a-9dac-908d0fb4686d", "varType": "string" }
+   },
+   "nodeId": "asset#3",
    "nodeType": "asset"
   },
   {
@@ -134,11 +273,12 @@
   },
   {
    "attributes": {
-    "niceName": { "value": "subUINodes", "varType": "string" },
-    "uuid": { "value": "95f071e6-5415-4792-9811-08d3b11ac5b1", "varType": "string" }
+    "colorId": { "value": 12, "varType": "int" },
+    "niceName": { "value": "reactive_nonmetals", "varType": "string" },
+    "uuid": { "value": "8164b782-effd-430e-aec7-8f647edf3b12", "varType": "string" }
    },
-   "nodeId": "hiddenFolder#5",
-   "nodeType": "hiddenFolder"
+   "nodeId": "asset#4",
+   "nodeType": "asset"
   },
   {
    "attributes": {
@@ -146,10 +286,35 @@
      "value": { "numValue": 1.0 },
      "varType": "keyData"
     },
-    "uuid": { "value": "eca584dd-9168-42d7-9729-50b9adc02a75", "varType": "string" }
+    "uuid": { "value": "be297986-6e0f-401d-ad55-558914d1a530", "varType": "string" }
    },
-   "nodeId": "keyframe#7",
+   "nodeId": "keyframe#19",
    "nodeType": "keyframe"
+  },
+  {
+   "attributes": {
+    "niceName": { "value": "subUINodes", "varType": "string" },
+    "uuid": { "value": "1bc37e73-7102-4f72-b37c-10675ca5f54c", "varType": "string" }
+   },
+   "nodeId": "hiddenFolder#13",
+   "nodeType": "hiddenFolder"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 9, "varType": "int" },
+    "niceName": { "value": "Grid 3", "varType": "string" },
+    "uuid": { "value": "709fb9ad-6652-4c34-be53-c67b12cce3e4", "varType": "string" }
+   },
+   "nodeId": "gridDistribution#3",
+   "nodeType": "gridDistribution"
+  },
+  {
+   "attributes": {
+    "niceName": { "value": "subUINodes", "varType": "string" },
+    "uuid": { "value": "b16c74e6-56e7-4c0b-869f-2c03f4bc6cf1", "varType": "string" }
+   },
+   "nodeId": "hiddenFolder#9",
+   "nodeType": "hiddenFolder"
   },
   {
    "attributes": {
@@ -158,73 +323,10 @@
      "varType": "keyData"
     },
     "timeOffset": { "value": 250.0, "varType": "double" },
-    "uuid": { "value": "3f3de852-a745-45a3-b996-3e3e8cde4457", "varType": "string" }
+    "uuid": { "value": "884b7214-674d-499c-aaee-8cd03f0cfce1", "varType": "string" }
    },
-   "nodeId": "keyframe#8",
+   "nodeId": "keyframe#14",
    "nodeType": "keyframe"
-  },
-  {
-   "attributes": {
-    "colorId": { "value": 6, "varType": "int" },
-    "materialColor": {
-     "value": { "a": 255, "b": 255, "g": 153, "r": 0 },
-     "varType": "color"
-    },
-    "niceName": { "value": "Fill 3", "varType": "string" },
-    "showInProjectWindow": { "value": false, "varType": "bool" },
-    "uuid": { "value": "b987da69-86a2-4e07-a0e2-030a66cf478d", "varType": "string" }
-   },
-   "nodeId": "colorMaterial#4",
-   "nodeType": "colorMaterial"
-  },
-  {
-   "attributes": {
-    "colorId": { "value": 6, "varType": "int" },
-    "gradient": {
-     "list": [
-      {
-       "compound": {
-        "color": {
-         "value": { "a": 255, "b": 0, "g": 0, "r": 0 },
-         "varType": "color"
-        }
-       }
-      },
-      {
-       "compound": {
-        "color": {
-         "value": { "a": 255, "b": 255, "g": 255, "r": 255 },
-         "varType": "color"
-        },
-        "position": { "value": 1.0, "varType": "double" }
-       }
-      }
-     ]
-    },
-    "niceName": { "value": "Stroke 3", "varType": "string" },
-    "showInProjectWindow": { "value": false, "varType": "bool" },
-    "uuid": { "value": "22ea9a1b-a33b-47ce-b1a5-e5d993c592a4", "varType": "string" }
-   },
-   "nodeId": "strokeMaterial#4",
-   "nodeType": "strokeMaterial"
-  },
-  {
-   "attributes": {
-    "colorId": { "value": 14, "varType": "int" },
-    "niceName": { "value": "Motion Blur 3", "varType": "string" },
-    "showInProjectWindow": { "value": false, "varType": "bool" },
-    "uuid": { "value": "9cae4d42-9940-42a2-aa4b-831d36ecbcc5", "varType": "string" }
-   },
-   "nodeId": "motionBlurFilter#4",
-   "nodeType": "motionBlurFilter"
-  },
-  {
-   "attributes": {
-    "niceName": { "value": "subUINodes", "varType": "string" },
-    "uuid": { "value": "9a531455-2efa-44f7-9c66-5d3053ea1bf8", "varType": "string" }
-   },
-   "nodeId": "hiddenFolder#6",
-   "nodeType": "hiddenFolder"
   },
   {
    "attributes": {
@@ -236,6 +338,14 @@
    },
    "nodeId": "keyframe#9",
    "nodeType": "keyframe"
+  },
+  {
+   "attributes": {
+    "niceName": { "value": "subUINodes", "varType": "string" },
+    "uuid": { "value": "9a531455-2efa-44f7-9c66-5d3053ea1bf8", "varType": "string" }
+   },
+   "nodeId": "hiddenFolder#6",
+   "nodeType": "hiddenFolder"
   },
   {
    "attributes": {
@@ -338,6 +448,7 @@
   },
   {
    "attributes": {
+    "alpha": { "value": 50.0, "varType": "double" },
     "colorId": { "value": 6, "varType": "int" },
     "materialColor": {
      "value": { "a": 255, "b": 204, "g": 204, "r": 204 },
@@ -432,24 +543,6 @@
    "nodeId": "spreadsheet#2",
    "nodeType": "spreadsheet"
   },
-  { "nodeId": "paletteContainer#1", "nodeType": "paletteContainer" },
-  {
-   "attributes": {
-    "niceName": { "value": "Default Scene Palette", "varType": "string" },
-    "uuid": { "value": "7525a04d-fa15-4e66-bf04-4c17025e20f9", "varType": "string" }
-   },
-   "nodeId": "colorArray#1",
-   "nodeType": "colorArray"
-  },
-  { "nodeId": "renderQueue#1", "nodeType": "renderQueue" },
-  {
-   "attributes": {
-    "niceName": { "value": "Render Manager", "varType": "string" },
-    "uuid": { "value": "8776e55e-0c77-4c91-9548-bb495762e219", "varType": "string" }
-   },
-   "nodeId": "dynamicIndexManager#1",
-   "nodeType": "dynamicIndexManager"
-  },
   {
    "attributes": {
     "colorId": { "value": 4, "varType": "int" },
@@ -487,11 +580,183 @@
     },
     "max": { "value": 1.1, "varType": "double" },
     "niceName": { "value": "Number Range", "varType": "string" },
-    "sourceMax": { "value": 10.81, "varType": "double" },
+    "sourceMax": { "value": 18.998, "varType": "double" },
     "uuid": { "value": "8f9c00e7-e2f2-4a72-bb8d-7b00d73a4c54", "varType": "string" }
    },
    "nodeId": "numberRangeBase#1",
    "nodeType": "numberRangeBase"
+  },
+  {
+   "attributes": {
+    "data": {
+     "value": { "numValue": 1.0 },
+     "varType": "keyData"
+    },
+    "uuid": { "value": "65c0768b-28b3-4a55-8c7f-80e75bb307f7", "varType": "string" }
+   },
+   "nodeId": "keyframe#13",
+   "nodeType": "keyframe"
+  },
+  {
+   "attributes": {
+    "data": {
+     "value": { "numValue": -1.0 },
+     "varType": "keyData"
+    },
+    "timeOffset": { "value": 250.0, "varType": "double" },
+    "uuid": { "value": "8f07ba5b-cf69-478a-a58a-e7ecd257f3c1", "varType": "string" }
+   },
+   "nodeId": "keyframe#20",
+   "nodeType": "keyframe"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 4, "varType": "int" },
+    "graph": {
+     "list": [
+      {
+       "compound": {
+        "left": {
+         "value": { "x": -0.5, "y": -0.5 },
+         "varType": "double2"
+        },
+        "right": {
+         "value": { "x": 0.5, "y": 0.5 },
+         "varType": "double2"
+        }
+       }
+      },
+      {
+       "compound": {
+        "left": {
+         "value": { "x": -0.5, "y": -0.5 },
+         "varType": "double2"
+        },
+        "position": {
+         "value": { "x": 1.0, "y": 1.0 },
+         "varType": "double2"
+        },
+        "right": {
+         "value": { "x": 0.5, "y": 0.5 },
+         "varType": "double2"
+        }
+       }
+      }
+     ]
+    },
+    "max": { "value": 9.0, "varType": "double" },
+    "niceName": { "value": "Number Range 2", "varType": "string" },
+    "sourceMax": { "value": 9.0, "varType": "double" },
+    "uuid": { "value": "63999498-1bd3-4bcb-b3bb-b67be64919a5", "varType": "string" }
+   },
+   "nodeId": "numberRangeBase#3",
+   "nodeType": "numberRangeBase"
+  },
+  {
+   "attributes": {
+    "niceName": { "value": "Hidden Folder 2", "varType": "string" },
+    "uuid": { "value": "9a21e5b6-083c-43d2-b02c-b84730bcbcf1", "varType": "string" }
+   },
+   "nodeId": "hiddenFolder#12",
+   "nodeType": "hiddenFolder"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 14, "varType": "int" },
+    "niceName": { "value": "Motion Blur 9", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "e99a403e-506e-4086-bf97-2116ef9f833d", "varType": "string" }
+   },
+   "nodeId": "motionBlurFilter#10",
+   "nodeType": "motionBlurFilter"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 6, "varType": "int" },
+    "niceName": { "value": "Fill 9", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "3cd0c2a8-0802-40f4-b9c6-3534f41f504d", "varType": "string" }
+   },
+   "nodeId": "colorMaterial#10",
+   "nodeType": "colorMaterial"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 9, "varType": "int" },
+    "niceName": { "value": "Grid 4", "varType": "string" },
+    "uuid": { "value": "0b35bb76-0e79-4063-8cb5-dcc86f6f0d4f", "varType": "string" }
+   },
+   "nodeId": "gridDistribution#4",
+   "nodeType": "gridDistribution"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 9, "varType": "int" },
+    "count": { "value": 5, "varType": "int" },
+    "niceName": { "value": "Linear 4", "varType": "string" },
+    "size": { "value": 1528.0, "varType": "double" },
+    "uuid": { "value": "a080ef38-b26d-4e02-a269-140b53360921", "varType": "string" }
+   },
+   "nodeId": "linearDistribution#4",
+   "nodeType": "linearDistribution"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 6, "varType": "int" },
+    "gradient": {
+     "list": [
+      {
+       "compound": {
+        "color": {
+         "value": { "a": 255, "b": 0, "g": 0, "r": 0 },
+         "varType": "color"
+        }
+       }
+      },
+      {
+       "compound": {
+        "color": {
+         "value": { "a": 255, "b": 255, "g": 255, "r": 255 },
+         "varType": "color"
+        },
+        "position": { "value": 1.0, "varType": "double" }
+       }
+      }
+     ]
+    },
+    "niceName": { "value": "Stroke 9", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "8750a598-2328-4441-85b6-8f49051c47c2", "varType": "string" }
+   },
+   "nodeId": "strokeMaterial#10",
+   "nodeType": "strokeMaterial"
+  },
+  {
+   "attributes": {
+    "niceName": { "value": "subUINodes", "varType": "string" },
+    "uuid": { "value": "e491bd02-07c1-43ac-ae6f-c70162311141", "varType": "string" }
+   },
+   "nodeId": "hiddenFolder#11",
+   "nodeType": "hiddenFolder"
+  },
+  {
+   "attributes": {
+    "data": {
+     "value": { "numValue": 1.0 },
+     "varType": "keyData"
+    },
+    "uuid": { "value": "723d982b-43cb-4dfc-b505-8ef6a25f29cc", "varType": "string" }
+   },
+   "nodeId": "keyframe#17",
+   "nodeType": "keyframe"
+  },
+  {
+   "attributes": {
+    "niceName": { "value": "subUINodes", "varType": "string" },
+    "uuid": { "value": "6c465deb-e25c-4cc2-aa21-3335e07d485f", "varType": "string" }
+   },
+   "nodeId": "hiddenFolder#10",
+   "nodeType": "hiddenFolder"
   },
   {
    "attributes": {
@@ -616,6 +881,431 @@
   },
   {
    "attributes": {
+    "colorId": { "value": 9, "varType": "int" },
+    "count": { "value": 5, "varType": "int" },
+    "niceName": { "value": "Linear 3", "varType": "string" },
+    "size": { "value": 1528.0, "varType": "double" },
+    "uuid": { "value": "e8fc0f27-5232-47c5-8d41-629c1ede445f", "varType": "string" }
+   },
+   "nodeId": "linearDistribution#3",
+   "nodeType": "linearDistribution"
+  },
+  {
+   "attributes": {
+    "data": {
+     "value": { "numValue": -1.0 },
+     "varType": "keyData"
+    },
+    "timeOffset": { "value": 250.0, "varType": "double" },
+    "uuid": { "value": "0d195172-487e-4293-a6b6-a5fc11502ff4", "varType": "string" }
+   },
+   "nodeId": "keyframe#18",
+   "nodeType": "keyframe"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 14, "varType": "int" },
+    "niceName": { "value": "Motion Blur 7", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "6a8da70e-3836-4529-934d-480621b9ea92", "varType": "string" }
+   },
+   "nodeId": "motionBlurFilter#8",
+   "nodeType": "motionBlurFilter"
+  },
+  {
+   "attributes": {
+    "alpha": { "value": 17.39130401611328, "varType": "double" },
+    "colorId": { "value": 6, "varType": "int" },
+    "materialColor": {
+     "value": { "a": 255, "b": 0, "g": 0, "r": 255 },
+     "varType": "color"
+    },
+    "niceName": { "value": "Fill 8", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "d9b492dc-1ee7-42e0-8990-0028903da8b3", "varType": "string" }
+   },
+   "nodeId": "colorMaterial#9",
+   "nodeType": "colorMaterial"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 6, "varType": "int" },
+    "gradient": {
+     "list": [
+      {
+       "compound": {
+        "color": {
+         "value": { "a": 255, "b": 0, "g": 0, "r": 0 },
+         "varType": "color"
+        }
+       }
+      },
+      {
+       "compound": {
+        "color": {
+         "value": { "a": 255, "b": 255, "g": 255, "r": 255 },
+         "varType": "color"
+        },
+        "position": { "value": 1.0, "varType": "double" }
+       }
+      }
+     ]
+    },
+    "niceName": { "value": "Stroke 7", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "04a8cbc0-fac9-4496-9e41-534028fedc72", "varType": "string" }
+   },
+   "nodeId": "strokeMaterial#8",
+   "nodeType": "strokeMaterial"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 9, "varType": "int" },
+    "niceName": { "value": "Polygon 4", "varType": "string" },
+    "sides": { "value": 3, "varType": "int" },
+    "uuid": { "value": "b96c603b-c919-400a-b097-0cf070376136", "varType": "string" }
+   },
+   "nodeId": "polygonShape#4",
+   "nodeType": "polygonShape"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 6, "varType": "int" },
+    "niceName": { "value": "Fill 7", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "6e9872ab-2190-46f1-8878-2e80f3edc9ae", "varType": "string" }
+   },
+   "nodeId": "colorMaterial#8",
+   "nodeType": "colorMaterial"
+  },
+  {
+   "attributes": {
+    "data": {
+     "value": { "numValue": -1.0 },
+     "varType": "keyData"
+    },
+    "timeOffset": { "value": 250.0, "varType": "double" },
+    "uuid": { "value": "504db6b6-fdc6-49b0-b621-480d118bbeb4", "varType": "string" }
+   },
+   "nodeId": "keyframe#16",
+   "nodeType": "keyframe"
+  },
+  {
+   "attributes": {
+    "data": {
+     "value": { "numValue": 1.0 },
+     "varType": "keyData"
+    },
+    "uuid": { "value": "66da7b34-b4a9-4305-88ae-60989f0a27c5", "varType": "string" }
+   },
+   "nodeId": "keyframe#15",
+   "nodeType": "keyframe"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 9, "varType": "int" },
+    "niceName": { "value": "Polygon 3", "varType": "string" },
+    "uuid": { "value": "ba580ea4-36c8-4f5a-81e0-83679bee0947", "varType": "string" }
+   },
+   "nodeId": "polygonShape#3",
+   "nodeType": "polygonShape"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 6, "varType": "int" },
+    "gradient": {
+     "list": [
+      {
+       "compound": {
+        "color": {
+         "value": { "a": 255, "b": 0, "g": 0, "r": 0 },
+         "varType": "color"
+        }
+       }
+      },
+      {
+       "compound": {
+        "color": {
+         "value": { "a": 255, "b": 255, "g": 255, "r": 255 },
+         "varType": "color"
+        },
+        "position": { "value": 1.0, "varType": "double" }
+       }
+      }
+     ]
+    },
+    "niceName": { "value": "Stroke 8", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "strokeColor": {
+     "value": { "a": 255, "b": 255, "g": 255, "r": 255 },
+     "varType": "color"
+    },
+    "uuid": { "value": "64fbcd49-7d7a-4a3b-8602-9184017ce5a4", "varType": "string" }
+   },
+   "nodeId": "strokeMaterial#9",
+   "nodeType": "strokeMaterial"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 9, "varType": "int" },
+    "niceName": { "value": "Ellipse 2", "varType": "string" },
+    "uuid": { "value": "f5103a01-aed9-44f9-9b35-87c86030735a", "varType": "string" }
+   },
+   "nodeId": "ellipseShape#2",
+   "nodeType": "ellipseShape"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 14, "varType": "int" },
+    "niceName": { "value": "Motion Blur 8", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "015d4301-5f08-4fa8-8d08-3ed263b0e8df", "varType": "string" }
+   },
+   "nodeId": "motionBlurFilter#9",
+   "nodeType": "motionBlurFilter"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 9, "varType": "int" },
+    "column": { "value": 18.0, "varType": "double" },
+    "niceName": { "value": "ELECTRONS", "varType": "string" },
+    "uuid": { "value": "340d9f3d-a754-4aef-936f-658b15f2df03", "varType": "string" }
+   },
+   "nodeId": "spreadsheet#5",
+   "nodeType": "spreadsheet"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 9, "varType": "int" },
+    "column": { "value": 11.0, "varType": "double" },
+    "niceName": { "value": "RADIUS", "varType": "string" },
+    "uuid": { "value": "bfbe4427-24fe-4bcb-b44c-34080f729b00", "varType": "string" }
+   },
+   "nodeId": "spreadsheet#4",
+   "nodeType": "spreadsheet"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 4, "varType": "int" },
+    "graph": {
+     "list": [
+      {
+       "compound": {
+        "left": {
+         "value": { "x": -0.5, "y": -0.5 },
+         "varType": "double2"
+        },
+        "right": {
+         "value": { "x": 0.5, "y": 0.5 },
+         "varType": "double2"
+        }
+       }
+      },
+      {
+       "compound": {
+        "left": {
+         "value": { "x": -0.5, "y": -0.5 },
+         "varType": "double2"
+        },
+        "position": {
+         "value": { "x": 1.0, "y": 1.0 },
+         "varType": "double2"
+        },
+        "right": {
+         "value": { "x": 0.5, "y": 0.5 },
+         "varType": "double2"
+        }
+       }
+      }
+     ]
+    },
+    "max": { "value": 1.5, "varType": "double" },
+    "niceName": { "value": "Number Range 1", "varType": "string" },
+    "sourceMax": { "value": 70.0, "varType": "double" },
+    "uuid": { "value": "8f9c00e7-e2f2-4a72-bb8d-7b00d73a4c54", "varType": "string" }
+   },
+   "nodeId": "numberRangeBase#2",
+   "nodeType": "numberRangeBase"
+  },
+  {
+   "attributes": {
+    "niceName": { "value": "Hidden Folder", "varType": "string" },
+    "uuid": { "value": "851b5f50-8225-4bf5-9047-1a60b6812095", "varType": "string" }
+   },
+   "nodeId": "hiddenFolder#7",
+   "nodeType": "hiddenFolder"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 14, "varType": "int" },
+    "niceName": { "value": "Motion Blur 6", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "5db8f9f3-9a46-47b5-a67d-09aa32283b80", "varType": "string" }
+   },
+   "nodeId": "motionBlurFilter#7",
+   "nodeType": "motionBlurFilter"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 6, "varType": "int" },
+    "gradient": {
+     "list": [
+      {
+       "compound": {
+        "color": {
+         "value": { "a": 255, "b": 0, "g": 0, "r": 0 },
+         "varType": "color"
+        }
+       }
+      },
+      {
+       "compound": {
+        "color": {
+         "value": { "a": 255, "b": 255, "g": 255, "r": 255 },
+         "varType": "color"
+        },
+        "position": { "value": 1.0, "varType": "double" }
+       }
+      }
+     ]
+    },
+    "niceName": { "value": "Stroke 6", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "ce62a20c-6160-4a85-af75-f12f4b2d8a79", "varType": "string" }
+   },
+   "nodeId": "strokeMaterial#7",
+   "nodeType": "strokeMaterial"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 14, "varType": "int" },
+    "niceName": { "value": "Motion Blur 3", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "9cae4d42-9940-42a2-aa4b-831d36ecbcc5", "varType": "string" }
+   },
+   "nodeId": "motionBlurFilter#4",
+   "nodeType": "motionBlurFilter"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 6, "varType": "int" },
+    "gradient": {
+     "list": [
+      {
+       "compound": {
+        "color": {
+         "value": { "a": 255, "b": 0, "g": 0, "r": 0 },
+         "varType": "color"
+        }
+       }
+      },
+      {
+       "compound": {
+        "color": {
+         "value": { "a": 255, "b": 255, "g": 255, "r": 255 },
+         "varType": "color"
+        },
+        "position": { "value": 1.0, "varType": "double" }
+       }
+      }
+     ]
+    },
+    "niceName": { "value": "Stroke 3", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "22ea9a1b-a33b-47ce-b1a5-e5d993c592a4", "varType": "string" }
+   },
+   "nodeId": "strokeMaterial#4",
+   "nodeType": "strokeMaterial"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 6, "varType": "int" },
+    "materialColor": {
+     "value": { "a": 255, "b": 255, "g": 153, "r": 0 },
+     "varType": "color"
+    },
+    "niceName": { "value": "Fill 3", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "b987da69-86a2-4e07-a0e2-030a66cf478d", "varType": "string" }
+   },
+   "nodeId": "colorMaterial#4",
+   "nodeType": "colorMaterial"
+  },
+  {
+   "attributes": {
+    "data": {
+     "value": { "numValue": -1.0 },
+     "varType": "keyData"
+    },
+    "timeOffset": { "value": 250.0, "varType": "double" },
+    "uuid": { "value": "3f3de852-a745-45a3-b996-3e3e8cde4457", "varType": "string" }
+   },
+   "nodeId": "keyframe#8",
+   "nodeType": "keyframe"
+  },
+  {
+   "attributes": {
+    "data": {
+     "value": { "numValue": 1.0 },
+     "varType": "keyData"
+    },
+    "uuid": { "value": "eca584dd-9168-42d7-9729-50b9adc02a75", "varType": "string" }
+   },
+   "nodeId": "keyframe#7",
+   "nodeType": "keyframe"
+  },
+  {
+   "attributes": {
+    "niceName": { "value": "subUINodes", "varType": "string" },
+    "uuid": { "value": "95f071e6-5415-4792-9811-08d3b11ac5b1", "varType": "string" }
+   },
+   "nodeId": "hiddenFolder#5",
+   "nodeType": "hiddenFolder"
+  },
+  {
+   "attributes": {
+    "niceName": { "value": "Render Manager", "varType": "string" },
+    "uuid": { "value": "8776e55e-0c77-4c91-9548-bb495762e219", "varType": "string" }
+   },
+   "nodeId": "dynamicIndexManager#1",
+   "nodeType": "dynamicIndexManager"
+  },
+  { "nodeId": "renderQueue#1", "nodeType": "renderQueue" },
+  {
+   "attributes": {
+    "niceName": { "value": "Default Scene Palette", "varType": "string" },
+    "uuid": { "value": "7525a04d-fa15-4e66-bf04-4c17025e20f9", "varType": "string" }
+   },
+   "nodeId": "colorArray#1",
+   "nodeType": "colorArray"
+  },
+  { "nodeId": "paletteContainer#1", "nodeType": "paletteContainer" },
+  {
+   "attributes": {
+    "colorId": { "value": 6, "varType": "int" },
+    "niceName": { "value": "Fill 6", "varType": "string" },
+    "showInProjectWindow": { "value": false, "varType": "bool" },
+    "uuid": { "value": "d3de247b-efc2-40b5-a140-5769cba61b19", "varType": "string" }
+   },
+   "nodeId": "colorMaterial#7",
+   "nodeType": "colorMaterial"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 2, "varType": "int" },
+    "hierarchy": { "value": false, "varType": "bool" },
+    "niceName": { "value": "RADIUS", "varType": "string" },
+    "shapeScale": {
+     "value": { "x": 1.0714285714285714, "y": 1.1357142857142857 },
+     "varType": "double2"
+    },
+    "uuid": { "value": "b22b1371-875d-491f-977a-b17d511fd444", "varType": "string" }
+   },
+   "nodeId": "duplicator#3",
+   "nodeType": "duplicator"
+  },
+  {
+   "attributes": {
     "colorId": { "value": 2, "varType": "int" },
     "hierarchy": { "value": false, "varType": "bool" },
     "niceName": { "value": "NAME", "varType": "string" },
@@ -628,6 +1318,30 @@
    },
    "nodeId": "duplicator#2",
    "nodeType": "duplicator"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 2, "varType": "int" },
+    "hierarchy": { "value": false, "varType": "bool" },
+    "niceName": { "value": "ATOMIC MASS DRIVER", "varType": "string" },
+    "shapeScale": {
+     "value": { "x": 0.05836403831982314, "y": 1.1 },
+     "varType": "double2"
+    },
+    "uuid": { "value": "1d8ece54-7dc6-4316-a15f-4f85adbf6d56", "varType": "string" }
+   },
+   "nodeId": "duplicator#1",
+   "nodeType": "duplicator"
+  },
+  {
+   "attributes": {
+    "colorId": { "value": 2, "varType": "int" },
+    "hidden": { "value": true, "varType": "bool" },
+    "niceName": { "value": "Ellipse Shape", "varType": "string" },
+    "uuid": { "value": "fc9dfe29-871f-4403-94e5-ebbb47117e78", "varType": "string" }
+   },
+   "nodeId": "basicShape#1",
+   "nodeType": "basicShape"
   },
   {
    "attributes": {
@@ -664,43 +1378,37 @@
    "attributes": {
     "colorId": { "value": 2, "varType": "int" },
     "hidden": { "value": true, "varType": "bool" },
-    "niceName": { "value": "Ellipse Shape", "varType": "string" },
-    "uuid": { "value": "fc9dfe29-871f-4403-94e5-ebbb47117e78", "varType": "string" }
+    "niceName": { "value": "Ellipse Shape 2", "varType": "string" },
+    "uuid": { "value": "27c9cf10-91e4-4a51-a9b0-ba5754cc005f", "varType": "string" }
    },
-   "nodeId": "basicShape#1",
+   "nodeId": "basicShape#3",
    "nodeType": "basicShape"
   },
   {
    "attributes": {
     "colorId": { "value": 2, "varType": "int" },
-    "hierarchy": { "value": false, "varType": "bool" },
-    "niceName": { "value": "ATOMIC MASS DRIVER", "varType": "string" },
-    "shapeScale": {
-     "value": { "x": 1.1, "y": 0.10257169287696577 },
-     "varType": "double2"
-    },
-    "uuid": { "value": "1d8ece54-7dc6-4316-a15f-4f85adbf6d56", "varType": "string" }
+    "hidden": { "value": true, "varType": "bool" },
+    "niceName": { "value": "Polygon Shape", "varType": "string" },
+    "uuid": { "value": "a41f5492-5d31-4760-aef6-62f78605192b", "varType": "string" }
    },
-   "nodeId": "duplicator#1",
-   "nodeType": "duplicator"
+   "nodeId": "basicShape#4",
+   "nodeType": "basicShape"
   },
-  { "nodeId": "visibilityCurve#1", "nodeType": "visibilityCurve" },
   {
    "attributes": {
-    "backgroundColor": {
-     "value": { "a": 255, "b": 255, "g": 255, "r": 255 },
-     "varType": "color"
+    "colorId": { "value": 2, "varType": "int" },
+    "hidden": { "value": true, "varType": "bool" },
+    "hierarchy": { "value": false, "varType": "bool" },
+    "niceName": { "value": "ELECTRONS", "varType": "string" },
+    "shapeScale": {
+     "value": { "x": 1.0714285714285714, "y": 1.1357142857142857 },
+     "varType": "double2"
     },
-    "colorId": { "value": 3, "varType": "int" },
-    "niceName": { "value": "Composition 1", "varType": "string" },
-    "uuid": { "value": "c59409e7-1c76-4f7a-990b-9181d643d4e4", "varType": "string" }
+    "uuid": { "value": "e32ee1fa-c470-423f-8acb-3a59b42726bf", "varType": "string" }
    },
-   "nodeId": "compNode#1",
-   "nodeType": "compNode"
-  },
-  { "nodeId": "visibilityCurve#4", "nodeType": "visibilityCurve" },
-  { "nodeId": "visibilityCurve#5", "nodeType": "visibilityCurve" },
-  { "nodeId": "visibilityCurve#2", "nodeType": "visibilityCurve" }
+   "nodeId": "duplicator#4",
+   "nodeType": "duplicator"
+  }
  ],
  "other": {
   "viewport": { "backgroundMode": 0, "rulers": {} }
