@@ -1,11 +1,11 @@
 library(ggplot2)
 
 bohr_model_hydrogen <- function() {
-    r_n <- c(0.529, 4 * 0.529, 9 * 0.529)
+    r_n <- c(0.529, 4 * 0.529, 9 * 0.529, 16 * 0.529, 25 * 0.529, 36 * 0.529, 49 * 0.529)
     theta <- seq(0, 2 * pi, length.out = 100)
 
     plot(NA,
-        xlim = c(-15 / 2, 15 / 2), ylim = c(0, 0.6),
+        xlim = c(-30, 30), ylim = c(0, 0.6),
         xlab = "X (Å)", ylab = "Y (Å)",
         main = "Bohr Model of Hydrogen", asp = 1
     )
