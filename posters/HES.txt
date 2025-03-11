@@ -1,0 +1,11 @@
+Atoms emit light when electrons transition to lower energy levels, known as orbitals, around the atom. When electrons absorb energy, they move to higher orbitals, entering an excited state. When they return to lower levels, they release energy as photons, producing specific wavelengths of light.
+
+This process creates the atom’s emission spectrum, a series of discrete spectral lines corresponding to transitions between quantized energy levels.
+
+Each orbital has a unique energy level. An electron at each level needs to absorb, or release, a specific and unique amount of energy when moving upward to, or downward from, that orbital. 
+
+Higher orbitals emit photons of shorter wavelengths, creating light with bluer color. However, most emission wavelengths exist outside of the visible light spectrum and fall into the ultraviolet and infrared spectrums.
+
+Energy emissions are categorized by the quantum numbers (n) of the orbitals they move between. In hydrogen, the emissions from each orbital n=3 and above to orbital n=2 create the Balmer Series, where each emission falls on the visible light spectrum, creating light visible to the human eye.
+
+
