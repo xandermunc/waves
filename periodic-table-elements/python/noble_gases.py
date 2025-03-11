@@ -126,6 +126,31 @@ noble_gases = [
         "Discovered": "1898",
         "Light Emission (nm)": "467.1, 529.2, 823.2, 881.9",
     },
+    {
+    "Name": "Radon",
+    "Symbol": "Rn",
+    "Atomic Number": 86,
+    "Category": "Noble Gas",
+    "Standard State": "Gas",
+    "Crystal Structure": "Cubic (theoretical)",
+    "Atomic Mass (u)": 222,
+    "Electronegativity (Pauling Scale)": 2.2,
+    "Energy Levels": "2,8,18,32,18,8",
+    "Melting Point (°C)": -71,
+    "Boiling Point (°C)": -61.7,
+    "Radius (pm)": 120,
+    "Abundance % (Universe)": "Negligible",
+    "Electron Affinity (eV)": "Not well-defined",
+    "Ionization Energy (eV)": 10.7485,
+    "Oxidation States": "0, +2, +6",
+    "Protons": 86,
+    "Neutrons": 136,
+    "Electrons": 86,
+    "Electron Configuration": "[Xe] 4f14 5d10 6s2 6p6",
+    "Quantum Numbers (HOAO)": "(6,1,-1,1/2)",
+    "Discovered": "1900",
+    "Light Emission (nm)": "Unknown",
+    }
 ]
 
 csv_filename = "noble_gases.csv"
